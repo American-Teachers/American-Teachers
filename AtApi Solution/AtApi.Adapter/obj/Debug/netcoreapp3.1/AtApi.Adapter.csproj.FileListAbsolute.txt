@@ -1,0 +1,14 @@
+C:\Users\bcbea\source\repos\bcbeatty\AmericanTeacherP1\AtApi Solution\AtApi.Adapter\bin\Debug\netcoreapp3.1\AtApi.Adapter.deps.json
+C:\Users\bcbea\source\repos\bcbeatty\AmericanTeacherP1\AtApi Solution\AtApi.Adapter\bin\Debug\netcoreapp3.1\AtApi.Adapter.dll
+C:\Users\bcbea\source\repos\bcbeatty\AmericanTeacherP1\AtApi Solution\AtApi.Adapter\bin\Debug\netcoreapp3.1\AtApi.Adapter.pdb
+C:\Users\bcbea\source\repos\bcbeatty\AmericanTeacherP1\AtApi Solution\AtApi.Adapter\bin\Debug\netcoreapp3.1\AtApi.Framework.dll
+C:\Users\bcbea\source\repos\bcbeatty\AmericanTeacherP1\AtApi Solution\AtApi.Adapter\bin\Debug\netcoreapp3.1\AtApi.Model.dll
+C:\Users\bcbea\source\repos\bcbeatty\AmericanTeacherP1\AtApi Solution\AtApi.Adapter\bin\Debug\netcoreapp3.1\AtApi.Framework.pdb
+C:\Users\bcbea\source\repos\bcbeatty\AmericanTeacherP1\AtApi Solution\AtApi.Adapter\bin\Debug\netcoreapp3.1\AtApi.Model.pdb
+C:\Users\bcbea\source\repos\bcbeatty\AmericanTeacherP1\AtApi Solution\AtApi.Adapter\obj\Debug\netcoreapp3.1\AtApi.Adapter.csprojAssemblyReference.cache
+C:\Users\bcbea\source\repos\bcbeatty\AmericanTeacherP1\AtApi Solution\AtApi.Adapter\obj\Debug\netcoreapp3.1\AtApi.Adapter.csproj.CoreCompileInputs.cache
+C:\Users\bcbea\source\repos\bcbeatty\AmericanTeacherP1\AtApi Solution\AtApi.Adapter\obj\Debug\netcoreapp3.1\AtApi.Adapter.AssemblyInfoInputs.cache
+C:\Users\bcbea\source\repos\bcbeatty\AmericanTeacherP1\AtApi Solution\AtApi.Adapter\obj\Debug\netcoreapp3.1\AtApi.Adapter.AssemblyInfo.cs
+C:\Users\bcbea\source\repos\bcbeatty\AmericanTeacherP1\AtApi Solution\AtApi.Adapter\obj\Debug\netcoreapp3.1\AtApi.Adapter.csproj.CopyComplete
+C:\Users\bcbea\source\repos\bcbeatty\AmericanTeacherP1\AtApi Solution\AtApi.Adapter\obj\Debug\netcoreapp3.1\AtApi.Adapter.dll
+C:\Users\bcbea\source\repos\bcbeatty\AmericanTeacherP1\AtApi Solution\AtApi.Adapter\obj\Debug\netcoreapp3.1\AtApi.Adapter.pdb

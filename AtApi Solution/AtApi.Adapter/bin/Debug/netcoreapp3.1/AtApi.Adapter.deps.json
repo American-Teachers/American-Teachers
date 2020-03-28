@@ -1,0 +1,47 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "AtApi.Adapter/1.0.0": {
+        "dependencies": {
+          "AtApi.Framework": "1.0.0",
+          "AtApi.Model": "1.0.0"
+        },
+        "runtime": {
+          "AtApi.Adapter.dll": {}
+        }
+      },
+      "AtApi.Framework/1.0.0": {
+        "runtime": {
+          "AtApi.Framework.dll": {}
+        }
+      },
+      "AtApi.Model/1.0.0": {
+        "runtime": {
+          "AtApi.Model.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "AtApi.Adapter/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "AtApi.Framework/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "AtApi.Model/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

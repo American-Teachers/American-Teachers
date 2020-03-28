@@ -1,0 +1,9 @@
+C:\Users\bcbea\source\repos\bcbeatty\AmericanTeacherP1\AtApi Solution\AtApi.Framework\bin\Debug\netcoreapp3.1\AtApi.Framework.deps.json
+C:\Users\bcbea\source\repos\bcbeatty\AmericanTeacherP1\AtApi Solution\AtApi.Framework\bin\Debug\netcoreapp3.1\AtApi.Framework.dll
+C:\Users\bcbea\source\repos\bcbeatty\AmericanTeacherP1\AtApi Solution\AtApi.Framework\bin\Debug\netcoreapp3.1\AtApi.Framework.pdb
+C:\Users\bcbea\source\repos\bcbeatty\AmericanTeacherP1\AtApi Solution\AtApi.Framework\obj\Debug\netcoreapp3.1\AtApi.Framework.csproj.CoreCompileInputs.cache
+C:\Users\bcbea\source\repos\bcbeatty\AmericanTeacherP1\AtApi Solution\AtApi.Framework\obj\Debug\netcoreapp3.1\AtApi.Framework.AssemblyInfoInputs.cache
+C:\Users\bcbea\source\repos\bcbeatty\AmericanTeacherP1\AtApi Solution\AtApi.Framework\obj\Debug\netcoreapp3.1\AtApi.Framework.AssemblyInfo.cs
+C:\Users\bcbea\source\repos\bcbeatty\AmericanTeacherP1\AtApi Solution\AtApi.Framework\obj\Debug\netcoreapp3.1\AtApi.Framework.dll
+C:\Users\bcbea\source\repos\bcbeatty\AmericanTeacherP1\AtApi Solution\AtApi.Framework\obj\Debug\netcoreapp3.1\AtApi.Framework.pdb
+C:\Users\bcbea\source\repos\bcbeatty\AmericanTeacherP1\AtApi Solution\AtApi.Framework\obj\Debug\netcoreapp3.1\AtApi.Framework.csprojAssemblyReference.cache

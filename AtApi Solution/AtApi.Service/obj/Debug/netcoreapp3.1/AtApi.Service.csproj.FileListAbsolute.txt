@@ -1,0 +1,16 @@
+C:\Users\bcbea\source\repos\bcbeatty\AmericanTeacherP1\AtApi Solution\AtApi.Service\bin\Debug\netcoreapp3.1\AtApi.Service.deps.json
+C:\Users\bcbea\source\repos\bcbeatty\AmericanTeacherP1\AtApi Solution\AtApi.Service\bin\Debug\netcoreapp3.1\AtApi.Service.dll
+C:\Users\bcbea\source\repos\bcbeatty\AmericanTeacherP1\AtApi Solution\AtApi.Service\bin\Debug\netcoreapp3.1\AtApi.Service.pdb
+C:\Users\bcbea\source\repos\bcbeatty\AmericanTeacherP1\AtApi Solution\AtApi.Service\bin\Debug\netcoreapp3.1\AtApi.Adapter.dll
+C:\Users\bcbea\source\repos\bcbeatty\AmericanTeacherP1\AtApi Solution\AtApi.Service\bin\Debug\netcoreapp3.1\AtApi.Framework.dll
+C:\Users\bcbea\source\repos\bcbeatty\AmericanTeacherP1\AtApi Solution\AtApi.Service\bin\Debug\netcoreapp3.1\AtApi.Model.dll
+C:\Users\bcbea\source\repos\bcbeatty\AmericanTeacherP1\AtApi Solution\AtApi.Service\bin\Debug\netcoreapp3.1\AtApi.Adapter.pdb
+C:\Users\bcbea\source\repos\bcbeatty\AmericanTeacherP1\AtApi Solution\AtApi.Service\bin\Debug\netcoreapp3.1\AtApi.Framework.pdb
+C:\Users\bcbea\source\repos\bcbeatty\AmericanTeacherP1\AtApi Solution\AtApi.Service\bin\Debug\netcoreapp3.1\AtApi.Model.pdb
+C:\Users\bcbea\source\repos\bcbeatty\AmericanTeacherP1\AtApi Solution\AtApi.Service\obj\Debug\netcoreapp3.1\AtApi.Service.csprojAssemblyReference.cache
+C:\Users\bcbea\source\repos\bcbeatty\AmericanTeacherP1\AtApi Solution\AtApi.Service\obj\Debug\netcoreapp3.1\AtApi.Service.csproj.CoreCompileInputs.cache
+C:\Users\bcbea\source\repos\bcbeatty\AmericanTeacherP1\AtApi Solution\AtApi.Service\obj\Debug\netcoreapp3.1\AtApi.Service.AssemblyInfoInputs.cache
+C:\Users\bcbea\source\repos\bcbeatty\AmericanTeacherP1\AtApi Solution\AtApi.Service\obj\Debug\netcoreapp3.1\AtApi.Service.AssemblyInfo.cs
+C:\Users\bcbea\source\repos\bcbeatty\AmericanTeacherP1\AtApi Solution\AtApi.Service\obj\Debug\netcoreapp3.1\AtApi.Service.csproj.CopyComplete
+C:\Users\bcbea\source\repos\bcbeatty\AmericanTeacherP1\AtApi Solution\AtApi.Service\obj\Debug\netcoreapp3.1\AtApi.Service.dll
+C:\Users\bcbea\source\repos\bcbeatty\AmericanTeacherP1\AtApi Solution\AtApi.Service\obj\Debug\netcoreapp3.1\AtApi.Service.pdb

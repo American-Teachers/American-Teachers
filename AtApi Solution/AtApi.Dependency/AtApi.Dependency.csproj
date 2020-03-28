@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AtApi.Adapter\AtApi.Adapter.csproj" />
+    <ProjectReference Include="..\AtApi.Framework\AtApi.Framework.csproj" />
+    <ProjectReference Include="..\AtApi.Model\AtApi.Model.csproj" />
+    <ProjectReference Include="..\AtApi.Service\AtApi.Service.csproj" />
+  </ItemGroup>
+
+</Project>

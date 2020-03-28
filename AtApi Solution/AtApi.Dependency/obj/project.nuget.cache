@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "bAjevKcmn4CQ4iNwBLftaXXesM9MbAyCDeqR4o82+6FAVY8kWQsJxC1jnXVkG5S5kXuONnHqxXZYaNaxzP0aAQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\bcbea\\source\\repos\\bcbeatty\\AmericanTeacherP1\\AtApi Solution\\AtApi.Dependency\\AtApi.Dependency.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\bcbea\\.nuget\\packages\\autofac\\5.0.0\\autofac.5.0.0.nupkg.sha512",
+    "C:\\Users\\bcbea\\.nuget\\packages\\autofac.extensions.dependencyinjection\\6.0.0\\autofac.extensions.dependencyinjection.6.0.0.nupkg.sha512",
+    "C:\\Users\\bcbea\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\2.1.0\\microsoft.extensions.dependencyinjection.abstractions.2.1.0.nupkg.sha512"
+  ],
+  "logs": []
+}
