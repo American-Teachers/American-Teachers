@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "K/ZmUVk1hTkW2FZjhgSZ48BojkDa8vAzgFk5nvResX03/PZTVYK8qWkvJQWPYbXokEzUBL4B8M/9/3Hlz31DYg==",
+  "dgSpecHash": "1DPEg0KtZg3Akbj1SxwrLhRLyq2Kl2Spvca4ge3+kCpr6V4fvRJNa5HvErGpxc/STsikYkPJQsI3GJBIu7VTRg==",
   "success": true,
   "projectFilePath": "C:\\Users\\bcbea\\source\\repos\\bcbeatty\\AmericanTeacherP1\\AtApi Solution\\AtApi\\AtApi.csproj",
   "expectedPackageFiles": [
@@ -20,6 +20,7 @@
     "C:\\Users\\bcbea\\.nuget\\packages\\microsoft.extensions.configuration\\3.1.3\\microsoft.extensions.configuration.3.1.3.nupkg.sha512",
     "C:\\Users\\bcbea\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\3.1.3\\microsoft.extensions.configuration.abstractions.3.1.3.nupkg.sha512",
     "C:\\Users\\bcbea\\.nuget\\packages\\microsoft.extensions.configuration.binder\\3.1.3\\microsoft.extensions.configuration.binder.3.1.3.nupkg.sha512",
+    "C:\\Users\\bcbea\\.nuget\\packages\\microsoft.extensions.configuration.commandline\\3.1.3\\microsoft.extensions.configuration.commandline.3.1.3.nupkg.sha512",
     "C:\\Users\\bcbea\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\3.1.3\\microsoft.extensions.dependencyinjection.3.1.3.nupkg.sha512",
     "C:\\Users\\bcbea\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\3.1.3\\microsoft.extensions.dependencyinjection.abstractions.3.1.3.nupkg.sha512",
     "C:\\Users\\bcbea\\.nuget\\packages\\microsoft.extensions.logging\\3.1.3\\microsoft.extensions.logging.3.1.3.nupkg.sha512",

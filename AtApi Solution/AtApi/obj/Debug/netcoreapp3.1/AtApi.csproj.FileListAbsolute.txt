@@ -118,6 +118,3 @@ C:\Users\bcbea\source\repos\bcbeatty\AmericanTeacherP1\AtApi Solution\AtApi\bin\
 C:\Users\bcbea\source\repos\bcbeatty\AmericanTeacherP1\AtApi Solution\AtApi\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Configuration.dll
 C:\Users\bcbea\source\repos\bcbeatty\AmericanTeacherP1\AtApi Solution\AtApi\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Console.dll
 C:\Users\bcbea\source\repos\bcbeatty\AmericanTeacherP1\AtApi Solution\AtApi\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Options.ConfigurationExtensions.dll
-C:\Users\bcbea\source\repos\bcbeatty\AmericanTeacherP1\AtApi Solution\AtApi\obj\Debug\netcoreapp3.1\AtApi.csproj.CoreCompileInputs.cache
-C:\Users\bcbea\source\repos\bcbeatty\AmericanTeacherP1\AtApi Solution\AtApi\obj\Debug\netcoreapp3.1\AtApi.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\bcbea\source\repos\bcbeatty\AmericanTeacherP1\AtApi Solution\AtApi\obj\Debug\netcoreapp3.1\AtApi.MvcApplicationPartsAssemblyInfo.cache
