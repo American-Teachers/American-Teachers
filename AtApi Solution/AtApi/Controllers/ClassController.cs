@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using System.Collections.Generic;
+using AtApi.Model;
+using AtApi.Service;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AtApi.Controllers
@@ -11,34 +9,42 @@ namespace AtApi.Controllers
     [ApiController]
     public class ClassController : ControllerBase
     {
+
+        private readonly IFactory<ClassModel> _factory;
+        public ClassController(IFactory<ClassModel> factory)
+        {
+            _factory = factory;
+        }
         // GET: api/Class
         [HttpGet]
         [Route("")]
-        public IEnumerable<string> GetAll()
+        public IEnumerable<ClassModel> GetAll()
         {
-            return new string[] { "value1", "value2" };
+            return _factory.GetAll();
         }
 
         // GET: api/Class/5
         [HttpGet()]
         [Route("{id}")]
-        public string Get(int id)
+        public ClassModel Get(int id)
         {
-            return "value";
+            return _factory.GetOne(id);
         }
 
         // POST: api/Class
         [HttpPost]
         [Route("")]
-        public void Post([FromBody] string value)
+        public ClassModel Post([FromBody] ClassModel model)
         {
+            return _factory.Update(model);
         }
 
         // PUT: api/Class/5
         [HttpPut]
         [Route("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public ClassModel Put(int id, [FromBody] ClassModel model)
         {
+            return _factory.Create(model);
         }
 
         // DELETE: api/ApiWithActions/5
@@ -46,6 +52,7 @@ namespace AtApi.Controllers
         [Route("{id}")]
         public void Delete(int id)
         {
+            _factory.Delete(id);
         }
     }
 }

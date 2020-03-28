@@ -24,6 +24,10 @@
     <ProjectReference Include="..\AtApi.Service\AtApi.Service.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Models\" />
+  </ItemGroup>
+
    
 
 

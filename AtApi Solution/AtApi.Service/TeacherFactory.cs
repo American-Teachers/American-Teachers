@@ -1,34 +1,13 @@
-﻿using AtApi.Model;
-using System;
-using System.Collections.Generic;
+﻿using AtApi.Adapter;
+using AtApi.Model;
 
 namespace AtApi.Service
 {
-    public class TeacherFactory : ITeacherFactory
+    public class TeacherFactory : BaseFactory<TeacherModel, IBaseAdapter<TeacherModel>>
     {
-        public TeacherModel Create(TeacherModel teacherModel)
+        public TeacherFactory(IBaseAdapter<TeacherModel> adapter) : base(adapter)
         {
-            throw new NotImplementedException();
-        }
 
-        public void Delete(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<TeacherModel> GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        public TeacherModel GetOne(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public TeacherModel Update(TeacherModel teacherModel)
-        {
-            throw new NotImplementedException();
         }
     }
 }

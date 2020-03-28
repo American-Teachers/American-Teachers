@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using System.Collections.Generic;
+using AtApi.Model;
+using AtApi.Service;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AtApi.Controllers
@@ -11,35 +9,42 @@ namespace AtApi.Controllers
     [ApiController]
     public class StudentController : ControllerBase
     {
+        private readonly IFactory<StudentModel> _factory;
+        public StudentController(IFactory<StudentModel> factory)
+        {
+            _factory = factory;
+        }
         // GET: api/Student
         [HttpGet]
         [Route("")]
-        public IEnumerable<string> GetAll()
+        public IEnumerable<StudentModel> GetAll()
         {
-            return new string[] { "value1", "value2" };
+            return _factory.GetAll();
         }
  
 
         // GET: api/Student/5
         [HttpGet]
         [Route("{id}")]
-        public string Get(int id)
+        public StudentModel Get(int id)
         {
-            return "value";
+            return _factory.GetOne(id);
         }
 
         // POST: api/Student
         [HttpPost]
         [Route("")]
-        public void Post([FromBody] string value)
+        public StudentModel Post([FromBody] StudentModel model)
         {
+            return _factory.Update(model);
         }
 
         // PUT: api/Student/5
         [HttpPut]
         [Route("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public StudentModel Put(int id, [FromBody] StudentModel model)
         {
+            return _factory.Create(model);
         }
 
         // DELETE: api/Student/5
@@ -47,6 +52,7 @@ namespace AtApi.Controllers
         [Route("{id}")]
         public void Delete(int id)
         {
+            _factory.Delete(id);
         }
     }
 }

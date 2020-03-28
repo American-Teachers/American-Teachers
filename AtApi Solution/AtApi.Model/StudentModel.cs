@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Text;
 
-namespace AtApi.Models
+namespace AtApi.Model
 {
-    public class Teacher
+    public class StudentModel
     {
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastNAme { get; set; }
         public string Title { get; set; }
         public string Suffix { get; set; }
+        
     }
 }

@@ -1,11 +1,7 @@
 ﻿using AtApi.Model;
-using AtApi.Models;
 using AtApi.Service;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace AtApi.Controllers
 {
@@ -13,11 +9,11 @@ namespace AtApi.Controllers
     [Route("api/[controller]")]
     public class TeacherController : ControllerBase
     {
-        private readonly ITeacherFactory _teacherFactory;
+        private readonly IFactory<TeacherModel> _factory;
 
-        public TeacherController(ITeacherFactory teacherFactory)
+        public TeacherController(IFactory<TeacherModel> factory)
         {
-            _teacherFactory = teacherFactory;
+            _factory = factory;
         }
         
 
@@ -26,7 +22,7 @@ namespace AtApi.Controllers
         [Route("")]
         public IEnumerable<TeacherModel> GetAll()
         {
-            return _teacherFactory.GetAll();
+            return _factory.GetAll();
         }
 
         // GET: api/Teacher/5
@@ -34,14 +30,15 @@ namespace AtApi.Controllers
         [Route("{id}")]
         public TeacherModel Get(int id)
         {
-            return _teacherFactory.GetOne(id);
+            return _factory.GetOne(id);
         }
 
         // POST: api/Teacher
         [HttpPost]
         [Route("")]
-        public void Post([FromBody] TeacherModel value)
+        public TeacherModel Post([FromBody] TeacherModel model)
         {
+            return _factory.Update(model);
         }
 
         // PUT: api/Teacher/5
@@ -49,7 +46,7 @@ namespace AtApi.Controllers
         [Route("{id}")]
         public TeacherModel Put(int id, [FromBody] TeacherModel teacher)
         {
-            return _teacherFactory.Update(teacher);
+            return _factory.Create(teacher);
         }
 
         // DELETE: api/ApiWithActions/5
@@ -57,7 +54,7 @@ namespace AtApi.Controllers
         [Route("{id}")]
         public void Delete(int id)
         {
-            _teacherFactory.Delete(id);
+            _factory.Delete(id);
         }
     }
 }
