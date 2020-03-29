@@ -37,6 +37,7 @@ namespace AtApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDependencyInjection(Configuration);
             services.AddOptions();
             services.AddLogging();
            
@@ -54,16 +55,16 @@ namespace AtApi
         // with Autofac. This runs after ConfigureServices so the things
         // here will override registrations made in ConfigureServices.
         // Don't build the container; that gets done for you by the factory.
-        public void ConfigureContainer(ContainerBuilder builder)
+       /* public void ConfigureContainer(ContainerBuilder builder)
         {
             // Register your own things directly with Autofac, like:
             builder.RegisterModule(new MyApplicationModule());
         }
-
+        */
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            AutofacContainer = app.ApplicationServices.GetAutofacRoot();
+           // AutofacContainer = app.ApplicationServices.GetAutofacRoot();
 
             if (env.IsDevelopment())
             {

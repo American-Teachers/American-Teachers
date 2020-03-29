@@ -1,25 +1,37 @@
-﻿using Autofac;
-using Autofac.Extensions.DependencyInjection;
+﻿
+using System;
+using System.Configuration;
+using System.Diagnostics;
+using AtApi.Adapter;
+using AtApi.Model;
+using AtApi.Service;
+
 using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using CDBLSA.Dependency;
 
 namespace AtApi.Dependency
 {
-    public class MyApplicationModule : Autofac.Module
+    public static class DependencyInjection
     {
-        protected override void Load(ContainerBuilder builder)
+        public static IServiceCollection AddDependencyInjection(this IServiceCollection services, IConfiguration configuration)
         {
-            base.Load(builder);
-           
+            services.AddTransient(c => configuration);
+            services.ScanTransient<IBaseAdapter<EnrollModel>>();
+            services.ScanTransient<IFactory<EnrollModel>>();
+            services.ScanTransient<ClassModel>();
+            //Overrides          
+            //services.AddScoped<ISharedServiceFactory, SharedServiceFactory>();
+            //var appSettings = configuration.Get<AppSettings>();
 
-
-            var dataAccess = Assembly.GetExecutingAssembly();
-
-            builder.RegisterAssemblyTypes(dataAccess)
-                   .AsImplementedInterfaces();
- 
+            return services;
         }
+
+
     }
 }
