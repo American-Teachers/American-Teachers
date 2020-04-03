@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import { Link } from 'react-router-dom';
@@ -26,6 +26,9 @@ function Copyright() {
 }
 
 const useStyles = makeStyles((theme) => ({
+  wrap: {
+    height: '100%',
+  },
   paper: {
     marginTop: theme.spacing(8),
     display: 'flex',
@@ -53,13 +56,19 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignUp() {
   const classes = useStyles();
-  const [selectedDate, setSelectedDate] = React.useState(new Date('1990-08-18T21:11:54'));
+  const [selectedDate, setSelectedDate] = useState(new Date('1990-08-18T21:11:54'));
+  const [genderValue, setGenderValue] = useState("other");
+  const handleGenderChange = (value) => {
+    console.log('props ==> ', value)
+    setSelectedDate(value);
+  }
+
   const handleDateChange = (date) => {
     setSelectedDate(date);
   };
 
   return (
-    <Container component="main" maxWidth="xs">
+    <Container component="main" maxWidth="xs" className="wrap">
       <CssBaseline />
       <div className={classes.school}>
         <Grid container spacing={2}>
@@ -138,8 +147,8 @@ export default function SignUp() {
                   variant="inline"
                   format="MM/dd/yyyy"
                   margin="normal"
-                  id="date-picker-inline"
-                  label="Date picker inline"
+                  id="birthday-picker"
+                  label="Birthday"
                   value={selectedDate}
                   onChange={handleDateChange}
                   KeyboardButtonProps={{
@@ -149,8 +158,8 @@ export default function SignUp() {
               </MuiPickersUtilsProvider>
             </Grid>
             <Grid item xs={12}>
-            <FormControlLabel component="legend">Gender</FormControlLabel>
-              <RadioGroup aria-label="gender" name="gender1" value={value} onChange={handleChange}>
+            {/* <FormControlLabel component="legend">Gender</FormControlLabel> */}
+              <RadioGroup aria-label="gender" name="gender1" value={genderValue} onChange={handleGenderChange}>
                 <FormControlLabel value="female" control={<Radio />} label="Female" />
                 <FormControlLabel value="male" control={<Radio />} label="Male" />
                 <FormControlLabel value="other" control={<Radio />} label="Other" />
