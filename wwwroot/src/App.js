@@ -8,7 +8,6 @@ import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import blue from '@material-ui/core/colors/blue';
 import grey from '@material-ui/core/colors/grey';
 
-import './App.css';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 
