@@ -1,19 +1,11 @@
-﻿
-using System;
-using System.Configuration;
-using System.Diagnostics;
+﻿using AtApi.Framework;
 using AtApi.Adapter;
 using AtApi.Model;
 using AtApi.Service;
-
-using System;
-using System.Collections.Generic;
-using System.Reflection;
-using System.Text;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 using CDBLSA.Dependency;
+
 
 namespace AtApi.Dependency
 {
@@ -25,6 +17,7 @@ namespace AtApi.Dependency
             services.ScanTransient<IBaseAdapter<EnrollModel>>();
             services.ScanTransient<IFactory<EnrollModel>>();
             services.ScanTransient<ClassModel>();
+            services.ScanTransient<IEmailSender>();
             //Overrides          
             //services.AddScoped<ISharedServiceFactory, SharedServiceFactory>();
             //var appSettings = configuration.Get<AppSettings>();
