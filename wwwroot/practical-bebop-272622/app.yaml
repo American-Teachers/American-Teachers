@@ -1,0 +1,12 @@
+runtime: python27
+api_version: 1
+threadsafe: true
+
+handlers:
+- url: /
+  static_files: www/TeacherHome.html
+  upload: www/TeacherHome.html
+
+- url: /(.*)
+  static_files: www/\1
+  upload: www/(.*)

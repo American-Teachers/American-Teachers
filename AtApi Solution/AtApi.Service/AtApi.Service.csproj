@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AtApi.Adapter\AtApi.Adapter.csproj" />
+    <ProjectReference Include="..\AtApi.Framework\AtApi.Framework.csproj" />
+    <ProjectReference Include="..\AtApi.Model\AtApi.Model.csproj" />
+  </ItemGroup>
+
+</Project>

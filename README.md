@@ -1,2 +1,2 @@
-# American-Teachers
-American Teachers 1.0
+# AmericanTeacherP1
+American Teacher Prototype for BuildforCOVID19
