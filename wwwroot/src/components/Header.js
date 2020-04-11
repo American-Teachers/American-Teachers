@@ -100,6 +100,8 @@ export default function Header() {
               className={classes.buttonSign}
               color='primary'
               variant='outlined'
+              component={RouterLink}
+              to='/signin'
             >
               <Typography>
                 Sign In
@@ -110,6 +112,8 @@ export default function Header() {
               className={classes.buttonSign}
               color='primary'
               variant='contained'
+              component={RouterLink}
+              to='/signup'
             >
               <Typography>
                 Sign Up
