@@ -31,22 +31,46 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.primary.main,
   },
   landing1CopyBody: {fontSize: '18px'},
+
   landing1ButtonCollection: {
     marginTop: theme.spacing(2.5),
     justifyContent: 'flex-end',
+
     '& button': {
       width: theme.spacing(20.25),
       boxShadow: 'none',
+
       '&:last-child': {marginLeft: theme.spacing(2)},
       '& p': {fontWeight: 700}
     }
   },
 
+  
   landing2root: {
     height: '100vh',
-    backgroundColor: 'pink'
+    backgroundColor: 'pink',
+    paddingTop: theme.spacing(12)
   },
-  test: {backgroundColor: 'red', height: '100vh'}
+  landing2Container: {textAlign: 'center', backgroundColor: 'red'},
+  landing2Title: {
+    fontSize: '32px',
+    fontWeight: 600
+  },
+  landing2ItemBox: {
+    width: theme.spacing(48),
+    backgroundColor: 'white',
+
+    '& h3': {
+      fontWeight: 600,
+      fontSize: '24px'
+    },
+    '& p': {padding: `0 ${theme.spacing(2)}px`}
+  },
+  landing2ImgContainer: {
+    width: theme.spacing(15),
+    height: theme.spacing(15)
+  },
+  test: {backgroundColor: 'red'}
 }))
 
 function Landing1() {
@@ -131,19 +155,22 @@ function Landing2() {
       className={classes.landing2root}
       maxWidth='lg'
     >
-      <Container>
-        <Typography>
+      <Container className={classes.landing2Container}>
+        <Typography className={classes.landing2Title} component='h2'>
           {landing2Data.title}
         </Typography>
 
-        {/* <Box>
+        <Box
+          display='flex'
+          justifyContent='space-between'
+        >
           {landing2Data.icons.map((i, index) => (
-            <Container key={index}>
-              <Box>
+            <Container key={index} className={classes.landing2ItemBox}>
+              <Box className={classes.landing2ImgContainer}>
                 <img src={i.img}/>
               </Box>
 
-              <Typography>
+              <Typography component='h3'>
                 {i.title}
               </Typography>
 
@@ -152,7 +179,7 @@ function Landing2() {
               </Typography>
             </Container>
           ))}
-        </Box> */}
+        </Box>
       </Container>
     </Container>
   )
