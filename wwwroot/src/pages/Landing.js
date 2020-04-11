@@ -129,6 +129,8 @@ function Landing1() {
         </Box>
       </Container>
 
+      {/* image clips here */}
+
     </Container>
   )
 }
