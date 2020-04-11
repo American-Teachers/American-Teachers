@@ -48,27 +48,37 @@ const useStyles = makeStyles((theme) => ({
   
   landing2root: {
     height: '100vh',
-    backgroundColor: 'pink',
     paddingTop: theme.spacing(12)
   },
-  landing2Container: {textAlign: 'center', backgroundColor: 'red'},
+  landing2Container: {textAlign: 'center'},
   landing2Title: {
     fontSize: '32px',
-    fontWeight: 600
+    fontWeight: 600,
+    marginBottom: theme.spacing(9)
   },
   landing2ItemBox: {
     width: theme.spacing(48),
-    backgroundColor: 'white',
+    margin: 0,
 
     '& h3': {
+      fontSize: '24px',
       fontWeight: 600,
-      fontSize: '24px'
+      marginBottom: theme.spacing(1)
     },
-    '& p': {padding: `0 ${theme.spacing(2)}px`}
+    '& p': {
+      fontSize: '18px',
+      lineHeight: '25px'
+    },
+    '&:last-child > div': {
+      width: theme.spacing(16),
+      position: 'relative',
+      top: -theme.spacing(1)
+    }
   },
   landing2ImgContainer: {
     width: theme.spacing(15),
-    height: theme.spacing(15)
+    height: theme.spacing(15),
+    margin: `0 auto ${theme.spacing(2.5)}px`
   },
   test: {backgroundColor: 'red'}
 }))
@@ -126,7 +136,7 @@ function Landing1() {
 
 
 
-function Landing2() {
+export function Landing2() {
   const classes = useStyles();
 
   const landing2Data = {
@@ -162,7 +172,7 @@ function Landing2() {
 
         <Box
           display='flex'
-          justifyContent='space-between'
+          justifyContent='center'
         >
           {landing2Data.icons.map((i, index) => (
             <Container key={index} className={classes.landing2ItemBox}>
