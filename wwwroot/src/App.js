@@ -5,11 +5,11 @@ import {
   Route
 } from "react-router-dom";
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
-import blue from '@material-ui/core/colors/blue';
-import grey from '@material-ui/core/colors/grey';
 
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
+import Landing from './pages/Landing';
+import WhyUs from './pages/WhyUs';
 
 const theme = createMuiTheme({
   palette: {

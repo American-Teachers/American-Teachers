@@ -1,137 +1,123 @@
 import React from 'react';
-import { Container, Grid, Typography, List, ListItem } from '@material-ui/core';
+import { NavLink as RouterLink } from 'react-router-dom';
+
+import { Box, Typography, AppBar, Toolbar, Link, Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
-import { Logo } from '../components/Header';
-
 const useStyles = makeStyles((theme) => ({
-  rootFooter: {
-    height: theme.spacing(60),
-    backgroundColor: '#33476A',
-    color: 'white',
-    position: 'absolute',
-    bottom: 0,
-    padding: `${theme.spacing(12)}px ${theme.spacing(11.5)}px 0 0`,
+  appbar: {
+    backgroundColor: 'white',
+    color: 'black'
   },
-  logoContainer: {textAlign: 'center', paddingLeft: theme.spacing(2)},
-  listsContainer: {paddingLeft: theme.spacing(8)},
-  listTitle: {fontWeight: 'bold'},
+  toolbar:{
+    padding: `0 ${theme.spacing(4)}px`,
+    justifyContent: 'space-between'
+  },
+  title: {
+    '& p': {
+      fontFamily: 'Montserrat',
+      fontWeight: '600',
+      fontSize: '18px'
+    }
+  },
+  buttonCollection: {
+    paddingRight: theme.spacing(5)
+  },
+  buttonWhy: {
+    textTransform: 'none',
+    marginRight: theme.spacing(5),
+    '& p': {
+      fontWeight: '600'
+    },
+    '& .activeBottom': {
+      display: 'hidden',
+    },
 
-  linkList: {
-    '& li': {
-      padding: `${theme.spacing(0.3)}px 0`,
-      '& div': {margin: 0},
-      '& a': {
-        fontSize: '12px',
-        color: 'white',
-        textDecoration: 'none'
+    '&.active': {
+      borderBottom: '10px black',
+      '& p': {
+        fontWeight: '700',
+        color: theme.palette.primary.main,
+      },
+      '& .activeBottom': {
+        width: theme.spacing(6.5),
+        height: '3px',
+        position: 'absolute',
+        top: theme.spacing(4.5),
+        backgroundColor: theme.palette.primary.main
       }
     }
+  },
+  buttonSign: {
+    boxShadow: 'none',
+    marginLeft: theme.spacing(2),
+    '& p': {
+      fontWeight: '600'
+    },
   }
-}))
+}));
 
-function ListWithTitle({title, children}) {
+export function Logo() {
   const classes = useStyles();
-  return (
-    <>
-      <Typography className={classes.listTitle}>
-        {title}
-      </Typography>
-      
-      <List className={classes.linkList}>
-      {children}
-      </List>
-    </>
-  )
-}
-
-function ListText({text, link}) {
   
   return (
-    <ListItem disableGutters>
-      <Typography>
-        <a href={link}>{text}</a>
-        {/* <Link to={link}>{text}</Link> */}
+    <Link 
+      href='/'  
+      color='primary' 
+      underline='none'
+      className={classes.title}
+    >
+      <Typography  >
+        American Teachers
       </Typography>
-    </ListItem>
-  )
+    </Link>
+)
 }
 
-export default function Footer() {
+export default function Header() {
   const classes = useStyles();
 
   return (
-    <Container 
-      className={classes.rootFooter}
-      maxWidth='xl'
-      // disableGutters
-    >
-      <Grid container >
-        <Grid item xs={4} className={classes.logoContainer}>
+    <AppBar position='static' elevation={0} className={classes.appbar}>
+        <Toolbar className={classes.toolbar}>
+
           <Logo />
-        </Grid>
 
-        <Grid container item xs={8} className={classes.listsContainer} >
-          <Grid item xs={3}>
-            <ListWithTitle title='Quick Links'>
-              <ListText 
-                text='My Account'
+          <Box className={classes.buttonCollection} >
+            <Button
+              className={classes.buttonWhy}
+              component={RouterLink}
+              to='/why-us'
+            >
+              <Typography>
+                Why Us
+              </Typography>
 
-              />
-              <ListText 
-                text='Create an Account'
-                link='/signup'
-              />
-            </ListWithTitle>
-          </Grid>
+              <div className='activeBottom' ></div>
+            </Button>
+      
+            <Button
+              className={classes.buttonSign}
+              color='primary'
+              variant='outlined'
+            >
+              <Typography>
+                Sign In
+              </Typography>
+            </Button>
 
-          <Grid item xs={3}>
-            <ListWithTitle title='Company'>
-              <ListText 
-                text='About Us'
-                link='/why-us'
-              />
-              <ListText 
-                text='Press'
+            <Button 
+              className={classes.buttonSign}
+              color='primary'
+              variant='contained'
+            >
+              <Typography>
+                Sign Up
+              </Typography>
+            </Button>
+          </Box>
 
-              />
-              <ListText 
-                text='Careers'
-
-              />
-            </ListWithTitle>
-          </Grid>
-
-          <Grid item xs={3}>
-            <ListWithTitle title='Help'>
-              <ListText 
-                text='FAQ'
-
-              />
-              <ListText 
-                text='Privacy Policy'
-
-              />
-              <ListText 
-                text='Terms'
-
-              />
-            </ListWithTitle>
-          </Grid>
-
-          <Grid item xs={3}>
-            <ListWithTitle title='Connect With Us'>
-              <ListText
-                text='contact@americanteachers.com'
-                link='mailto:contact@americanteachers.com'
-              />
-            </ListWithTitle>
-          </Grid>
-        </Grid>
-
-
-      </Grid>
-
-    </Container>
+        </Toolbar>
+      </AppBar>
   )
 }
