@@ -13,12 +13,31 @@ import SignUp from './pages/SignUp';
 
 const theme = createMuiTheme({
   palette: {
-    primary: blue,
-    secondary: grey,
+    primary: {
+      main: '#FF6E4E',
+      contrastText: '#FFFFFF'
+    },
+    text: {
+      primary: '#5F5F5F'
+    },
+  },
+  typography: {
+    fontFamily:[
+      'Open Sans',
+      'sans-serif',
+      '"Montserrat"'
+    ]
   },
   status: {
     danger: 'orange',
   },
+  // Used by `getContrastText()` to maximize the contrast between
+  // the background and the text.
+  contrastThreshold: 3,
+  // Used by the functions below to shift a color's luminance by approximately
+  // two indexes within its tonal palette.
+  // E.g., shift from Red 500 to Red 300 or Red 700.
+  tonalOffset: 0.2,
 });
 
 function App() {
@@ -26,9 +45,10 @@ function App() {
     <ThemeProvider theme={theme}>
     <BrowserRouter>
       <Routes>
-        <Route path="/"  element={<SignIn />} />
+      <Route path="/"  element={<Landing />} />
         <Route path="/signup"  element={<SignUp />} />
         <Route path="/signin"  element={<SignIn />} />
+        <Route path="/why-us" element={<WhyUs />} />
     </Routes>
     </BrowserRouter>
   </ThemeProvider>
