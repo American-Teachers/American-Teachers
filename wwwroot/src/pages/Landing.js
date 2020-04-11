@@ -2,6 +2,9 @@ import React from 'react'
 
 import { Box, Container, Typography, Button } from '@material-ui/core';
 
+import Layout from '../components/Layout';
+import { makeStyles } from '@material-ui/core/styles';
+
 import toolsIcon from '../img/landing/tools-icon.svg';
 import accessIcon from '../img/landing/access-icon.svg';
 import laptopIcon from '../img/landing/laptop-icon.svg';
@@ -9,13 +12,9 @@ import triangleChild from '../img/landing/triangle-child.jpg';
 import squareChild from '../img/landing/square-child.jpg';
 import circleChild from '../img/landing/circle-child.jpg';
 
-import Layout from '../components/Layout';
-import { makeStyles } from '@material-ui/core/styles';
-
 const useStyles = makeStyles((theme) => ({
   root: {},
   landing1root: {
-    // backgroundColor: 'pink',
     height: '100vh',
     paddingTop: theme.spacing(34),
     paddingLeft: theme.spacing(1)
