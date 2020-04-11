@@ -2,6 +2,13 @@ import React from 'react'
 
 import { Box, Container, Typography, Button } from '@material-ui/core';
 
+import toolsIcon from '../img/landing/tools-icon.svg';
+import accessIcon from '../img/landing/access-icon.svg';
+import laptopIcon from '../img/landing/laptop-icon.svg';
+import triangleChild from '../img/landing/triangle-child.jpg';
+import squareChild from '../img/landing/square-child.jpg';
+import circleChild from '../img/landing/circle-child.jpg';
+
 import Layout from '../components/Layout';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -37,12 +44,19 @@ const useStyles = makeStyles((theme) => ({
 
   landing2root: {
     height: '100vh',
+    backgroundColor: 'pink'
   },
   test: {backgroundColor: 'red', height: '100vh'}
 }))
 
 function Landing1() {
   const classes = useStyles();
+
+  const landing1Data = {
+    title: "Learning can't stop.",
+    copy: "Dedicated to continuing to educate our future and stay connected, no matter what."
+  };
+
   return (
     <Container
       className={classes.landing1root}
@@ -50,11 +64,11 @@ function Landing1() {
     >
       <Container className={classes.landing1CopyContainer}>
         <Typography className={classes.landing1CopyTitle} component='h1'>
-          Learning can't stop.
+          {landing1Data.title}
         </Typography>
 
         <Typography className={classes.landing1CopyBody}>
-          Dedicated to continuing to educate our future and stay connected, no matter what.
+          {landing1Data.copy}
         </Typography>
 
         <Box 
@@ -81,20 +95,65 @@ function Landing1() {
           </Button>
         </Box>
       </Container>
-      
-
 
     </Container>
   )
 }
 
+
+
 function Landing2() {
+  const classes = useStyles();
+
+  const landing2Data = {
+    title: "Education wherever you are.",
+    icons: [
+      {
+        img: toolsIcon,
+        title: 'Tools for Teachers',
+        copy: 'Assign work, grade, post videos or agendas all in one platform.'
+      },
+      {
+        img: accessIcon,
+        title: 'Parent Access & Monitoring',
+        copy: "Monitor your child's school work, grades, and more."
+      },
+      {
+        img: laptopIcon,
+        title: 'Easy Learning for Students',
+        copy: "Easy to access resources and tools for learning, studying and connecting."
+      }
+    ]
+  };
+
   return (
     <Container
       className={classes.landing2root}
       maxWidth='lg'
     >
-      <div>Education</div>
+      <Container>
+        <Typography>
+          {landing2Data.title}
+        </Typography>
+
+        {/* <Box>
+          {landing2Data.icons.map((i, index) => (
+            <Container key={index}>
+              <Box>
+                <img src={i.img}/>
+              </Box>
+
+              <Typography>
+                {i.title}
+              </Typography>
+
+              <Typography>
+                {i.copy}
+              </Typography>
+            </Container>
+          ))}
+        </Box> */}
+      </Container>
     </Container>
   )
 }
@@ -103,6 +162,7 @@ export default function Landing() {
   return (
     <Layout>
       <Landing1/>
+      <Landing2/>
     </Layout>
   )
 }
