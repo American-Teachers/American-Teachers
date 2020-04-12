@@ -1,8 +1,13 @@
 import React from 'react';
+
 import { Container, Grid, Typography, List, ListItem } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
 
 import { Logo } from '../components/Header';
+
+import { makeStyles } from '@material-ui/core/styles';
+
+import { Facebook, Twitter } from '@material-ui/icons';
+
 
 const useStyles = makeStyles((theme) => ({
   rootFooter: {
@@ -24,6 +29,14 @@ const useStyles = makeStyles((theme) => ({
         color: 'white',
         textDecoration: 'none'
       }
+    }
+  },
+  iconCollection: {
+    padding: 0,
+    '& a': {
+      color: '#FFFFFF',
+      marginRight: theme.spacing(1.5),
+      '&:last-child': {marginRight: 0}
     }
   }
 }))
@@ -57,6 +70,31 @@ function ListText({text, link}) {
 
 export default function Footer() {
   const classes = useStyles();
+
+  // const footerData = [
+  //   {
+  //     title: 'Quick Links',
+  //     links: [
+  //       {
+  //         text: 'My Account',
+  //         link: ''
+  //       },
+  //       {
+  //         text: 'Create an Account',
+  //         link: '/signup'
+  //       }
+  //     ]
+  //   },
+  //   {
+  //     title: 'Company',
+  //     links: [
+  //       {
+  //         text: 'About Us',
+
+  //       }
+  //     ]
+  //   }
+  // ]
 
   return (
     <Container 
@@ -124,6 +162,15 @@ export default function Footer() {
                 link='mailto:contact@americanteachers.com'
               />
             </ListWithTitle>
+
+            <ListItem className={classes.iconCollection}>
+              <a href='http://facebook.com' target='_blank' rel='noopener noreferrer'>
+                <Facebook/>
+              </a>
+              <a href='http://twitter.com' target='_blank' rel='noopener noreferrer'>
+                <Twitter/>
+              </a>
+            </ListItem>
           </Grid>
         </Grid>
 
