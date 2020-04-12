@@ -71,36 +71,74 @@ function ListText({text, link}) {
 export default function Footer() {
   const classes = useStyles();
 
-  // const footerData = [
-  //   {
-  //     title: 'Quick Links',
-  //     links: [
-  //       {
-  //         text: 'My Account',
-  //         link: ''
-  //       },
-  //       {
-  //         text: 'Create an Account',
-  //         link: '/signup'
-  //       }
-  //     ]
-  //   },
-  //   {
-  //     title: 'Company',
-  //     links: [
-  //       {
-  //         text: 'About Us',
-
-  //       }
-  //     ]
-  //   }
-  // ]
+  const footerData = [
+    {
+      title: 'Quick Links',
+      links: [
+        {
+          text: 'My Account',
+          link: ''
+        },
+        {
+          text: 'Create an Account',
+          link: '/signup'
+        }
+      ]
+    },
+    {
+      title: 'Company',
+      links: [
+        {
+          text: 'About Us',
+          link: '/why-us'
+        },
+        {
+          text: 'Press',
+          link: ''
+        },
+        {
+          text: 'Careers',
+          link: ''
+        }
+      ]
+    },
+    {
+      title: 'Help',
+      links: [
+        {
+          text: 'FAQ',
+          link: ''
+        },
+        {
+          text: 'Privacy Policy',
+          link: ''
+        },
+        {
+          text: 'Terms',
+          link: ''
+        }
+      ]
+    },
+    {
+      title: 'Connect With Us',
+      links: [
+        {
+          text: 'contact@americanteachers.com',
+          link: 'mailto:contact@americanteachers.com'
+        },
+        {
+          text: 'social',
+          facebook: 'http://facebook.com',
+          twitter: 'http://twitter.com'
+        }
+      ]
+    }
+  ]
 
   return (
     <Container 
       className={classes.rootFooter}
       maxWidth='xl'
-      // disableGutters
     >
       <Grid container >
         <Grid item xs={4} className={classes.logoContainer}>
@@ -108,70 +146,35 @@ export default function Footer() {
         </Grid>
 
         <Grid container item xs={8} className={classes.listsContainer} >
-          <Grid item xs={3}>
-            <ListWithTitle title='Quick Links'>
-              <ListText 
-                text='My Account'
-
-              />
-              <ListText 
-                text='Create an Account'
-                link='/signup'
-              />
-            </ListWithTitle>
-          </Grid>
-
-          <Grid item xs={3}>
-            <ListWithTitle title='Company'>
-              <ListText 
-                text='About Us'
-                link='/why-us'
-              />
-              <ListText 
-                text='Press'
-
-              />
-              <ListText 
-                text='Careers'
-
-              />
-            </ListWithTitle>
-          </Grid>
-
-          <Grid item xs={3}>
-            <ListWithTitle title='Help'>
-              <ListText 
-                text='FAQ'
-
-              />
-              <ListText 
-                text='Privacy Policy'
-
-              />
-              <ListText 
-                text='Terms'
-
-              />
-            </ListWithTitle>
-          </Grid>
-
-          <Grid item xs={3}>
-            <ListWithTitle title='Connect With Us'>
-              <ListText
-                text='contact@americanteachers.com'
-                link='mailto:contact@americanteachers.com'
-              />
-            </ListWithTitle>
-
-            <ListItem className={classes.iconCollection}>
-              <a href='http://facebook.com' target='_blank' rel='noopener noreferrer'>
-                <Facebook/>
-              </a>
-              <a href='http://twitter.com' target='_blank' rel='noopener noreferrer'>
-                <Twitter/>
-              </a>
-            </ListItem>
-          </Grid>
+          {
+            footerData.map(section => (
+                <Grid item xs={12/footerData.length}>
+                  <ListWithTitle title={section.title}>
+                    {
+                      section.links.map(linkObj => {
+                        return (
+                          linkObj.text!=='social' ? 
+                            <ListText 
+                              text={linkObj.text}
+                              link={linkObj.link || '#'}
+                            />
+                          :
+                            <ListItem className={classes.iconCollection}>
+                              <a href={linkObj.facebook} target='_blank' rel='noopener noreferrer'>
+                                <Facebook/>
+                              </a>
+                              <a href={linkObj.twitter} target='_blank' rel='noopener noreferrer'>
+                                <Twitter/>
+                              </a>
+                            </ListItem>
+                        )
+                      })
+                    }
+                  </ListWithTitle>
+                </Grid>
+              )
+            )
+          }
         </Grid>
 
 
