@@ -43,6 +43,33 @@ const useStyles = makeStyles((theme) => ({
       '& p': {fontWeight: 700}
     }
   },
+  landing1TriangleChild: {
+    width: '262px',
+    height: '411.28px',
+    position: 'relative',
+    top: -theme.spacing(53),
+    left: theme.spacing(53),
+    clipPath: 'polygon(50% 22%, 3% 76%, 97% 76%)'
+  },
+  landing1CircleChild: {
+    width: '233px',
+    height: '350px',
+    position: 'relative',
+    top: -theme.spacing(64),
+    left: theme.spacing(52),
+    clipPath: 'circle(116px at 50% 66%)'
+  },
+  landing1SquareChild: {
+    width: '345px',
+    height: '233.09px',
+    position: 'relative',
+    top: -theme.spacing(31),
+    left: theme.spacing(2.5),
+    clipPath: 'polygon(11% 0%, 11% 100%, 76% 100%, 76% 0%)'
+  },
+  // svgBackground: {clipPath: 'polygon(11% 0%, 11% 100%, 76% 100%)'},
+  // svgImage: {clipPath: 'polygon(11% 0%, 11% 100%, 76% 100%)'},
+  // clipSvg: {height: '250px', position: 'absolute', width: '250px'},
 
   
   landing2root: {
@@ -129,7 +156,29 @@ function Landing1() {
         </Box>
       </Container>
 
-      {/* image clips here */}
+      <img src={triangleChild} alt='child reading' className={classes.landing1TriangleChild}/>
+      <img src={circleChild} alt='child at computer' className={classes.landing1CircleChild}/>
+      <img src={squareChild} alt='child reading tablet' className={classes.landing1SquareChild}/>
+      {/* <div className={classes.landing1TriangleChild}/> */}
+      {/* <div style={{position:'absolute', top:'200px'}}>
+        <svg id='svg-1' class='clipSvg'>
+          <rect class='svgBackground' width='300px' height='300px' fill='#ffffff'/>
+          <image 
+            id='triangle-child'
+            class='svgImage'
+            width='300px'
+            height='300px'
+            href="http://25.media.tumblr.com/tumblr_m5nre6cxkQ1qbs7p5o1_r1_500.jpg"
+          />
+        </svg>
+      </div>
+      <svg id='svg-defs'> 
+        <defs>
+          <clipPath id='clip-triangle'>
+            <polygon points="0 0, 100 0, 112 13, 240 13, 240 250, -250 25" />
+          </clipPath>
+        </defs>
+      </svg> */}
 
     </Container>
   )
