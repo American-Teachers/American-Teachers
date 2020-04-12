@@ -67,9 +67,6 @@ const useStyles = makeStyles((theme) => ({
     left: theme.spacing(2.5),
     clipPath: 'polygon(11% 0%, 11% 100%, 76% 100%, 76% 0%)'
   },
-  // svgBackground: {clipPath: 'polygon(11% 0%, 11% 100%, 76% 100%)'},
-  // svgImage: {clipPath: 'polygon(11% 0%, 11% 100%, 76% 100%)'},
-  // clipSvg: {height: '250px', position: 'absolute', width: '250px'},
 
   
   landing2root: {
@@ -159,26 +156,6 @@ function Landing1() {
       <img src={triangleChild} alt='child reading' className={classes.landing1TriangleChild}/>
       <img src={circleChild} alt='child at computer' className={classes.landing1CircleChild}/>
       <img src={squareChild} alt='child reading tablet' className={classes.landing1SquareChild}/>
-      {/* <div className={classes.landing1TriangleChild}/> */}
-      {/* <div style={{position:'absolute', top:'200px'}}>
-        <svg id='svg-1' class='clipSvg'>
-          <rect class='svgBackground' width='300px' height='300px' fill='#ffffff'/>
-          <image 
-            id='triangle-child'
-            class='svgImage'
-            width='300px'
-            height='300px'
-            href="http://25.media.tumblr.com/tumblr_m5nre6cxkQ1qbs7p5o1_r1_500.jpg"
-          />
-        </svg>
-      </div>
-      <svg id='svg-defs'> 
-        <defs>
-          <clipPath id='clip-triangle'>
-            <polygon points="0 0, 100 0, 112 13, 240 13, 240 250, -250 25" />
-          </clipPath>
-        </defs>
-      </svg> */}
 
     </Container>
   )
