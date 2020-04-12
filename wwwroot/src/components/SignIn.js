@@ -1,5 +1,4 @@
 import React from 'react';
-import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
@@ -7,23 +6,15 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import { Link } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import GoogleLogin from 'react-google-login';
+import Icon from '@material-ui/core/Icon';
+import Googlelogo from '../../public/google-icon.svg';
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" to={"https://material-ui.com/"}>
-        American Teachers
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
+const responseGoogle = (response) => {
+  console.log(response);
 }
 
 const useStyles = makeStyles((theme) => ({
@@ -44,7 +35,35 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
+  googleButton: {
+    height: '50px',
+    width: '100%',
+    margin: '20px',
+    fontSize: '1rem',
+    lineHeight: '1.5',
+  },
+  imageIcon: {
+    height: '100%',
+    fontSize: '1.2rem'
+  },
+  iconRoot: {
+    textAlign: 'start'
+  }
 }));
+
+const createGoogleIcon = (classes) => {
+  
+  return (
+    // <Icon classes={{root: classes.iconRoot}}>
+    //             <img className={classes.imageIcon} src={Googlelogo} alt="Google logo"/>
+    //           </Icon>
+    <Icon classes={{root: classes.iconRoot}}>
+       <img className={classes.imageIcon} src={Googlelogo} alt="Google logo"/>
+    </Icon>
+  )
+}
+
+
 
 export default function SignIn() {
   const classes = useStyles();
@@ -53,11 +72,25 @@ export default function SignIn() {
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
-        </Avatar>
         <Typography component="h1" variant="h5">
           Sign in
+        </Typography>
+
+        <GoogleLogin
+          clientId="226277952430-u2vkjj2csmpbab2spttfpb8ti0jq3bcd.apps.googleusercontent.com"
+          render={renderProps => (
+            <Button variant="outlined" size="large" classes={{root: classes.googleButton}} onClick={renderProps.onClick} startIcon={createGoogleIcon(classes)}>
+              Continue with Google
+            </Button>
+          )}
+          buttonText="Continue with Google"
+          onSuccess={responseGoogle}
+          onFailure={responseGoogle}
+          cookiePolicy={'single_host_origin'}
+          isSignedIn={true}
+        />
+          <Typography component="p" >
+          OR
         </Typography>
         <form className={classes.form} noValidate>
           <TextField
@@ -109,9 +142,6 @@ export default function SignIn() {
           </Grid>
         </form>
       </div>
-      <Box mt={8}>
-        <Copyright />
-      </Box>
     </Container>
   );
 }
