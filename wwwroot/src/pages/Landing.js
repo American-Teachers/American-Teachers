@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import { Link as RouterLink } from 'react-router-dom';
 
 import { Box, Container, Typography, Button } from '@material-ui/core';
 
@@ -34,8 +35,8 @@ const useStyles = makeStyles((theme) => ({
   landing1ButtonCollection: {
     marginTop: theme.spacing(3),
     justifyContent: 'flex-end',
-
-    '& button': {
+  
+    '& a': {
       width: theme.spacing(20.25),
       height: theme.spacing(5.25),
       boxShadow: 'none',
@@ -141,6 +142,8 @@ function Landing1() {
           <Button
             variant='outlined'
             color='primary'
+            component={RouterLink}
+            to='/why-us'
           >
             <Typography>
               Learn more
@@ -150,6 +153,8 @@ function Landing1() {
           <Button
             variant='contained'
             color='primary'
+            component={RouterLink}
+            to='/signin'
           >
             <Typography>
               Get Started
