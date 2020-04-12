@@ -15,8 +15,8 @@ import circleChild from '../img/landing/circle-child.jpg';
 const useStyles = makeStyles((theme) => ({
   root: {},
   landing1root: {
-    height: '100vh',
-    paddingTop: theme.spacing(34),
+    height: '86vh',
+    paddingTop: theme.spacing(33),
     paddingLeft: theme.spacing(1)
   },
   landing1CopyContainer: {
@@ -32,22 +32,27 @@ const useStyles = makeStyles((theme) => ({
   landing1CopyBody: {fontSize: '18px'},
 
   landing1ButtonCollection: {
-    marginTop: theme.spacing(2.5),
+    marginTop: theme.spacing(3),
     justifyContent: 'flex-end',
 
     '& button': {
       width: theme.spacing(20.25),
+      height: theme.spacing(5.25),
       boxShadow: 'none',
 
       '&:last-child': {marginLeft: theme.spacing(2)},
-      '& p': {fontWeight: 700}
+      '& p': {
+        fontSize: '16px', 
+        fontWeight: 700,
+        letterSpacing: '0.05em'
+      }
     }
   },
   landing1TriangleChild: {
     width: '262px',
     height: '411.28px',
     position: 'relative',
-    top: -theme.spacing(53),
+    top: -theme.spacing(56),
     left: theme.spacing(53),
     clipPath: 'polygon(50% 22%, 3% 76%, 97% 76%)'
   },
@@ -55,7 +60,7 @@ const useStyles = makeStyles((theme) => ({
     width: '233px',
     height: '350px',
     position: 'relative',
-    top: -theme.spacing(64),
+    top: -theme.spacing(67),
     left: theme.spacing(52),
     clipPath: 'circle(116px at 50% 66%)'
   },
@@ -63,15 +68,15 @@ const useStyles = makeStyles((theme) => ({
     width: '345px',
     height: '233.09px',
     position: 'relative',
-    top: -theme.spacing(31),
+    top: -theme.spacing(33.5),
     left: theme.spacing(2.5),
     clipPath: 'polygon(11% 0%, 11% 100%, 76% 100%, 76% 0%)'
   },
 
   
   landing2root: {
-    height: '100vh',
-    paddingTop: theme.spacing(12)
+    height: '86vh',
+    paddingTop: theme.spacing(6)
   },
   landing2Container: {textAlign: 'center'},
   landing2Title: {

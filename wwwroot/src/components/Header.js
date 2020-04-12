@@ -7,7 +7,8 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => ({
   appbar: {
     backgroundColor: 'white',
-    color: 'black'
+    color: 'black',
+    paddingTop: theme.spacing(2)
   },
   toolbar:{
     padding: `0 ${theme.spacing(4)}px`,
@@ -21,11 +22,11 @@ const useStyles = makeStyles((theme) => ({
     }
   },
   buttonCollection: {
-    paddingRight: theme.spacing(5)
+    paddingRight: theme.spacing(4)
   },
   buttonWhy: {
     textTransform: 'none',
-    marginRight: theme.spacing(5),
+    marginRight: theme.spacing(4),
     '& p': {
       fontWeight: '600'
     },
@@ -49,10 +50,12 @@ const useStyles = makeStyles((theme) => ({
     }
   },
   buttonSign: {
-    boxShadow: 'none',
+    width: theme.spacing(14),
+    height: theme.spacing(5),
     marginLeft: theme.spacing(2),
+    boxShadow: 'none',
     '& p': {
-      fontWeight: '600'
+      fontWeight: '700'
     },
   }
 }));
