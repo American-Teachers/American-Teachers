@@ -25,7 +25,7 @@ const theme = createMuiTheme({
       'Open Sans',
       'sans-serif',
       '"Montserrat"'
-    ]
+    ],
     
   },
   overrides: {

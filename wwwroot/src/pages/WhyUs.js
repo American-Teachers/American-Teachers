@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Landing2 as WhyUs3 } from './Landing.js';
+import { FeatureCollection } from './Landing.js';
 
 import Layout from '../components/Layout';
 import { makeStyles } from '@material-ui/core/styles';
@@ -15,8 +15,10 @@ const useStyles = makeStyles((theme) => ({
 export default function WhyUs() {
   return (
     <Layout>
-      <div>whyus</div>
-      <WhyUs3/>
+      <div>
+        <h3>Why Us</h3>
+      </div>
+      <FeatureCollection/>
     </Layout>
   )
 }

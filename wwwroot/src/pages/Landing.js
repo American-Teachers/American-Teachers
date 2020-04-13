@@ -17,12 +17,12 @@ import triangleChild from '../img/landing/triangle-child.jpg';
 import squareChild from '../img/landing/square-child.jpg';
 import circleChild from '../img/landing/circle-child.jpg';
 
-const landing1Data = {
+const landingHomeData = {
   title: "Learning can't stop.",
   copy: "Dedicated to continuing to educate our future and stay connected, no matter what."
 };
 
-const landing2Data = {
+const featureCollectionData = {
   title: "Education wherever you are.",
   icons: [
     {
@@ -45,25 +45,25 @@ const landing2Data = {
 
 const useStyles = makeStyles((theme) => ({
   root: {},
-  landing1root: {
+  landingHomeRoot: {
     minHeight: '86vh',
     height: 'fit-content',
     paddingTop: theme.spacing(33),
     paddingLeft: theme.spacing(1)
   },
-  landing1CopyContainer: {
+  landingHomeCopyContainer: {
     width: theme.spacing(55),
     margin: 0,
   },
-  landing1CopyTitle: {
+  landingHomeCopyTitle: {
     fontSize: '40px',
     lineHeight: '54px',
     fontWeight: 600,
     color: theme.palette.primary.main,
   },
-  landing1CopyBody: {fontSize: '18px'},
+  landingHomeCopyBody: {fontSize: '18px'},
 
-  landing1ButtonCollection: {
+  landingHomeButtonCollection: {
     marginTop: theme.spacing(3),
     justifyContent: 'flex-end',
   
@@ -80,7 +80,7 @@ const useStyles = makeStyles((theme) => ({
       }
     }
   },
-  landing1TriangleChild: {
+  landingHomeTriangleChild: {
     width: '262px',
     height: '411.28px',
     position: 'relative',
@@ -88,7 +88,7 @@ const useStyles = makeStyles((theme) => ({
     left: theme.spacing(53),
     clipPath: 'polygon(50% 22%, 3% 76%, 97% 76%)'
   },
-  landing1CircleChild: {
+  landingHomeCircleChild: {
     width: '233px',
     height: '350px',
     position: 'relative',
@@ -96,7 +96,7 @@ const useStyles = makeStyles((theme) => ({
     left: theme.spacing(52),
     clipPath: 'circle(116px at 50% 66%)'
   },
-  landing1SquareChild: {
+  landingHomeSquareChild: {
     width: '345px',
     height: '233.09px',
     position: 'relative',
@@ -106,22 +106,22 @@ const useStyles = makeStyles((theme) => ({
   },
 
   
-  landing2root: {
+  featureCollectionRoot: {
     height: '86vh',
     paddingTop: theme.spacing(6)
   },
-  landing2Container: {
+  featureCollectionContainer: {
     textAlign: 'center',
     [theme.breakpoints.down('lg')]: {
       padding: '0 10%'
     }
   },
-  landing2Title: {
+  featureCollectionTitle: {
     fontSize: '32px',
     fontWeight: 600,
     marginBottom: theme.spacing(9)
   },
-  landing2ItemBox: {
+  featureCollectionItemBox: {
     width: theme.spacing(48),
     margin: 0,
 
@@ -140,7 +140,7 @@ const useStyles = makeStyles((theme) => ({
       top: -theme.spacing(1)
     }
   },
-  landing2ImgContainer: {
+  featureCollectionImgContainer: {
     width: theme.spacing(15),
     height: theme.spacing(15),
     margin: `0 auto ${theme.spacing(2.5)}px`
@@ -149,25 +149,25 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 
-function Landing1() {
+function LandingHome() {
   const classes = useStyles();
 
   return (
     <Container
-      className={classes.landing1root}
+      className={classes.landingHomeRoot}
       maxWidth='md'
     >
-      <Container className={classes.landing1CopyContainer}>
-        <Typography className={classes.landing1CopyTitle} component='h1'>
-          {landing1Data.title}
+      <Container className={classes.landingHomeCopyContainer}>
+        <Typography className={classes.landingHomeCopyTitle} component='h1'>
+          {landingHomeData.title}
         </Typography>
 
-        <Typography className={classes.landing1CopyBody}>
-          {landing1Data.copy}
+        <Typography className={classes.landingHomeCopyBody}>
+          {landingHomeData.copy}
         </Typography>
 
         <Box 
-          className={classes.landing1ButtonCollection} 
+          className={classes.landingHomeButtonCollection} 
           display='flex'
           justifyContent="flex-end"
         >
@@ -177,9 +177,7 @@ function Landing1() {
             component={RouterLink}
             to='/why-us'
           >
-            <Typography>
-              Learn more
-            </Typography>
+            Learn more
           </Button>
 
           <Button
@@ -195,9 +193,9 @@ function Landing1() {
         </Box>
       </Container>
 
-      <img src={triangleChild} alt='child reading' className={classes.landing1TriangleChild}/>
-      <img src={circleChild} alt='child at computer' className={classes.landing1CircleChild}/>
-      <img src={squareChild} alt='child reading tablet' className={classes.landing1SquareChild}/>
+      <img src={triangleChild} alt='child reading' className={classes.landingHomeTriangleChild}/>
+      <img src={circleChild} alt='child at computer' className={classes.landingHomeCircleChild}/>
+      <img src={squareChild} alt='child reading tablet' className={classes.landingHomeSquareChild}/>
 
     </Container>
   )
@@ -205,17 +203,17 @@ function Landing1() {
 
 
 
-export function Landing2() {
+export function FeatureCollection() {
   const classes = useStyles();
 
   return (
     <Container
-      className={classes.landing2root}
+      className={classes.featureCollectionRoot}
       maxWidth='lg'
     >
-      <Container className={classes.landing2Container}>
-        <Typography className={classes.landing2Title} component='h2'>
-          {landing2Data.title}
+      <Container className={classes.featureCollectionContainer}>
+        <Typography className={classes.featureCollectionTitle} component='h2'>
+          {featureCollectionData.title}
         </Typography>
 
         <Grid
@@ -223,15 +221,15 @@ export function Landing2() {
           justify='space-between'
           spacing={3}
         >
-          {landing2Data.icons.map((i, index) => (
+          {featureCollectionData.icons.map((i, index) => (
             <Grid 
               item
               key={index} 
-              className={classes.landing2ItemBox}
+              className={classes.featureCollectionItemBox}
               xs={12}
               sm={4}
             >
-              <Box className={classes.landing2ImgContainer}>
+              <Box className={classes.featureCollectionImgContainer}>
                 <img src={i.img}/>
               </Box>
 
@@ -253,8 +251,8 @@ export function Landing2() {
 export default function Landing() {
   return (
     <Layout>
-      <Landing1/>
-      <Landing2/>
+      <LandingHome/>
+      <FeatureCollection/>
     </Layout>
   )
 }
