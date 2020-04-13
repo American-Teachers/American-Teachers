@@ -93,8 +93,7 @@ const useStyles = makeStyles((theme) => ({
       padding: `${theme.spacing(0.3)}px 0`,
       '& div': {margin: 0},
       '& a': {
-        fontSize: '12px',
-        color: 'white',
+        color: '#FFFFFF',
         textDecoration: 'none'
       }
     }
@@ -104,7 +103,8 @@ const useStyles = makeStyles((theme) => ({
     '& a': {
       color: '#FFFFFF',
       marginRight: theme.spacing(1.5),
-      '&:last-child': {marginRight: 0}
+      fontSize: '16px',
+      '&:last-child': {marginRight: 0},
     }
   }
 }))
@@ -129,7 +129,7 @@ function ListText({text, link}) {
   return (
     <ListItem disableGutters>
       <Typography>
-        <a href={link}>{text}</a>
+        <a href={link} style={{fontSize: '12px'}}>{text}</a>
         {/* <Link to={link}>{text}</Link> */}
       </Typography>
     </ListItem>

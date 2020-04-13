@@ -12,7 +12,7 @@ import Footer from './Footer';
 //   root:{}
 // }))
 
-export default function Layout({children}) {
+export default function Layout({footerHidden, children}) {
   // const classes = useStyles();
 
   return (
@@ -27,7 +27,7 @@ export default function Layout({children}) {
 
       {children}
       
-      <Footer/>
+      {footerHidden ? <></> : <Footer />}
 
     </Container>
   )

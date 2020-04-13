@@ -9,9 +9,9 @@ import Button from '@material-ui/core/Button';
 import Layout from '../components/Layout';
 import { makeStyles } from '@material-ui/core/styles';
 
-import toolsIcon from '../img/landing/tools-icon.svg';
-import accessIcon from '../img/landing/access-icon.svg';
-import laptopIcon from '../img/landing/laptop-icon.svg';
+import toolsIcon from '../../public/landing-tools-icon.svg';
+import accessIcon from '../../public/landing-access-icon.svg';
+import laptopIcon from '../../public/landing-laptop-icon.svg';
 import triangleChild from '../img/landing/triangle-child.jpg';
 import squareChild from '../img/landing/square-child.jpg';
 import circleChild from '../img/landing/circle-child.jpg';
