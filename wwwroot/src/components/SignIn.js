@@ -96,7 +96,7 @@ export default function SignIn() {
         </Typography>
 
         <GoogleLogin
-          clientId="226277952430-fof6fo5vhqs0388usb2a7nqlo6fna0ml.apps.googleusercontent.com"
+          clientId={process.env.CLIEND_ID}
           render={renderProps => (
             <Button variant="outlined" size='large' classes={{root: classes.googleButton}} onClick={renderProps.onClick} startIcon={createGoogleIcon(classes)}>
               Continue with Google
