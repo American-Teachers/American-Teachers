@@ -14,6 +14,8 @@ import clsx from 'clsx';
 import Privacy from '../../public/AmericanTeachersPrivacyStatement.pdf';
 import TermsAndConditions from '../../public/AmericanTeachersTermsofUse.pdf'
 
+import Layout from '../components/Layout';
+
 const createGoogleIcon = (classes) => {
   return (
     <Icon classes={{root: classes.iconRoot}}>
@@ -115,6 +117,8 @@ export default function SignUp() {
   const isButtonEnabled =  !someValuesMissing && formValues.termsAgreed;
 
   return (
+    <Layout footerHidden>
+
     <Container component="main" maxWidth="md" className="wrap">
       <CssBaseline />
       <div className={classes.paper}>
@@ -247,5 +251,7 @@ export default function SignUp() {
         </form>
       </div>
     </Container>
+
+    </Layout>
   );
 }

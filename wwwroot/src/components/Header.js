@@ -94,13 +94,9 @@ function HeaderButtons({location, signedIn}) {
   const classes = useStyles();
 
   if (location.pathname==='/signin'||location.pathname==='/signup') {
-    return 
-      <>
-      </>
+    return (<></>);
   } else if (signedIn) {
-    return 
-      <>
-      </>
+    return (<></>);
   } else {
     return (
       <Box className={classes.buttonCollection} >
@@ -140,7 +136,7 @@ function HeaderButtons({location, signedIn}) {
           </Typography>
         </Button>
       </Box>
-    )
+    );
   }
 }
 
@@ -148,6 +144,7 @@ export default function Header() {
   const classes = useStyles();
   
   let location = useLocation();
+  console.log(location)
 
   return (
     <AppBar position='static' elevation={0} className={classes.appbar}>

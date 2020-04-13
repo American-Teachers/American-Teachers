@@ -12,6 +12,8 @@ import Icon from '@material-ui/core/Icon';
 import Googlelogo from '../../public/google-icon.svg';
 import emailValidation from '../helpers/email-validation';
 
+import Layout from '../components/Layout';
+
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -88,6 +90,8 @@ export default function SignIn() {
   }
 
   return (
+    <Layout footerHidden>
+
     <Container component="main" maxWidth="sm">
       <CssBaseline />
       <div className={classes.paper}>
@@ -168,5 +172,7 @@ export default function SignIn() {
         </form>
       </div>
     </Container>
+    
+    </Layout>
   );
 }
