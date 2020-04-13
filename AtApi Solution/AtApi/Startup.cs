@@ -45,7 +45,7 @@ namespace AtApi
             services.AddLogging();
 
             services.AddDbContext<ApplicationDbContext>(options =>
-              options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+              options.UseMySql(Configuration.GetConnectionString("AmericanTeachers")));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
