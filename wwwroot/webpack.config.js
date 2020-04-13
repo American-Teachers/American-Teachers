@@ -52,12 +52,13 @@ module.exports = {
           ],
         },
         {
-          test: /\.(jpg|jpeg|png|gif|mp3|svg|ico)$/,
-          loader: ["file-loader"],
+          test: /\.(jpg|jpeg|png|gif|mp3|ico|pdf)$/,
+          loader: ["file-loader"]
         },
         {
           test: /\.(ttf|eot|woff|svg)$/,
-          loader: ["url-loader"],
+          include : path.join(__dirname, 'public'),
+          loader  : 'url-loader?limit=30000&name=public/[name].[ext]',
         },
       ],
     },
