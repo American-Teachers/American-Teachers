@@ -46,7 +46,6 @@ const useStyles = makeStyles((theme) => ({
     },
 
     '&.active': {
-      borderBottom: '10px black',
       '& p': {
         fontWeight: '800',
         color: theme.palette.primary.main,
@@ -56,7 +55,7 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: '15%',
         height: '3px',
         position: 'absolute',
-        top: theme.spacing(4.5),
+        top: theme.spacing(5.8),
         backgroundColor: theme.palette.primary.main
       }
     }
@@ -109,7 +108,7 @@ function HeaderButtons({location, signedIn}) {
             Why Us
           </Typography>
 
-          <div className='activeBottom' ></div>
+            <div className='activeBottom' ></div>
         </Button>
   
         <Button
