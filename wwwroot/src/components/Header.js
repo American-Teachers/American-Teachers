@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink as RouterLink } from 'react-router-dom';
+import { NavLink as RouterLink, useLocation } from 'react-router-dom';
 
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
@@ -10,6 +10,9 @@ import Button from '@material-ui/core/Button';
 
 import { makeStyles } from '@material-ui/core/styles';
 
+const headerData = {
+  signedIn: false
+}
 
 const useStyles = makeStyles((theme) => ({
   appbar: {
@@ -44,11 +47,12 @@ const useStyles = makeStyles((theme) => ({
     '&.active': {
       borderBottom: '10px black',
       '& p': {
-        fontWeight: '700',
+        fontWeight: '800',
         color: theme.palette.primary.main,
       },
       '& .activeBottom': {
-        width: theme.spacing(6.5),
+        width: theme.spacing(7),
+        borderRadius: '15%',
         height: '3px',
         position: 'absolute',
         top: theme.spacing(4.5),
@@ -63,7 +67,7 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: 'none',
     '& p': {
       fontWeight: '700'
-    },
+    }
   }
 }));
 
@@ -81,57 +85,80 @@ export function Logo() {
         American Teachers
       </Typography>
     </Link>
-)
+  )
+}
+
+function HeaderButtons({location, signedIn}) {
+  const classes = useStyles();
+  
+  if (location.pathname==='/signin'||location.pathname==='/signup') {
+    return 
+      <>
+      </>
+  } else if (signedIn) {
+    return 
+      <>
+      </>
+  } else {
+    return (
+      <Box className={classes.buttonCollection} >
+        <Button
+          className={classes.buttonWhy}
+          component={RouterLink}
+          to='/why-us'
+        >
+          <Typography>
+            Why Us
+          </Typography>
+
+          <div className='activeBottom' ></div>
+        </Button>
+  
+        <Button
+          className={classes.buttonSign}
+          color='primary'
+          variant='outlined'
+          component={RouterLink}
+          to='/signin'
+        >
+          <Typography>
+            Sign In
+          </Typography>
+        </Button>
+
+        <Button 
+          className={classes.buttonSign}
+          color='primary'
+          variant='contained'
+          component={RouterLink}
+          to='/signup'
+        >
+          <Typography>
+            Sign Up
+          </Typography>
+        </Button>
+      </Box>
+    )
+  }
 }
 
 export default function Header() {
   const classes = useStyles();
+  
+  let location = useLocation();
 
   return (
     <AppBar position='static' elevation={0} className={classes.appbar}>
-        <Toolbar className={classes.toolbar}>
+      <Toolbar className={classes.toolbar}>
 
-          <Logo />
+        <Logo />
 
-          <Box className={classes.buttonCollection} >
-            <Button
-              className={classes.buttonWhy}
-              component={RouterLink}
-              to='/why-us'
-            >
-              <Typography>
-                Why Us
-              </Typography>
+        <HeaderButtons 
+          location={location}
+          signedIn={headerData.signedIn}
+        />
 
-              <div className='activeBottom' ></div>
-            </Button>
-      
-            <Button
-              className={classes.buttonSign}
-              color='primary'
-              variant='outlined'
-              component={RouterLink}
-              to='/signin'
-            >
-              <Typography>
-                Sign In
-              </Typography>
-            </Button>
-
-            <Button 
-              className={classes.buttonSign}
-              color='primary'
-              variant='contained'
-              component={RouterLink}
-              to='/signup'
-            >
-              <Typography>
-                Sign Up
-              </Typography>
-            </Button>
-          </Box>
-
-        </Toolbar>
-      </AppBar>
+      </Toolbar>
+    </AppBar>
   )
 }

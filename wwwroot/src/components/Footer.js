@@ -152,18 +152,19 @@ export default function Footer() {
         <Grid container item xs={8} className={classes.listsContainer} >
           {
             footerData.map(section => (
-                <Grid item xs={12/footerData.length}>
+                <Grid item xs={12/footerData.length} key={section.title}>
                   <ListWithTitle title={section.title}>
                     {
                       section.links.map(linkObj => {
                         return (
                           linkObj.text!=='social' ? 
-                            <ListText 
+                            <ListText
+                              key={linkObj.text}
                               text={linkObj.text}
                               link={linkObj.link || '#'}
                             />
                           :
-                            <ListItem className={classes.iconCollection}>
+                            <ListItem className={classes.iconCollection} key={linkObj.text}>
                               <a href={linkObj.facebook} target='_blank' rel='noopener noreferrer'>
                                 <FacebookIcon/>
                               </a>
