@@ -12,24 +12,50 @@ import Landing from './pages/Landing';
 import WhyUs from './pages/WhyUs';
 
 const theme = createMuiTheme({
-  palette: {
-    primary: {
-      main: '#FF6E4E',
-      contrastText: '#FFFFFF'
-    },
-    text: {
-      primary: '#5F5F5F'
-    },
-    background: {
-      default: '#FFFFFF'
-    }
-  },
   typography: {
+    fontStyle: 'normal',
+    fontWeight: 'normal',
+    fontSize: '18px',
+    lineHeight:'25px',
+    textDecorationColor: '#FF6E4E',
+    button: {
+      fontSize: '18px',
+    },
     fontFamily:[
       'Open Sans',
       'sans-serif',
       '"Montserrat"'
     ]
+    
+  },
+  overrides: {
+    MuiContainer: {
+    },
+    MuiButton: {
+      fullWidth: {
+      },
+      sizeLarge: {
+      },
+      label: {
+        height: '42px',
+      }
+    },
+    MuiFormControl: {
+      fullWidth: {
+        fontSize: '16px'
+      },
+    }
+  },
+  palette: {
+    primary: { 
+      main: '#FF6E4E',
+      textPrimary: '#5F5F5F',
+      contrastText: "white" // this will set button's texts to white
+    },
+    secondary: {main: '#5F5F5F'},
+    background: {
+      default: '#FFFFFF'
+    }
   },
   status: {
     danger: 'orange',

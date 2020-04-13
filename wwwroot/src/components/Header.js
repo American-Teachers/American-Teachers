@@ -38,6 +38,7 @@ const useStyles = makeStyles((theme) => ({
     textTransform: 'none',
     marginRight: theme.spacing(4),
     '& p': {
+      fontSize: '16px',
       fontWeight: '600'
     },
     '& .activeBottom': {
@@ -66,6 +67,7 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: theme.spacing(2),
     boxShadow: 'none',
     '& p': {
+      fontSize: '16px',
       fontWeight: '700'
     }
   }
@@ -90,7 +92,7 @@ export function Logo() {
 
 function HeaderButtons({location, signedIn}) {
   const classes = useStyles();
-  
+
   if (location.pathname==='/signin'||location.pathname==='/signup') {
     return 
       <>
