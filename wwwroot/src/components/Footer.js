@@ -9,9 +9,11 @@ import ListItem from '@material-ui/core/ListItem';
 import { Logo } from '../components/Header';
 
 import { makeStyles } from '@material-ui/core/styles';
-
 import FacebookIcon from '@material-ui/icons/Facebook';
 import TwitterIcon from '@material-ui/icons/Twitter';
+
+import Privacy from '../../public/AmericanTeachersPrivacyStatement.pdf';
+import TermsAndConditions from '../../public/AmericanTeachersTermsofUse.pdf';
 
 const footerData = [
   {
@@ -53,11 +55,13 @@ const footerData = [
       },
       {
         text: 'Privacy Policy',
-        link: ''
+        link: Privacy,
+        newTab: true
       },
       {
         text: 'Terms',
-        link: ''
+        link: TermsAndConditions,
+        newTab: true
       }
     ]
   },
@@ -124,12 +128,17 @@ function ListWithTitle({title, children}) {
   )
 }
 
-function ListText({text, link}) {
+function ListText({text, link, newTab}) {
   
   return (
     <ListItem disableGutters>
       <Typography>
-        <a href={link} style={{fontSize: '12px'}}>{text}</a>
+        {
+          newTab ?
+            <a href={link} style={{fontSize: '12px'}} target='_blank' rel='noopener noreferrer'>{text}</a>
+          :
+            <a href={link} style={{fontSize: '12px'}}>{text}</a>
+        }
         {/* <Link to={link}>{text}</Link> */}
       </Typography>
     </ListItem>
@@ -162,6 +171,7 @@ export default function Footer() {
                               key={linkObj.text}
                               text={linkObj.text}
                               link={linkObj.link || '#'}
+                              newTab={linkObj.newTab}
                             />
                           :
                             <ListItem className={classes.iconCollection} key={linkObj.text}>

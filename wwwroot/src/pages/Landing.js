@@ -2,6 +2,7 @@ import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 
 import Box from '@material-ui/core/Box';
+import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
@@ -45,7 +46,8 @@ const landing2Data = {
 const useStyles = makeStyles((theme) => ({
   root: {},
   landing1root: {
-    height: '86vh',
+    minHeight: '86vh',
+    height: 'fit-content',
     paddingTop: theme.spacing(33),
     paddingLeft: theme.spacing(1)
   },
@@ -108,7 +110,12 @@ const useStyles = makeStyles((theme) => ({
     height: '86vh',
     paddingTop: theme.spacing(6)
   },
-  landing2Container: {textAlign: 'center'},
+  landing2Container: {
+    textAlign: 'center',
+    [theme.breakpoints.down('lg')]: {
+      padding: '0 10%'
+    }
+  },
   landing2Title: {
     fontSize: '32px',
     fontWeight: 600,
@@ -211,12 +218,19 @@ export function Landing2() {
           {landing2Data.title}
         </Typography>
 
-        <Box
-          display='flex'
-          justifyContent='center'
+        <Grid
+          container
+          justify='space-between'
+          spacing={3}
         >
           {landing2Data.icons.map((i, index) => (
-            <Container key={index} className={classes.landing2ItemBox}>
+            <Grid 
+              item
+              key={index} 
+              className={classes.landing2ItemBox}
+              xs={12}
+              sm={4}
+            >
               <Box className={classes.landing2ImgContainer}>
                 <img src={i.img}/>
               </Box>
@@ -228,9 +242,9 @@ export function Landing2() {
               <Typography>
                 {i.copy}
               </Typography>
-            </Container>
+            </Grid>
           ))}
-        </Box>
+        </Grid>
       </Container>
     </Container>
   )
