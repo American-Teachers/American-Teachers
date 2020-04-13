@@ -1,9 +1,7 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
 import { Link } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
@@ -12,10 +10,7 @@ import Container from '@material-ui/core/Container';
 import GoogleLogin from 'react-google-login';
 import Icon from '@material-ui/core/Icon';
 import Googlelogo from '../../public/google-icon.svg';
-
-const responseGoogle = (response) => {
-  console.log(response);
-}
+import emailValidation from '../helpers/email-validation';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -36,40 +31,64 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(3, 0, 2),
   },
   googleButton: {
-    height: '50px',
-    width: '100%',
     margin: '20px',
-    fontSize: '1rem',
-    lineHeight: '1.5',
+    color: '#8B8B8B',
+    width: '100%'
   },
   imageIcon: {
     height: '100%',
-    fontSize: '1.2rem'
+    verticalAlign: 'super',
   },
   iconRoot: {
-    textAlign: 'start'
+    textAlign: 'center',
+    fontSize: '30px !important'
   }
 }));
 
 const createGoogleIcon = (classes) => {
-  
   return (
-    // <Icon classes={{root: classes.iconRoot}}>
-    //             <img className={classes.imageIcon} src={Googlelogo} alt="Google logo"/>
-    //           </Icon>
     <Icon classes={{root: classes.iconRoot}}>
        <img className={classes.imageIcon} src={Googlelogo} alt="Google logo"/>
     </Icon>
   )
 }
 
-
-
 export default function SignIn() {
   const classes = useStyles();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [requiredFieldErrors, setRequiredFieldErrors] = useState({
+    email: false,
+    password: false
+  });
+  const [touched, setTouched] = useState({
+      email: false,
+      password: false,
+  });
+  const responseGoogle = (response) => {
+    console.log(response);
+  }
+
+  const handleChange = (name) => (event) => {
+    event.persist();
+    if(name === 'email'){
+      setRequiredFieldErrors({email: emailValidation(email)});
+      setEmail(event.target.value);
+    } else {
+      setPassword(event.target.value);
+    }
+  };
+
+  const handleBlur = (field) => () => {
+    setTouched({ ...touched, [field]: true });
+  }
+
+  const handleSignIn = () => {
+    // TODO calling api to login and then upon successful sign up redirect to profile
+  }
 
   return (
-    <Container component="main" maxWidth="xs">
+    <Container component="main" maxWidth="sm">
       <CssBaseline />
       <div className={classes.paper}>
         <Typography component="h1" variant="h5">
@@ -77,9 +96,9 @@ export default function SignIn() {
         </Typography>
 
         <GoogleLogin
-          clientId="226277952430-u2vkjj2csmpbab2spttfpb8ti0jq3bcd.apps.googleusercontent.com"
+          clientId="226277952430-fof6fo5vhqs0388usb2a7nqlo6fna0ml.apps.googleusercontent.com"
           render={renderProps => (
-            <Button variant="outlined" size="large" classes={{root: classes.googleButton}} onClick={renderProps.onClick} startIcon={createGoogleIcon(classes)}>
+            <Button variant="outlined" size='large' classes={{root: classes.googleButton}} onClick={renderProps.onClick} startIcon={createGoogleIcon(classes)}>
               Continue with Google
             </Button>
           )}
@@ -92,17 +111,21 @@ export default function SignIn() {
           <Typography component="p" >
           OR
         </Typography>
-        <form className={classes.form} noValidate>
+        <form className={classes.form} autoComplete="on">
           <TextField
             variant="outlined"
             margin="normal"
             required
             fullWidth
             id="email"
-            label="Email Address"
+            label="Email"
             name="email"
             autoComplete="email"
-            autoFocus
+            value={email}
+            onChange={handleChange('email')}
+            onBlur={handleBlur('email')}
+            error={requiredFieldErrors.email}
+            helperText={requiredFieldErrors.email ? 'Does not look like a valid email' : null}
           />
           <TextField
             variant="outlined"
@@ -113,11 +136,9 @@ export default function SignIn() {
             label="Password"
             type="password"
             id="password"
+            value={password}
+            onChange={handleChange('password')}
             autoComplete="current-password"
-          />
-          <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
-            label="Remember me"
           />
           <Button
             type="submit"
@@ -125,19 +146,23 @@ export default function SignIn() {
             variant="contained"
             color="primary"
             className={classes.submit}
+            onClick={handleSignIn()}
           >
             Sign In
           </Button>
-          <Grid container>
+          <Grid container spacing={2}>
             <Grid item xs>
               <Link to={"#"} variant="body2">
                 Forgot password?
               </Link>
             </Grid>
             <Grid item>
-                <Link color="secondary" to={'/signup'}>
-                    Don't have an account? Sign Up
-                </Link>
+              <Typography>Don't have an account? </Typography>
+            </Grid>
+            <Grid item>
+              <Link color="secondary" to={'/signup'}>
+                Sign Up
+              </Link>
             </Grid>
           </Grid>
         </form>

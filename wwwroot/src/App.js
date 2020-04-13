@@ -5,17 +5,48 @@ import {
   Route
 } from "react-router-dom";
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
-import blue from '@material-ui/core/colors/blue';
-import grey from '@material-ui/core/colors/grey';
 
 import './App.css';
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
 
 const theme = createMuiTheme({
+  typography: {
+    fontStyle: 'normal',
+    fontWeight: 'normal',
+    fontSize: '18px',
+    lineHeight:'25px',
+    textDecorationColor: '#FF6E4E',
+    button: {
+      fontSize: '18px',
+    },
+    
+  },
+  overrides: {
+    MuiContainer: {
+    },
+    MuiButton: {
+      fullWidth: {
+      },
+      sizeLarge: {
+      },
+      label: {
+        height: '42px',
+      }
+    },
+    MuiFormControl: {
+      fullWidth: {
+        fontSize: '16px'
+      },
+    }
+  },
   palette: {
-    primary: blue,
-    secondary: grey,
+    primary: { 
+      main: '#FF6E4E',
+      textPrimary: '#8B8B8B',
+      contrastText: "white" // this will set button's texts to white
+    },
+    secondary: {main: '#8B8B8B'},
   },
   status: {
     danger: 'orange',

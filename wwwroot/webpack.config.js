@@ -52,7 +52,7 @@ module.exports = {
           ],
         },
         {
-          test: /\.(jpg|jpeg|png|gif|mp3|ico)$/,
+          test: /\.(jpg|jpeg|png|gif|mp3|ico|pdf)$/,
           loader: ["file-loader"]
         },
         {
