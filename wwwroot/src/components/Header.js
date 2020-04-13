@@ -7,6 +7,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Link from '@material-ui/core/Link';
 import Button from '@material-ui/core/Button';
+import Collapse from '@material-ui/core/Collapse';
 
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -31,22 +32,18 @@ const useStyles = makeStyles((theme) => ({
       fontSize: '18px'
     }
   },
-  buttonCollection: {
-    paddingRight: theme.spacing(4)
-  },
+  buttonCollection: {paddingRight: theme.spacing(4)},
   buttonWhy: {
     textTransform: 'none',
     marginRight: theme.spacing(4),
-    '& p': {
+    '& span.MuiButton-label': {
       fontSize: '16px',
       fontWeight: '600'
     },
-    '& .activeBottom': {
-      display: 'hidden',
-    },
+    '& .activeBottom': {display: 'hidden'},
 
     '&.active': {
-      '& p': {
+      '& span.MuiButton-label': {
         fontWeight: '800',
         color: theme.palette.primary.main,
       },
@@ -64,11 +61,11 @@ const useStyles = makeStyles((theme) => ({
     width: theme.spacing(14),
     height: theme.spacing(5),
     marginLeft: theme.spacing(2),
-    boxShadow: 'none',
-    '& p': {
-      fontSize: '16px',
-      fontWeight: '700'
-    }
+    boxShadow: 'none'
+  },
+  buttonSignLabel: {
+    fontSize: '16px',
+    fontWeight: '700'
   }
 }));
 
@@ -104,35 +101,34 @@ function HeaderButtons({location, signedIn}) {
           component={RouterLink}
           to='/why-us'
         >
-          <Typography>
-            Why Us
-          </Typography>
-
-            <div className='activeBottom' ></div>
+          Why Us
+          <div className='activeBottom' ></div>
         </Button>
-  
+
         <Button
-          className={classes.buttonSign}
+          classes={{
+            root: classes.buttonSign,
+            label: classes.buttonSignLabel
+          }}
           color='primary'
           variant='outlined'
           component={RouterLink}
           to='/signin'
         >
-          <Typography>
-            Sign In
-          </Typography>
+          Sign In
         </Button>
 
         <Button 
-          className={classes.buttonSign}
+          classes={{
+            root: classes.buttonSign,
+            label: classes.buttonSignLabel
+          }}
           color='primary'
           variant='contained'
           component={RouterLink}
           to='/signup'
         >
-          <Typography>
-            Sign Up
-          </Typography>
+          Sign Up
         </Button>
       </Box>
     );

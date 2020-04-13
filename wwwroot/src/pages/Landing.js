@@ -73,13 +73,14 @@ const useStyles = makeStyles((theme) => ({
       boxShadow: 'none',
 
       '&:last-child': {marginLeft: theme.spacing(2)},
-      '& p': {
-        fontSize: '16px', 
-        fontWeight: 700,
-        letterSpacing: '0.05em'
-      }
     }
   },
+  landingHomeButtonLabel: {
+    fontSize: '16px', 
+    fontWeight: 700,
+    letterSpacing: '0.05em'
+  },
+
   landingHomeTriangleChild: {
     width: '262px',
     height: '411.28px',
@@ -176,6 +177,7 @@ function LandingHome() {
             color='primary'
             component={RouterLink}
             to='/why-us'
+            classes={{root: classes.landingHomeButtonLabel}}
           >
             Learn more
           </Button>
@@ -185,10 +187,9 @@ function LandingHome() {
             color='primary'
             component={RouterLink}
             to='/signin'
+            classes={{root: classes.landingHomeButtonLabel}}
           >
-            <Typography>
-              Get Started
-            </Typography>
+            Get Started
           </Button>
         </Box>
       </Container>
