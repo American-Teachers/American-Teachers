@@ -1,7 +1,10 @@
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 
-import { Box, Container, Typography, Button } from '@material-ui/core';
+import Box from '@material-ui/core/Box';
+import Container from '@material-ui/core/Container';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
 
 import Layout from '../components/Layout';
 import { makeStyles } from '@material-ui/core/styles';
@@ -12,6 +15,32 @@ import laptopIcon from '../img/landing/laptop-icon.svg';
 import triangleChild from '../img/landing/triangle-child.jpg';
 import squareChild from '../img/landing/square-child.jpg';
 import circleChild from '../img/landing/circle-child.jpg';
+
+const landing1Data = {
+  title: "Learning can't stop.",
+  copy: "Dedicated to continuing to educate our future and stay connected, no matter what."
+};
+
+const landing2Data = {
+  title: "Education wherever you are.",
+  icons: [
+    {
+      img: toolsIcon,
+      title: 'Tools for Teachers',
+      copy: 'Assign work, grade, post videos or agendas all in one platform.'
+    },
+    {
+      img: accessIcon,
+      title: 'Parent Access & Monitoring',
+      copy: "Monitor your child's school work, grades, and more."
+    },
+    {
+      img: laptopIcon,
+      title: 'Easy Learning for Students',
+      copy: "Easy to access resources and tools for learning, studying and connecting."
+    }
+  ]
+};
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -112,13 +141,9 @@ const useStyles = makeStyles((theme) => ({
   test: {backgroundColor: 'red'}
 }))
 
+
 function Landing1() {
   const classes = useStyles();
-
-  const landing1Data = {
-    title: "Learning can't stop.",
-    copy: "Dedicated to continuing to educate our future and stay connected, no matter what."
-  };
 
   return (
     <Container
@@ -175,27 +200,6 @@ function Landing1() {
 
 export function Landing2() {
   const classes = useStyles();
-
-  const landing2Data = {
-    title: "Education wherever you are.",
-    icons: [
-      {
-        img: toolsIcon,
-        title: 'Tools for Teachers',
-        copy: 'Assign work, grade, post videos or agendas all in one platform.'
-      },
-      {
-        img: accessIcon,
-        title: 'Parent Access & Monitoring',
-        copy: "Monitor your child's school work, grades, and more."
-      },
-      {
-        img: laptopIcon,
-        title: 'Easy Learning for Students',
-        copy: "Easy to access resources and tools for learning, studying and connecting."
-      }
-    ]
-  };
 
   return (
     <Container

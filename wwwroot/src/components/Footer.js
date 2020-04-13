@@ -1,13 +1,81 @@
 import React from 'react';
 
-import { Container, Grid, Typography, List, ListItem } from '@material-ui/core';
+import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
 
 import { Logo } from '../components/Header';
 
 import { makeStyles } from '@material-ui/core/styles';
 
-import { Facebook, Twitter } from '@material-ui/icons';
+import FacebookIcon from '@material-ui/icons/Facebook';
+import TwitterIcon from '@material-ui/icons/Twitter';
 
+const footerData = [
+  {
+    title: 'Quick Links',
+    links: [
+      {
+        text: 'My Account',
+        link: ''
+      },
+      {
+        text: 'Create an Account',
+        link: '/signup'
+      }
+    ]
+  },
+  {
+    title: 'Company',
+    links: [
+      {
+        text: 'About Us',
+        link: '/why-us'
+      },
+      {
+        text: 'Press',
+        link: ''
+      },
+      {
+        text: 'Careers',
+        link: ''
+      }
+    ]
+  },
+  {
+    title: 'Help',
+    links: [
+      {
+        text: 'FAQ',
+        link: ''
+      },
+      {
+        text: 'Privacy Policy',
+        link: ''
+      },
+      {
+        text: 'Terms',
+        link: ''
+      }
+    ]
+  },
+  {
+    title: 'Connect With Us',
+    links: [
+      {
+        text: 'contact@americanteachers.com',
+        link: 'mailto:contact@americanteachers.com'
+      },
+      {
+        text: 'social',
+        facebook: 'http://facebook.com',
+        twitter: 'http://twitter.com'
+      }
+    ]
+  }
+];
 
 const useStyles = makeStyles((theme) => ({
   rootFooter: {
@@ -71,70 +139,6 @@ function ListText({text, link}) {
 export default function Footer() {
   const classes = useStyles();
 
-  const footerData = [
-    {
-      title: 'Quick Links',
-      links: [
-        {
-          text: 'My Account',
-          link: ''
-        },
-        {
-          text: 'Create an Account',
-          link: '/signup'
-        }
-      ]
-    },
-    {
-      title: 'Company',
-      links: [
-        {
-          text: 'About Us',
-          link: '/why-us'
-        },
-        {
-          text: 'Press',
-          link: ''
-        },
-        {
-          text: 'Careers',
-          link: ''
-        }
-      ]
-    },
-    {
-      title: 'Help',
-      links: [
-        {
-          text: 'FAQ',
-          link: ''
-        },
-        {
-          text: 'Privacy Policy',
-          link: ''
-        },
-        {
-          text: 'Terms',
-          link: ''
-        }
-      ]
-    },
-    {
-      title: 'Connect With Us',
-      links: [
-        {
-          text: 'contact@americanteachers.com',
-          link: 'mailto:contact@americanteachers.com'
-        },
-        {
-          text: 'social',
-          facebook: 'http://facebook.com',
-          twitter: 'http://twitter.com'
-        }
-      ]
-    }
-  ]
-
   return (
     <Container 
       className={classes.rootFooter}
@@ -161,10 +165,10 @@ export default function Footer() {
                           :
                             <ListItem className={classes.iconCollection}>
                               <a href={linkObj.facebook} target='_blank' rel='noopener noreferrer'>
-                                <Facebook/>
+                                <FacebookIcon/>
                               </a>
                               <a href={linkObj.twitter} target='_blank' rel='noopener noreferrer'>
-                                <Twitter/>
+                                <TwitterIcon/>
                               </a>
                             </ListItem>
                         )
