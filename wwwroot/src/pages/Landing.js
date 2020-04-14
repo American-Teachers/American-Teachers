@@ -10,12 +10,12 @@ import Button from '@material-ui/core/Button';
 import Layout from '../components/Layout';
 import { makeStyles } from '@material-ui/core/styles';
 
-import toolsIcon from '../../public/landing-tools-icon.svg';
-import accessIcon from '../../public/landing-access-icon.svg';
-import laptopIcon from '../../public/landing-laptop-icon.svg';
-import triangleChild from '../img/landing/triangle-child.jpg';
-import squareChild from '../img/landing/square-child.jpg';
-import circleChild from '../img/landing/circle-child.jpg';
+import toolsIcon from '../../public/landing-icon-tools.svg';
+import accessIcon from '../../public/landing-icon-access.svg';
+import laptopIcon from '../../public/landing-icon-laptop.svg';
+import triangleChild from '../../public/landing-trianglechild.jpg';
+import squareChild from '../../public/landing-squarechild.jpg';
+import circleChild from '../../public/landing-circlechild.jpg';
 
 const landingHomeData = {
   title: "Learning can't stop.",
@@ -87,7 +87,7 @@ const useStyles = makeStyles((theme) => ({
     position: 'relative',
     top: -theme.spacing(56),
     left: theme.spacing(53),
-    clipPath: 'polygon(50% 22%, 3% 76%, 97% 76%)'
+    clipPath: 'polygon(50% 22%, 3% 76%, 97% 76%)',
   },
   landingHomeCircleChild: {
     width: '233px',
@@ -95,7 +95,8 @@ const useStyles = makeStyles((theme) => ({
     position: 'relative',
     top: -theme.spacing(67),
     left: theme.spacing(52),
-    clipPath: 'circle(116px at 50% 66%)'
+    clipPath: 'circle(116px at 50% 66%)',
+    filter: 'brightness(140%) contrast(68%) saturate(128%)'
   },
   landingHomeSquareChild: {
     width: '345px',
@@ -103,7 +104,8 @@ const useStyles = makeStyles((theme) => ({
     position: 'relative',
     top: -theme.spacing(33.5),
     left: theme.spacing(2.5),
-    clipPath: 'polygon(11% 0%, 11% 100%, 76% 100%, 76% 0%)'
+    clipPath: 'polygon(11% 0%, 11% 100%, 76% 100%, 76% 0%)',
+    filter: 'brightness(135%) contrast(90%) saturate(90%) opacity(87%)'
   },
 
   

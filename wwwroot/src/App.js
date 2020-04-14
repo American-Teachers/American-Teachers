@@ -49,15 +49,15 @@ const theme = createMuiTheme({
   palette: {
     primary: { 
       main: '#FF6E4E',
-      textPrimary: '#5F5F5F',
+      textPrimary: '#8B8B8B',
       contrastText: "white" // this will set button's texts to white
     },
-    secondary: {main: '#5F5F5F'},
+    secondary: {main: '#8B8B8B'},
     background: {
       default: '#FFFFFF'
     },
     text: {
-      primary: '#5F5F5F'
+      primary: '#8B8B8B'
     }
   },
   status: {
