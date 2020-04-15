@@ -87,6 +87,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: '#33476A',
     color: 'white',
     padding: `${theme.spacing(12)}px ${theme.spacing(11.5)}px 0 0`,
+    overflowX: 'hidden'
   },
   logoContainer: {textAlign: 'center', paddingLeft: theme.spacing(2)},
   listsContainer: {paddingLeft: theme.spacing(8)},
