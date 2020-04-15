@@ -43,13 +43,17 @@ const featureCollectionData = {
   ]
 };
 
+const shapeChildBreakpoint = 870;
+
 const useStyles = makeStyles((theme) => ({
   root: {},
   landingHomeRoot: {
     minHeight: '86vh',
     height: 'fit-content',
     paddingTop: theme.spacing(33),
-    paddingLeft: theme.spacing(1)
+    paddingLeft: theme.spacing(1),
+    overflow: 'hidden',
+    position: 'relative'
   },
   landingHomeCopyContainer: {
     width: theme.spacing(55),
@@ -67,6 +71,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(3),
     justifyContent: 'flex-end',
   
+    // Each button
     '& a': {
       width: theme.spacing(20.25),
       height: theme.spacing(5.25),
@@ -84,59 +89,69 @@ const useStyles = makeStyles((theme) => ({
   landingHomeTriangleChild: {
     width: '262px',
     height: '411.28px',
-    position: 'relative',
-    top: -theme.spacing(56),
-    left: theme.spacing(53),
+    position: 'absolute',
+    top: -theme.spacing(0),
+    left: theme.spacing(0),
     clipPath: 'polygon(50% 22%, 3% 76%, 97% 76%)',
+    [theme.breakpoints.down(shapeChildBreakpoint)]: {display: 'none'}
   },
   landingHomeCircleChild: {
     width: '233px',
     height: '350px',
-    position: 'relative',
-    top: -theme.spacing(67),
-    left: theme.spacing(52),
+    position: 'absolute',
+    top: -theme.spacing(0),
+    left: theme.spacing(0),
     clipPath: 'circle(116px at 50% 66%)',
-    filter: 'brightness(140%) contrast(68%) saturate(128%)'
+    filter: 'brightness(140%) contrast(68%) saturate(128%)',
+    [theme.breakpoints.down(shapeChildBreakpoint)]: {display: 'none'}
   },
   landingHomeSquareChild: {
     width: '345px',
     height: '233.09px',
-    position: 'relative',
-    top: -theme.spacing(33.5),
-    left: theme.spacing(2.5),
+    position: 'absolute',
+    top: -theme.spacing(0),
+    left: theme.spacing(0),
     clipPath: 'polygon(11% 0%, 11% 100%, 76% 100%, 76% 0%)',
-    filter: 'brightness(135%) contrast(90%) saturate(90%) opacity(87%)'
+    filter: 'brightness(135%) contrast(90%) saturate(90%) opacity(87%)',
+    [theme.breakpoints.down(shapeChildBreakpoint)]: {display: 'none'}
   },
 
   
   featureCollectionRoot: {
-    height: '86vh',
+    minHeight: '86vh',
     paddingTop: theme.spacing(6)
   },
   featureCollectionContainer: {
     textAlign: 'center',
-    [theme.breakpoints.down('lg')]: {
-      padding: '0 10%'
-    }
+    marginBottom: theme.spacing(20),
+    padding: '0 5%',
+    [theme.breakpoints.only('md')]: {padding: '0 10%'},
+    [theme.breakpoints.down('sm')]: {padding: '0 20%'}
   },
   featureCollectionTitle: {
     fontSize: '32px',
     fontWeight: 600,
-    marginBottom: theme.spacing(9)
+    marginBottom: theme.spacing(9),
+    [theme.breakpoints.down('sm')]: {marginBottom: theme.spacing(6)},
   },
   featureCollectionItemBox: {
-    width: theme.spacing(48),
-    margin: 0,
+    margin: `0 auto ${theme.spacing(8)}px`,
+    [theme.breakpoints.up('lg')]: {maxWidth: theme.spacing(45)},
 
+    // title of feature
     '& h3': {
       fontSize: '24px',
       fontWeight: 600,
       marginBottom: theme.spacing(1)
     },
+
+    // copy in feature
     '& p': {
       fontSize: '18px',
       lineHeight: '25px'
     },
+
+    // last feature
     '&:last-child > div': {
       width: theme.spacing(16),
       position: 'relative',
@@ -197,8 +212,8 @@ function LandingHome() {
       </Container>
 
       <img src={triangleChild} alt='child reading' className={classes.landingHomeTriangleChild}/>
-      <img src={circleChild} alt='child at computer' className={classes.landingHomeCircleChild}/>
-      <img src={squareChild} alt='child reading tablet' className={classes.landingHomeSquareChild}/>
+      {/* <img src={circleChild} alt='child at computer' className={classes.landingHomeCircleChild}/>
+      <img src={squareChild} alt='child reading tablet' className={classes.landingHomeSquareChild}/> */}
 
     </Container>
   )
@@ -229,8 +244,8 @@ export function FeatureCollection() {
               item
               key={index} 
               className={classes.featureCollectionItemBox}
-              xs={12}
-              sm={4}
+              sm={12}
+              md={4}
             >
               <Box className={classes.featureCollectionImgContainer}>
                 <img src={i.img}/>
