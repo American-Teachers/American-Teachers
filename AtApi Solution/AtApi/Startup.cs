@@ -10,7 +10,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-
+using AtApi.Data;
+using Microsoft.EntityFrameworkCore;
+using AtApi.Models;
+using Microsoft.AspNetCore.Identity;
+using System.Reflection;
 
 namespace AtApi
 {
@@ -22,16 +26,15 @@ namespace AtApi
             _webHostingEnvironment = env;
             Configuration = configuration;
             // In ASP.NET Core 3.0 `env` will be an IWebHostingEnvironment, not IHostingEnvironment.
+            var appAssembly = Assembly.Load(new AssemblyName(env.ApplicationName));
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
-                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+                .AddUserSecrets(appAssembly, false)
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
             this.Configuration = builder.Build();
-        }
-       
-
-        public ILifetimeScope AutofacContainer { get; private set; }
+        }       
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -40,14 +43,29 @@ namespace AtApi
             services.AddDependencyInjection(Configuration);
             services.AddOptions();
             services.AddLogging();
-           
-            services.AddControllers();
 
-            services.AddMvc();
-           
+            services.AddDbContext<ApplicationDbContext>(options =>
+              options.UseMySql(Configuration.GetConnectionString("AmericanTeachers")));
+
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
+
+            services.AddAuthentication().AddGoogle(googleOptions =>
+            {
+                googleOptions.ClientId = Configuration["Authentication:Google:ClientId"];
+                googleOptions.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
+            });
+
+
+            services.AddControllers().ConfigureApiBehaviorOptions(a => a.SuppressMapClientErrors = true);
+            services.AddControllersWithViews();
+            services.AddRazorPages();
+            services.AddMvc().SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Latest);
+
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "American Teachers", Version = "v1" });
             });
         }
 
@@ -69,15 +87,23 @@ namespace AtApi
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseDatabaseErrorPage();
             }
-
-            app.UseRouting();
-
-            app.UseAuthorization();
-
-            app.UseEndpoints(endpoints =>
+            else
             {
-                endpoints.MapControllers();
+                app.UseExceptionHandler("/Home/Error");
+            }
+            app.UseStaticFiles();
+            app.UseRouting();
+            app.UseAuthorization();
+            app.UseAuthentication();
+
+            app.UseEndpoints(e =>
+            {
+                e.MapControllers();
+                e.MapDefaultControllerRoute();
+                e.MapRazorPages();
+                e.MapControllers();
             });
 
             app.UseSwagger();

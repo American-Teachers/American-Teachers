@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AtApi.Controllers
 {
+
     [Route("api/[controller]")]
     [ApiController]
     public class ClassController : ControllerBase
@@ -26,7 +27,7 @@ namespace AtApi.Controllers
         // GET: api/Class/5
         [HttpGet()]
         [Route("{id}")]
-        public ClassModel Get(int id)
+        public ClassModel GetClass(int id)
         {
             return _factory.GetOne(id);
         }
@@ -34,7 +35,7 @@ namespace AtApi.Controllers
         // POST: api/Class
         [HttpPost]
         [Route("")]
-        public ClassModel Post([FromBody] ClassModel model)
+        public ClassModel PostClass([FromBody] ClassModel model)
         {
             return _factory.Update(model);
         }
@@ -42,7 +43,7 @@ namespace AtApi.Controllers
         // PUT: api/Class/5
         [HttpPut]
         [Route("{id}")]
-        public ClassModel Put(int id, [FromBody] ClassModel model)
+        public ClassModel PutClassModel(int id, [FromBody] ClassModel model)
         {
             return _factory.Create(model);
         }

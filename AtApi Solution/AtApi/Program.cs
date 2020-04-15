@@ -18,20 +18,12 @@ namespace AtApi
             CreateHostBuilder(args).Build().Run();
         }
 
-        public static IHostBuilder CreateHostBuilder(string[] args)
-        {
-            var config = new ConfigurationBuilder().AddCommandLine(args).Build();
-            return Host.CreateDefaultBuilder(args)
-                .UseServiceProviderFactory(new AutofacServiceProviderFactory())
-
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    //webBuilder.UseKestrel();
-                    webBuilder.UseContentRoot(Directory.GetCurrentDirectory());
-                    webBuilder.UseConfiguration(config);
-                    webBuilder.UseIISIntegration();
-                    webBuilder.UseStartup<Startup>();
-                });
-        }
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+            .ConfigureWebHostDefaults(webBuilder =>
+            {
+                webBuilder.ConfigureKestrel(options => { });
+                webBuilder.UseStartup<Startup>();
+            });
     }
 }
