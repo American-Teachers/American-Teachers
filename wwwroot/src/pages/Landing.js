@@ -179,7 +179,7 @@ function LandingHome() {
             color='primary'
             component={RouterLink}
             to='/why-us'
-            classes={{root: classes.landingHomeButtonLabel}}
+            classes={{label: classes.landingHomeButtonLabel}}
           >
             Learn more
           </Button>
@@ -189,7 +189,7 @@ function LandingHome() {
             color='primary'
             component={RouterLink}
             to='/signin'
-            classes={{root: classes.landingHomeButtonLabel}}
+            classes={{label: classes.landingHomeButtonLabel}}
           >
             Get Started
           </Button>
