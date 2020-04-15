@@ -52,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
     height: 'fit-content',
     paddingTop: theme.spacing(33),
     paddingLeft: theme.spacing(1),
-    overflow: 'hidden',
+    // overflow: 'hidden',
     position: 'relative'
   },
   landingHomeCopyContainer: {
@@ -86,34 +86,54 @@ const useStyles = makeStyles((theme) => ({
     letterSpacing: '0.05em'
   },
 
+  smMediaImgContainer: {
+    [theme.breakpoints.down(shapeChildBreakpoint)]: {
+      position: 'relative',
+      width: '100%',
+      minHeight: theme.spacing(100),
+      marginBottom: theme.spacing(8),
+      textAlign: 'center',
+      '& div img': {position: 'static'}
+    }
+  },
   landingHomeTriangleChild: {
     width: '262px',
     height: '411.28px',
     position: 'absolute',
-    top: -theme.spacing(0),
-    left: theme.spacing(0),
+    top: -theme.spacing(2),
+    left: theme.spacing(54),
     clipPath: 'polygon(50% 22%, 3% 76%, 97% 76%)',
-    [theme.breakpoints.down(shapeChildBreakpoint)]: {display: 'none'}
+    
+    [theme.breakpoints.down(shapeChildBreakpoint)]: {
+      marginTop: theme.spacing(5)
+    },
   },
   landingHomeCircleChild: {
     width: '233px',
     height: '350px',
     position: 'absolute',
-    top: -theme.spacing(0),
-    left: theme.spacing(0),
+    top: -theme.spacing(5.5),
+    left: theme.spacing(86.5),
     clipPath: 'circle(116px at 50% 66%)',
     filter: 'brightness(140%) contrast(68%) saturate(128%)',
-    [theme.breakpoints.down(shapeChildBreakpoint)]: {display: 'none'}
+    
+    [theme.breakpoints.down(shapeChildBreakpoint)]: {
+      marginTop: -theme.spacing(20)
+    },
   },
   landingHomeSquareChild: {
     width: '345px',
     height: '233.09px',
     position: 'absolute',
-    top: -theme.spacing(0),
-    left: theme.spacing(0),
+    top: theme.spacing(42.5),
+    left: theme.spacing(65.5),
     clipPath: 'polygon(11% 0%, 11% 100%, 76% 100%, 76% 0%)',
     filter: 'brightness(135%) contrast(90%) saturate(90%) opacity(87%)',
-    [theme.breakpoints.down(shapeChildBreakpoint)]: {display: 'none'}
+    
+    [theme.breakpoints.down(shapeChildBreakpoint)]: {
+      marginTop: theme.spacing(7),
+      marginLeft: '8%'
+    },
   },
 
   
@@ -211,9 +231,17 @@ function LandingHome() {
         </Box>
       </Container>
 
-      <img src={triangleChild} alt='child reading' className={classes.landingHomeTriangleChild}/>
-      {/* <img src={circleChild} alt='child at computer' className={classes.landingHomeCircleChild}/>
-      <img src={squareChild} alt='child reading tablet' className={classes.landingHomeSquareChild}/> */}
+      <Box className={classes.smMediaImgContainer}>
+        <div>
+          <img src={triangleChild} alt='child reading' className={classes.landingHomeTriangleChild}/>
+        </div>
+        <div>
+          <img src={circleChild} alt='child at computer' className={classes.landingHomeCircleChild}/>
+        </div>
+        <div>
+          <img src={squareChild} alt='child reading tablet' className={classes.landingHomeSquareChild}/>
+        </div>
+      </Box>
 
     </Container>
   )
