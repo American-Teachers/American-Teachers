@@ -62,7 +62,7 @@ namespace AtApi.Controllers
             {
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
-                var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
+                var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, false, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
@@ -70,7 +70,7 @@ namespace AtApi.Controllers
                 }
                 if (result.RequiresTwoFactor)
                 {
-                    return RedirectToAction(nameof(LoginWith2fa), new { returnUrl, model.RememberMe });
+                    return RedirectToAction(nameof(LoginWith2fa), new { returnUrl, RememberMe = false});
                 }
                 if (result.IsLockedOut)
                 {
@@ -303,7 +303,7 @@ namespace AtApi.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> ExternalLoginConfirmation(ExternalLoginViewModel model, string returnUrl = null)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && model.AgreeToTermsAndCondition)
             {
                 // Get the information about the user from the external login provider
                 var info = await _signInManager.GetExternalLoginInfoAsync();
@@ -312,6 +312,9 @@ namespace AtApi.Controllers
                     throw new ApplicationException("Error loading external login information during confirmation.");
                 }
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                user.FirstName = model.FirstName;
+                user.LastName = model.LastName;
+                user.AgreeToTermsAndCondition = model.AgreeToTermsAndCondition;
                 var result = await _userManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
