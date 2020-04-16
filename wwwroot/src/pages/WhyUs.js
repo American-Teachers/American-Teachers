@@ -64,10 +64,9 @@ const useStyles = makeStyles((theme) => ({
   },
 
   mainSection: {
-    position: 'static',
-    backgroundColor: 'pink',
-    margin: `${theme.spacing(8)}px 0 0`,
-    padding: `${theme.spacing(3)}px ${theme.spacing(9.5)}px`
+    width: '100%',
+    margin: `${theme.spacing(8)}px 0 ${theme.spacing(19.5)}px`,
+    padding: `${theme.spacing(2.5)}px ${theme.spacing(11.5)}px`
   },
   mainCopyBold: {
     '& span.boldMe': {
@@ -75,11 +74,22 @@ const useStyles = makeStyles((theme) => ({
     }
   },
   mainCopy: {
-    '& span.orangeMe': {color: theme.palette.primary.main},
-    '& span.boldMe': {fontWeight: 800}
+    fontSize: '18px',
+    lineHeight: '35px',
+    paddingRight: theme.spacing(8),
+
+    '& span.orangeMe': {
+      fontSize: '32px',
+      lineHeight: '45px',
+      color: theme.palette.primary.main,
+      fontWeight: 600,
+      '& span.boldMe': {fontWeight: 800}
+    },
   },
   copyImg: {
-
+    backgroundImage: `url("${gettingImg}")`,
+    width: '100%',
+    height: theme.spacing(50)
   }
 }))
 
@@ -129,17 +139,17 @@ export default function WhyUs() {
 
         <Divider/>
         
-        <Grid container className={classes.mainSection} spacing={4}>
-          <Grid item sm={6}>
-          
+        <Grid container className={classes.mainSection} alignItems='center'>
+          <Grid item md={7} sm={12}>
+
             <Typography className={classes.mainCopy}>
               <BoldCopy string={whyUsData.bodyCopy.bold}/>
-              &nbsp;
+              &nbsp;&nbsp;
               {whyUsData.bodyCopy.body}
             </Typography>
           </Grid>
 
-          <Grid item sm={6}>
+          <Grid item md={5} sm={12}>
             <div className={classes.copyImg}/>
           </Grid>
         </Grid>
