@@ -1,5 +1,3 @@
-using System;
-
 namespace AtApi.Models
 {
     public class ErrorViewModel

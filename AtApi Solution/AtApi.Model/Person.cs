@@ -4,10 +4,8 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace AtApi.Model
 {
-    public class Person : Person<int>, IEquatable<int>
-    {
-    }
-    public class Person<TKey> where TKey : IEquatable<TKey>
+    
+    public class Person 
     {
         [Key]
         public int Id { get; set; }

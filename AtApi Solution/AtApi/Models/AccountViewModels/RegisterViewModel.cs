@@ -32,5 +32,5 @@ namespace AtApi.Models.AccountViewModels
 
         [Required]
         public bool AgreeToTermsAndCondition { get; set; }
-      }
+    }
 }

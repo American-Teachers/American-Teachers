@@ -3,8 +3,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace AtApi.Model
 {
-    public class Subject : Subject<int> { }
-    public class Subject<TKey> where TKey : IEquatable<TKey>
+   
+    public class Subject 
     {
         [Key]
         public int Id { get; set; }

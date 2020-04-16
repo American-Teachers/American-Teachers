@@ -20,17 +20,11 @@ namespace AtApi.Model
        TuTh
     }
 
-    public class ScheduleDay : ScheduleDay<int>, IEquatable<int>
-    {
-        public bool Equals([AllowNull] int other)
-        {
-            return Id.Equals(other);
-        }
-    }
-    public class ScheduleDay<TKey> where TKey : IEquatable<TKey>
+    
+    public class ScheduleDay
     {
         [Key]
-        public TKey Id { get; set; }
+        public int Id { get; set; }
         [Required]
         public string Name { get; set; }
 

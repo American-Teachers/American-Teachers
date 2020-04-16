@@ -1,10 +1,9 @@
-﻿using AtApi.Framework;
-using AtApi.Adapter;
+﻿using AtApi.Adapter;
+using AtApi.Framework;
 using AtApi.Model;
 using AtApi.Service;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using CDBLSA.Dependency;
 
 
 namespace AtApi.Dependency

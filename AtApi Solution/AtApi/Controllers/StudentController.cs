@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-using AtApi.Model;
+﻿using AtApi.Model;
 using AtApi.Service;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace AtApi.Controllers
 {
@@ -21,7 +21,7 @@ namespace AtApi.Controllers
         {
             return _factory.GetAll();
         }
- 
+
 
         // GET: api/Student/5
         [HttpGet]

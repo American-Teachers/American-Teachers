@@ -5,8 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AtApi.Adapter\AtApi.Adapter.csproj" />
-    <ProjectReference Include="..\AtApi.Framework\AtApi.Framework.csproj" />
     <ProjectReference Include="..\AtApi.Model\AtApi.Model.csproj" />
   </ItemGroup>
 

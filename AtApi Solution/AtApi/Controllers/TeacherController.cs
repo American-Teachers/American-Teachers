@@ -15,7 +15,7 @@ namespace AtApi.Controllers
         {
             _factory = factory;
         }
-        
+
 
         // GET: api/Teacher
         [HttpGet]

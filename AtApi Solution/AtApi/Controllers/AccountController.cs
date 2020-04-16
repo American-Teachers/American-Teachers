@@ -1,19 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
+﻿using AtApi.Extensions;
+using AtApi.Framework;
+using AtApi.Models;
+using AtApi.Models.AccountViewModels;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using AtApi.Models;
-using AtApi.Models.AccountViewModels;
-using AtApi.Services;
-using AtApi.Framework;
+using System;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace AtApi.Controllers
 {
@@ -70,7 +66,7 @@ namespace AtApi.Controllers
                 }
                 if (result.RequiresTwoFactor)
                 {
-                    return RedirectToAction(nameof(LoginWith2fa), new { returnUrl, RememberMe = false});
+                    return RedirectToAction(nameof(LoginWith2fa), new { returnUrl, RememberMe = false });
                 }
                 if (result.IsLockedOut)
                 {

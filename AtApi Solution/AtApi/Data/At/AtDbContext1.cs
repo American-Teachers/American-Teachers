@@ -1,24 +1,24 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AtApi.Model;
+using Microsoft.EntityFrameworkCore;
 using System;
-using AtApi.Model;
 
 namespace AtApi.Adapter.At
 {
-    public class AtDbContext : DbContext
+    public class AtDbContext1 : DbContext
     {
         private readonly string _connectionString;
 
-        public AtDbContext()
+        public AtDbContext1()
         {
 
         }
 
-        public AtDbContext(DbContextOptions<AtDbContext> options) : base(options)
+        public AtDbContext1(DbContextOptions<AtDbContext1> options) : base(options)
         {
 
         }
 
-        public AtDbContext(string connectionString)
+        public AtDbContext1(string connectionString)
         {
             if (string.IsNullOrEmpty(connectionString))
             {
@@ -35,7 +35,7 @@ namespace AtApi.Adapter.At
             {
                 optionsBuilder.UseMySql(_connectionString);
             }
-           
+
         }//
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -46,7 +46,7 @@ namespace AtApi.Adapter.At
             {
                 modelBuilder.Entity<ScheduleDay>().HasData(new ScheduleDay { Id = (int)item, Name = nameof(item) });
             }
-           
+
         }
 
 

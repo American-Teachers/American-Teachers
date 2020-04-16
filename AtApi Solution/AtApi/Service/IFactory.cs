@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace AtApi.Service
 {
-    public interface IFactory<T> where T : IEquatable<int>
+    public interface IFactory<T> where T : class
     {
 
         T GetOne(int id);

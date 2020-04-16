@@ -1,19 +1,19 @@
+using AtApi.Data;
 using AtApi.Dependency;
+using AtApi.Model.Settings;
+using AtApi.Models;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.Options;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.OpenApi.Models;
-using AtApi.Data;
-using Microsoft.EntityFrameworkCore;
-using AtApi.Models;
-using Microsoft.AspNetCore.Identity;
-using System.Reflection;
-using System;
-using AtApi.Model.Settings;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
+using Microsoft.OpenApi.Models;
+using System;
+using System.Reflection;
 
 namespace AtApi
 {

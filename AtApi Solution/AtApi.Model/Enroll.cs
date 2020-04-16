@@ -4,8 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace AtApi.Model
 {
-    public class Enrollment : Enrollment<int>, IEquatable<int> { };
-    public class Enrollment<TKey> where TKey : IEquatable<TKey>
+    public class Enrollment 
     {
         [Key]
         public int Id { get; set; }

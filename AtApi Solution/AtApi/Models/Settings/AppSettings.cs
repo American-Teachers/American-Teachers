@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace AtApi.Model.Settings
+﻿namespace AtApi.Model.Settings
 {
     public class AppSettings
     {

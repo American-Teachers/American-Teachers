@@ -3,11 +3,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace AtApi.Model
 {
-    public class Schedule : Schedule<int>
-    {
-
-    }
-    public class Schedule<TKey> where TKey : IEquatable<TKey>
+    
+    public class Schedule
     {
         [Key]
         public int Id { get; set; }

@@ -1,7 +1,7 @@
-﻿using System;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Scrutor;
-namespace CDBLSA.Dependency
+using System;
+namespace AtApi.Dependency
 {
     public static class DependencyFactory
     {
