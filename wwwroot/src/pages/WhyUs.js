@@ -70,67 +70,43 @@ const useStyles = makeStyles((theme) => ({
     padding: `${theme.spacing(3)}px ${theme.spacing(9.5)}px`
   },
   mainCopyBold: {
-    '& span': {
-      fontWeight: 'bold'
+    '& span.boldMe': {
+      fontWeight: 800
     }
   },
-  mainCopyBody: {
-
+  mainCopy: {
+    '& span.orangeMe': {color: theme.palette.primary.main},
+    '& span.boldMe': {fontWeight: 800}
   },
   copyImg: {
 
   }
 }))
 
-function BoldCopy({string, classes}) {
+function BoldCopy({string}) {
   
-  // check to see if any words in the string are wrapped in underscores
-  if (string.match(/_\S+_/gi).length > 0) {
-    
-    // split string by underscored words, also capturing underscored words, into array
-    const separatedString = string.split(/(_\S+_)/);
-
-    return (
-      <Typography className={classes.mainCopyBold}>
-        {
-          separatedString.map(string => (
-            string[0]!=='_' ?
-              string
+  return (
+    <span className='orangeMe'>
+      {
+        // check to see if any words in the string are wrapped in underscores
+        string.match(/_\S+_/gi).length === 0 ? 
+          // if no underscored words, treat everything as normal
+          string
+        :
+          // split string by underscored words, also capturing underscored words, into array
+          string.split(/(_\S+_)/).map((segment, index) => (
+            segment[0] !== '_' ? 
+              // return non-underscored strings as normal
+              segment
             :
-              (<span>
-                {string.slice(1, -1)}
+              // return underscored words in a span container
+              (<span className='boldMe' key={index}>
+                {segment.slice(1, -1)}
               </span>)
           ))
-        }
-      </Typography>
-    )
-
-  // if no underscored words, treat everything as normal
-  } else {
-    return (
-      <Typography className={classes.mainCopyBold}>
-        {string}
-      </Typography>  
-    )
-  }
-
-  // return (
-  //   <Typography className={classes.mainCopyBold}>
-  //     {
-  //       string.match(/_\S+_/gi).length === 0 ? 
-  //         string
-  //       :
-  //         string.split(/(_\S+_)/).map(segment => (
-  //           segment[0] !== '_' ? 
-  //             segment
-  //           :
-  //             (<span>
-  //               {segment.slice(1, -1)}
-  //             </span>)
-  //         ))
-  //     }
-  //   </Typography>
-  // )
+      }
+    </span>
+  )
 }
 
 export default function WhyUs() {
@@ -155,10 +131,11 @@ export default function WhyUs() {
         
         <Grid container className={classes.mainSection} spacing={4}>
           <Grid item sm={6}>
-            <BoldCopy string={whyUsData.bodyCopy.bold} classes={classes}/>
-
-            <Typography>
-
+          
+            <Typography className={classes.mainCopy}>
+              <BoldCopy string={whyUsData.bodyCopy.bold}/>
+              &nbsp;
+              {whyUsData.bodyCopy.body}
             </Typography>
           </Grid>
 
