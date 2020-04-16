@@ -1,55 +1,58 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using AtApi.Model;
 using AtApi.Service;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AtApi.Controllers
 {
-
     [Route("api/[controller]")]
     [ApiController]
-    public class ClassController : ControllerBase
+    public class ParentController : ControllerBase
     {
-
-        private readonly IFactory<Class> _factory;
-        public ClassController(IFactory<Class> factory)
+        private readonly IFactory<Parent> _factory;
+        public ParentController(IFactory<Parent> factory)
         {
             _factory = factory;
         }
-        // GET: api/Class
+        // GET: api/Parent
         [HttpGet]
         [Route("")]
-        public IEnumerable<Class> GetAll()
+        public IEnumerable<Parent> GetAll()
         {
             return _factory.GetAll();
         }
 
-        // GET: api/Class/5
-        [HttpGet()]
+
+        // GET: api/Parent/5
+        [HttpGet]
         [Route("{id}")]
-        public Class GetClass(int id)
+        public Parent Get(int id)
         {
             return _factory.GetOne(id);
         }
 
-        // POST: api/Class
+        // POST: api/Parent
         [HttpPost]
         [Route("")]
-        public Class PostClass([FromBody] Class model)
+        public Parent Post([FromBody] Parent model)
         {
             return _factory.Update(model);
         }
 
-        // PUT: api/Class/5
+        // PUT: api/Parent/5
         [HttpPut]
         [Route("{id}")]
-        public Class PutClassModel(int id, [FromBody] Class model)
+        public Parent Put(int id, [FromBody] Parent model)
         {
             return _factory.Create(model);
         }
 
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete]
+        // DELETE: api/Parent/5
+        [HttpDelete()]
         [Route("{id}")]
         public void Delete(int id)
         {

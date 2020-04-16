@@ -10,7 +10,7 @@ namespace AtApi.Controllers
         // GET: api/Student/5
         [HttpPut]
         [Route("")]
-        public string Post(EnrollModel enrollModel)
+        public string Post(Enrollment enrollModel)
         {
             return "value";
         }

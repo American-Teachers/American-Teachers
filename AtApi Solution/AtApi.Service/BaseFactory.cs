@@ -1,9 +1,10 @@
 ﻿using AtApi.Adapter;
+using System;
 using System.Collections.Generic;
 
 namespace AtApi.Service
 {
-    public abstract class BaseFactory<T,A> : IFactory<T> where T: class where A: IBaseAdapter<T>
+    public abstract class BaseFactory<T,A> : IFactory<T> where T: class, IEquatable<int> where A: IBaseAdapter<T>
     {
         public BaseFactory(A adapter)
         {

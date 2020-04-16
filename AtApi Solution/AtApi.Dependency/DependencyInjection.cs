@@ -14,9 +14,9 @@ namespace AtApi.Dependency
         public static IServiceCollection AddDependencyInjection(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddTransient(c => configuration);
-            services.ScanTransient<IBaseAdapter<EnrollModel>>();
-            services.ScanTransient<IFactory<EnrollModel>>();
-            services.ScanTransient<ClassModel>();
+            services.ScanTransient<IBaseAdapter<Enrollment>>();
+            services.ScanTransient<IFactory<Enrollment>>();
+            services.ScanTransient<Class>();
             services.ScanTransient<IEmailSender>();
             //Overrides          
             //services.AddScoped<ISharedServiceFactory, SharedServiceFactory>();

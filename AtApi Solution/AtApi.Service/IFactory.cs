@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace AtApi.Service
 {
-    public interface IFactory<T> where T : class
+    public interface IFactory<T> where T : IEquatable<int>
     {
 
         T GetOne(int id);

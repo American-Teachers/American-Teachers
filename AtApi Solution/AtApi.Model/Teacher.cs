@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace AtApi.Model
 {
-    public class AppSettings
+    public class Teacher : Person
     {
+        public List<School> Schools { get; set; }
     }
 }
