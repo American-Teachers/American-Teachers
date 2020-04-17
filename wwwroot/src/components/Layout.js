@@ -1,4 +1,5 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
@@ -12,9 +13,13 @@ import Footer from './Footer';
 //   root:{}
 // }))
 
+const footerVisiblePages = ['/', '/why-us'];
+const signedIn = false;
+
 export default function Layout({footerHidden, children}) {
   // const classes = useStyles();
-
+  let location = useLocation();
+  
   return (
     <Container 
       // className={classes.root}
@@ -23,11 +28,11 @@ export default function Layout({footerHidden, children}) {
     >
       <CssBaseline/>
 
-      <Header />
+      <Header signedIn={signedIn} locationPathname={location.pathname}/>
 
       {children}
       
-      {footerHidden ? <></> : <Footer />}
+      {footerVisiblePages.includes(location.pathname) ? <Footer /> : <></>}
 
     </Container>
   )

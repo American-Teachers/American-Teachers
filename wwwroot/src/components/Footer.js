@@ -192,10 +192,7 @@ export default function Footer() {
             )
           }
         </Grid>
-
-
       </Grid>
-
     </Container>
   )
 }
