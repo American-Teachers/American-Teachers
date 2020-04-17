@@ -14,7 +14,7 @@ import Footer from './Footer';
 // }))
 
 const footerVisiblePages = ['/', '/why-us'];
-const signedIn = false;
+const signedIn = true;
 
 export default function Layout({footerHidden, children}) {
   // const classes = useStyles();

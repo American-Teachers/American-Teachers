@@ -8,6 +8,10 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Link from '@material-ui/core/Link';
 import Button from '@material-ui/core/Button';
 
+import IconButton from '@material-ui/core/IconButton';
+import userIcon from '../../public/header-icon-user.svg';
+import hamburger from '../../public/header-icon-hamburger.svg'
+
 import { makeStyles } from '@material-ui/core/styles';
 
 const headerData = {
@@ -63,6 +67,7 @@ const useStyles = makeStyles((theme) => ({
       }
     }
   },
+
   buttonSign: {
     width: theme.spacing(14),
     height: theme.spacing(5),
@@ -72,6 +77,36 @@ const useStyles = makeStyles((theme) => ({
   buttonSignLabel: {
     fontSize: '16px',
     fontWeight: '700'
+  },
+
+  hamburgerContainer: {
+    backgroundColor: 'transparent',
+    width: theme.spacing(3.75),
+    height: theme.spacing(2.75),
+    margin: `0 ${theme.spacing(2.25)}px 0 ${theme.spacing(1.5)}px`,
+    padding: 0,
+
+    '& img': {
+      height: '100%',
+      width: '100%',
+      position: 'relative',
+      top: -theme.spacing(0.25)
+    }
+  },
+
+  userIconContainer: {
+    backgroundColor: 'transparent',
+    margin: `0 ${theme.spacing(1)}px 0 ${theme.spacing(2)}px`,
+    height: theme.spacing(3.75),
+    width: theme.spacing(3.75),
+    padding: 0,
+
+    '& img': {
+      height: '100%',
+      width: '100%',
+      position: 'relative',
+      top: '16%'
+    }
   }
 }));
 
@@ -145,6 +180,24 @@ function SignInButonGroup() {
   )
 }
 
+function Hamburger() {
+  const classes = useStyles();
+  return (
+    <IconButton className={classes.hamburgerContainer}>
+      <img src={hamburger} />
+    </IconButton>
+  )
+}
+
+function UserIcon() {
+  const classes = useStyles();
+  return (
+    <IconButton className={classes.userIconContainer}>
+      <img src={userIcon} />
+    </IconButton>
+  )
+}
+
 export default function Header({ signedIn, locationPathname }) {
   const classes = useStyles();
 
@@ -152,13 +205,19 @@ export default function Header({ signedIn, locationPathname }) {
     <AppBar position='static' elevation={0} className={classes.appbar}>
       <Toolbar className={classes.toolbar}>
 
-        <Logo />
+        <Box display='flex'>
+        
+          { signedIn ? <Hamburger /> : <></> }
+
+          <Logo />
+
+        </Box>
 
         <Box className={classes.buttonCollection} >
 
           { headerData.navbarVisiblePages.includes(locationPathname) ? <NavbarButtons/> : <></> }
 
-          { signedIn ? <div>signedin</div> : <SignInButonGroup/> }
+          { signedIn ? <UserIcon /> : <SignInButonGroup/> }
 
         </Box>
 
