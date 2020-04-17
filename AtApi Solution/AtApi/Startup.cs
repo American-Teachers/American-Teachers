@@ -50,12 +50,6 @@ namespace AtApi
 #pragma warning restore ASP0000 // Do not call 'IServiceCollection.BuildServiceProvider' in 'ConfigureServices'
             var appSettings = _serviceProvider.GetService<IOptions<AppSettings>>().Value;
 
-            services.AddDbContext<ApplicationDbContext>(options =>
-              options.UseMySql(appSettings.ConnectionStrings.AmericanTeachers));
-
-            services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>()
-                .AddDefaultTokenProviders();
             services.ConfigureDataContext(appSettings, MyLoggerFactory);
             services.AddAuthentication().AddGoogle(googleOptions =>
             {

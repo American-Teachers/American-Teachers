@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<modelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="2.0.0.6" Id="cba47279-0950-4257-bb2c-e4d5e72a52a4" entityContainerName="AtDbContext" namespace="AtApi.Model.At" automaticMigrationsEnabled="false" contextOutputDirectory="At" databaseSchema="AmericanTeacher" entityFrameworkVersion="EFCore" connectionStringName="AmericanTeachers" defaultCollectionClass="List" showCascadeDeletes="true" databaseType="None" warnOnMissingDocumentation="false" summary="Model Summary" exposeForeignKeys="true" gridColor="White" xmlns="http://schemas.microsoft.com/dsltools/EFModel">
+  <enums>
+    <modelRootHasEnums Id="21e64777-3edd-429d-b15f-7793498cbfeb">
+      <modelEnum Id="44056904-4f31-4b74-9bac-108d15849cf4" namespace="AtApi.Model" isNamespaceTracking="false" name="ScheduleDays" outputDirectory="At" description="Schedule Days" summary="Schedule Days">
+        <values>
+          <modelEnumHasValues Id="08a6a3f6-e310-4ef9-8eef-f0b92e3f39a1">
+            <modelEnumValue Id="8c8f4716-aab2-44e6-aff7-7fafa1ac8a1d" name="Sunday" value="1" summary="Sunday" displayText="Sunday" />
+          </modelEnumHasValues>
+          <modelEnumHasValues Id="ac4c96a0-8dd2-4231-86b1-5b91c3581a76">
+            <modelEnumValue Id="a1e30198-8662-4d0f-a488-4e0f1f62cde6" name="Monday" value="2" summary="Monday" displayText="Monday" />
+          </modelEnumHasValues>
+          <modelEnumHasValues Id="e2643209-8e9e-42e2-983a-b10f77943a2b">
+            <modelEnumValue Id="86aa6ab7-7b5a-42d4-a496-2a4e2d94ed73" name="Tuesday" value="3" description="Tuesday" summary="Tuesday" displayText="Tuesday" />
+          </modelEnumHasValues>
+          <modelEnumHasValues Id="f0251bf7-22b1-4224-8f9f-0b13faf68aa6">
+            <modelEnumValue Id="54894108-941a-4ac0-a4a4-862519671f85" name="Wednesday" value="4" summary="Wednesday" displayText="Wednesday" />
+          </modelEnumHasValues>
+          <modelEnumHasValues Id="e8094e94-99a4-4b4d-837d-43c48bbfad10">
+            <modelEnumValue Id="43848735-a8dc-48e4-96ea-f7a367342611" name="Thursday" value="5" summary="Thursday" displayText="Thursday" />
+          </modelEnumHasValues>
+          <modelEnumHasValues Id="0ce3a4a2-9da5-49d1-9df2-a0ce6331fb90">
+            <modelEnumValue Id="cbe9f1cd-54ca-488f-ba19-f5c42f548a72" name="Friday" value="6" summary="Friday" displayText="Friday" />
+          </modelEnumHasValues>
+          <modelEnumHasValues Id="d7560c3b-261c-46ed-a8ba-f484e1cd7412">
+            <modelEnumValue Id="3d69de67-7d27-42e0-b877-579eb75c62fc" name="Saturday" value="7" summary="Saturday" displayText="Saturday" />
+          </modelEnumHasValues>
+          <modelEnumHasValues Id="15214bfe-5f2b-470f-be4a-a80a44e4c6cc">
+            <modelEnumValue Id="c465467c-bbb5-4237-9596-37b07d3c8ba8" name="WeekDays" value="8" summary="WeekDays" displayText="WeekDays" />
+          </modelEnumHasValues>
+          <modelEnumHasValues Id="28316989-756b-4325-80c6-e0a52b4039cb">
+            <modelEnumValue Id="a4b1d86e-fa16-4ff9-9b29-1d5c4a3b447a" name="Weekends" value="9" summary="Weekends" displayText="Weekends" />
+          </modelEnumHasValues>
+          <modelEnumHasValues Id="06ef7e43-cb58-4ccb-b649-e077cde049bc">
+            <modelEnumValue Id="51273fa8-b86d-42d9-89be-c0f425b9faff" name="EveryDay" value="10" summary="EveryDay" displayText="EveryDay" />
+          </modelEnumHasValues>
+          <modelEnumHasValues Id="9706aada-08c5-4de6-a3cf-8a3c70de992f">
+            <modelEnumValue Id="285dc72d-ec72-45ab-b6b1-a425d7adc27d" name="MWF" value="11" summary="Monday, Wednesday, Friday" displayText="MWF" />
+          </modelEnumHasValues>
+          <modelEnumHasValues Id="0ee00fe1-9047-4aa2-b86e-9272a45e66e8">
+            <modelEnumValue Id="0b56c5a8-d693-4ef9-8b00-ffea8ef12ccc" name="TuTh" value="12" summary="Tuesday, Thursday" displayText="TuTh" />
+          </modelEnumHasValues>
+        </values>
+      </modelEnum>
+    </modelRootHasEnums>
+  </enums>
+  <classes>
+    <modelRootHasClasses Id="8b17d0d6-2856-4689-9a2d-1d31daa10c04">
+      <modelClass Id="e6725854-9e1a-4c96-99f4-f5a6442747cb" isAbstract="true" tableName="Person" databaseSchema="AmericanTeacher" namespace="AtApi.Model" isNamespaceTracking="false" name="Person" isOutputDirectoryTracking="false" summary="Person">
+        <attributes>
+          <modelAttribute Id="e2c71744-ac10-4a21-932a-f3d2585ece1d" type="Int32" isIdentity="true" required="true" maxLength="" indexed="false" indexedUnique="false" stringType="None" description="Id" summary="Id" name="Id" autoProperty="true" minLength="0" columnName="Id" columnType="default" implementNotify="false" isForeignKeyFor="00000000-0000-0000-0000-000000000000" />
+          <modelAttribute Id="3eba6f2d-def3-425c-914e-f162418ffb1f" required="true" maxLength="-1" indexed="true" indexedUnique="false" stringType="None" summary="Email Address" name="EmailAddress" autoProperty="true" minLength="0" columnName="EmailAddress" columnType="default" implementNotify="false" isForeignKeyFor="00000000-0000-0000-0000-000000000000" />
+          <modelAttribute Id="1f85fd89-9e02-4bf7-9c2b-828c7cfe09bd" required="true" maxLength="-1" indexed="false" indexedUnique="false" stringType="None" summary="First Name" name="FirstName" autoProperty="true" minLength="0" columnName="FirstName" columnType="default" implementNotify="false" isForeignKeyFor="00000000-0000-0000-0000-000000000000" />
+          <modelAttribute Id="7d559c95-e260-4406-8dea-9fa04b42f491" required="true" maxLength="-1" indexed="false" indexedUnique="false" stringType="None" summary="Last Name" name="LastName" autoProperty="true" minLength="0" columnName="LastName" columnType="default" implementNotify="false" isForeignKeyFor="00000000-0000-0000-0000-000000000000" />
+          <modelAttribute Id="bb9275cc-7641-4821-9923-c292efdf50fa" maxLength="-1" indexed="false" indexedUnique="false" stringType="None" summary="Title" name="Title" autoProperty="true" minLength="0" columnName="Title" columnType="default" implementNotify="false" isForeignKeyFor="00000000-0000-0000-0000-000000000000" />
+          <modelAttribute Id="273f33fc-2a11-4daf-85df-9cfa9ee245ad" maxLength="-1" indexed="false" indexedUnique="false" stringType="None" summary="Suffix" name="Suffix" autoProperty="true" minLength="0" columnName="Suffix" columnType="default" implementNotify="false" isForeignKeyFor="00000000-0000-0000-0000-000000000000" />
+          <modelAttribute Id="ae49d356-dcd9-435c-ac04-acb4c93dcaed" maxLength="1000" indexed="false" indexedUnique="false" stringType="None" summary="Preferred Name" name="PreferredName" autoProperty="true" minLength="0" columnName="PreferredName" columnType="default" implementNotify="false" isForeignKeyFor="00000000-0000-0000-0000-000000000000" />
+        </attributes>
+        <subclasses>
+          <generalization Id="460a03fb-a906-41d1-9a12-da54f1ef7369">
+            <modelClassMoniker Id="7d35d6a7-8356-4f43-a596-cada074fd23c" />
+          </generalization>
+          <generalization Id="05c55428-c87f-44c4-a50e-99a1d10420f0">
+            <modelClassMoniker Id="d72e8b1d-0d42-416a-83d4-e49dc856cf8b" />
+          </generalization>
+          <generalization Id="cdbc4778-ab66-4b1c-9322-df27aea52d50">
+            <modelClassMoniker Id="e713b609-86d3-45b5-a327-61dfab0a70b1" />
+          </generalization>
+        </subclasses>
+      </modelClass>
+    </modelRootHasClasses>
+    <modelRootHasClasses Id="b91b37ae-dcc4-4f2e-ad13-cf6c8ddd2fec">
+      <modelClass Id="9888aff2-2c2a-4c98-ac9b-fd48d4ebce79" tableName="School" databaseSchema="AmericanTeacher" namespace="AtApi.Model" isNamespaceTracking="false" dbSetName="Schools" name="School" isOutputDirectoryTracking="false" summary="School">
+        <attributes>
+          <modelAttribute Id="c6327111-e09c-487c-a1c4-b5f0db211fc3" type="Int32" isIdentity="true" required="true" maxLength="-1" indexed="false" indexedUnique="false" stringType="None" summary="Id" name="Id" autoProperty="true" minLength="0" columnName="Id" columnType="default" implementNotify="false" isForeignKeyFor="00000000-0000-0000-0000-000000000000" />
+          <modelAttribute Id="5637f8d4-00c7-4d3f-b054-4acd914fdc76" required="true" maxLength="-1" indexed="false" indexedUnique="false" stringType="None" summary="Name" name="Name" autoProperty="true" minLength="0" columnName="Name" columnType="default" implementNotify="false" isForeignKeyFor="00000000-0000-0000-0000-000000000000" />
+        </attributes>
+      </modelClass>
+    </modelRootHasClasses>
+    <modelRootHasClasses Id="d3063d9a-d66a-482a-b785-5a37ff76b0d1">
+      <modelClass Id="7d35d6a7-8356-4f43-a596-cada074fd23c" tableName="Teacher" databaseSchema="AmericanTeacher" namespace="AtApi.Model" isNamespaceTracking="false" name="Teacher" isOutputDirectoryTracking="false" summary="Teacher">
+        <unidirectionalTargets>
+          <unidirectionalAssociation Id="57502c37-945d-49b4-8420-b06fa2f4b6d4" sourceMultiplicity="ZeroOne" targetPropertyName="Schools" collectionClass="List" targetSummary="Schools" sourceRole="Principal" targetRole="Dependent" foreignKeyLocation="None" targetImplementNotify="false">
+            <modelClassMoniker Id="9888aff2-2c2a-4c98-ac9b-fd48d4ebce79" />
+          </unidirectionalAssociation>
+        </unidirectionalTargets>
+      </modelClass>
+    </modelRootHasClasses>
+    <modelRootHasClasses Id="a9d7a797-3276-4a18-8f6e-0144eef5dee7">
+      <modelClass Id="d72e8b1d-0d42-416a-83d4-e49dc856cf8b" tableName="Parent" databaseSchema="AmericanTeacher" namespace="AtApi.Model" isNamespaceTracking="false" name="Parent" isOutputDirectoryTracking="false" summary="Parent">
+        <attributes>
+          <modelAttribute Id="2e396da5-0bec-42ce-982b-f5c2de17bc2a" maxLength="-1" indexed="false" indexedUnique="false" stringType="None" name="ParentProp1" autoProperty="true" minLength="0" columnName="ParentProp1" columnType="default" implementNotify="false" isForeignKeyFor="00000000-0000-0000-0000-000000000000" />
+        </attributes>
+        <bidirectionalTargets>
+          <bidirectionalAssociation Id="7152206b-98e7-4b94-a920-4125dd74602f" targetMultiplicity="ZeroOne" targetPropertyName="ParentStudents" collectionClass="List" sourceRole="Principal" targetRole="Dependent" foreignKeyLocation="None" targetImplementNotify="false" sourcePropertyName="Parent" sourceImplementNotify="false">
+            <modelClassMoniker Id="cd5571d0-cb45-4064-ac24-b7321c10068b" />
+          </bidirectionalAssociation>
+        </bidirectionalTargets>
+      </modelClass>
+    </modelRootHasClasses>
+    <modelRootHasClasses Id="f1857102-e89e-4670-8edd-5cd6c8681fd5">
+      <modelClass Id="d141714f-776d-4f39-a5a5-e7d408da6ed0" tableName="Class" databaseSchema="AmericanTeacher" namespace="AtApi.Model" isNamespaceTracking="false" name="Class" isOutputDirectoryTracking="false" summary="Class">
+        <unidirectionalTargets>
+          <unidirectionalAssociation Id="1c9fd6a1-566c-4064-911f-991bb4a43675" sourceMultiplicity="ZeroOne" targetPropertyName="Schedules" collectionClass="List" targetSummary="Schedules" sourceRole="Principal" targetRole="Dependent" foreignKeyLocation="None" targetImplementNotify="false">
+            <modelClassMoniker Id="631d3e6c-bd43-4f81-b859-311257af4557" />
+          </unidirectionalAssociation>
+          <unidirectionalAssociation Id="9b7d08de-5f93-4d62-8057-7b2ad38b1965" sourceMultiplicity="ZeroMany" targetMultiplicity="One" targetPropertyName="Teacher" collectionClass="List" targetDescription="Teacher" targetSummary="Teacher" sourceRole="Dependent" targetRole="Principal" foreignKeyLocation="None" targetImplementNotify="false">
+            <modelClassMoniker Id="7d35d6a7-8356-4f43-a596-cada074fd23c" />
+          </unidirectionalAssociation>
+        </unidirectionalTargets>
+        <attributes>
+          <modelAttribute Id="48b202e1-e731-4506-8bd5-03120637cebb" type="Int32" isIdentity="true" required="true" maxLength="" indexed="false" indexedUnique="false" stringType="None" summary="Id" name="Id" autoProperty="true" minLength="0" columnName="Id" columnType="default" implementNotify="false" isForeignKeyFor="00000000-0000-0000-0000-000000000000" />
+          <modelAttribute Id="59afa206-d98d-4e99-a33d-b713843101c7" required="true" maxLength="-1" indexed="false" indexedUnique="false" stringType="None" summary="Name" name="Name" autoProperty="true" minLength="0" columnName="Name" columnType="default" implementNotify="false" isForeignKeyFor="00000000-0000-0000-0000-000000000000" />
+          <modelAttribute Id="0cbdef4a-65e8-4c77-8eef-1e3e8a11e19b" required="true" maxLength="-1" indexed="false" indexedUnique="false" stringType="None" summary="Description" name="Description" autoProperty="true" minLength="0" columnName="Description" columnType="default" implementNotify="false" isForeignKeyFor="00000000-0000-0000-0000-000000000000" />
+          <modelAttribute Id="fe28c49b-8a46-48a0-a27e-4571dcc073a3" required="true" maxLength="-1" indexed="false" indexedUnique="false" stringType="None" summary="Code" name="Code" autoProperty="true" minLength="0" columnName="Code" columnType="default" implementNotify="false" isForeignKeyFor="00000000-0000-0000-0000-000000000000" />
+          <modelAttribute Id="73dd54af-d03e-4740-884e-b12928a96c6e" required="true" maxLength="-1" indexed="false" indexedUnique="false" stringType="None" summary="Subject" name="Subject" autoProperty="true" minLength="0" columnName="Subject" columnType="default" implementNotify="false" isForeignKeyFor="00000000-0000-0000-0000-000000000000" />
+          <modelAttribute Id="8509c438-4db9-443e-a0bb-73a4b3dc224a" type="Int32" initialValue="0" required="true" maxLength="" indexed="false" indexedUnique="false" stringType="None" summary="Estimated Number of Students" name="EstimatedNumberOfStudents" autoProperty="true" minLength="0" columnName="EstimatedNumberOfStudents" columnType="default" implementNotify="false" isForeignKeyFor="00000000-0000-0000-0000-000000000000" />
+          <modelAttribute Id="62826ca1-3ff3-4612-92b9-db6e61ad9412" type="Int32" required="true" maxLength="" indexed="false" indexedUnique="false" stringType="None" summary="TeacherId" name="TeacherId" autoProperty="true" minLength="0" columnName="TeacherId" columnType="default" implementNotify="false" isForeignKeyFor="00000000-0000-0000-0000-000000000000" />
+        </attributes>
+      </modelClass>
+    </modelRootHasClasses>
+    <modelRootHasClasses Id="6960435e-4b27-442e-a407-7c75c5408bd7">
+      <modelClass Id="631d3e6c-bd43-4f81-b859-311257af4557" tableName="Schedule" databaseSchema="AmericanTeacher" namespace="AtApi.Model.At" name="Schedule" isOutputDirectoryTracking="false" summary="Schedule">
+        <attributes>
+          <modelAttribute Id="054b7dd3-4f83-4268-9f01-e24c4134d524" type="Int32" isIdentity="true" required="true" maxLength="-1" indexed="true" indexedUnique="true" stringType="None" identityType="AutoGenerated" summary="Id" name="Id" autoProperty="true" minLength="0" columnName="Id" columnType="default" implementNotify="false" isForeignKeyFor="00000000-0000-0000-0000-000000000000" />
+          <modelAttribute Id="52bd74cf-4f19-457c-9b62-d90c01871629" required="true" maxLength="-1" indexed="false" indexedUnique="false" stringType="None" summary="Name" name="Name" autoProperty="true" minLength="0" columnName="Name" columnType="default" implementNotify="false" isForeignKeyFor="00000000-0000-0000-0000-000000000000" />
+          <modelAttribute Id="9b9686a8-9c56-4a3a-a9ce-9f65e822dbaa" type="ScheduleDays" required="true" maxLength="-1" indexed="false" indexedUnique="false" stringType="None" summary="Day" name="Day" autoProperty="true" minLength="0" columnName="Day" columnType="default" implementNotify="false" isForeignKeyFor="00000000-0000-0000-0000-000000000000" />
+          <modelAttribute Id="ab37f073-5dc6-49ac-a943-940ca3fa328b" required="true" maxLength="100" indexed="false" indexedUnique="false" stringType="None" summary="Time" name="Time" autoProperty="true" minLength="0" columnName="Time" columnType="default" implementNotify="false" isForeignKeyFor="00000000-0000-0000-0000-000000000000" />
+        </attributes>
+      </modelClass>
+    </modelRootHasClasses>
+    <modelRootHasClasses Id="7e555082-7468-4fb9-8bc7-46a9b4640339">
+      <modelClass Id="e713b609-86d3-45b5-a327-61dfab0a70b1" tableName="Student" databaseSchema="AmericanTeacher" namespace="AtApi.Model" isNamespaceTracking="false" name="Student" isOutputDirectoryTracking="false" summary="Student">
+        <attributes>
+          <modelAttribute Id="96bc743c-48c1-4745-b90c-fcaaf3ad3c41" maxLength="-1" indexed="false" indexedUnique="false" stringType="None" name="StudentIdentifier" autoProperty="true" minLength="0" columnName="StudentIdentifier" columnType="default" implementNotify="false" isForeignKeyFor="00000000-0000-0000-0000-000000000000" />
+        </attributes>
+        <bidirectionalTargets>
+          <bidirectionalAssociation Id="0d556b48-4363-4062-9202-ad9fbe1019b3" targetMultiplicity="ZeroOne" targetPropertyName="ParentStudents" collectionClass="List" sourceRole="Principal" targetRole="Dependent" foreignKeyLocation="None" targetImplementNotify="false" sourcePropertyName="Student" sourceImplementNotify="false">
+            <modelClassMoniker Id="cd5571d0-cb45-4064-ac24-b7321c10068b" />
+          </bidirectionalAssociation>
+        </bidirectionalTargets>
+      </modelClass>
+    </modelRootHasClasses>
+    <modelRootHasClasses Id="72fde4f8-662a-42b0-9d1a-aa638f3d495f">
+      <modelClass Id="e3549942-d31d-49eb-bb5b-aa0c714bd52d" tableName="Enrollments" databaseSchema="AmericanTeacher" namespace="AtApi.Model.At" dbSetName="Enrollment" name="Enrollment" isOutputDirectoryTracking="false" summary="Enrollment">
+        <attributes>
+          <modelAttribute Id="3a21661e-5e9a-4a2c-bc09-12bfe5b57dd5" type="Int32" isIdentity="true" required="true" maxLength="-1" indexed="false" indexedUnique="false" stringType="None" summary="Id" name="Id" autoProperty="true" minLength="0" columnName="Id" columnType="default" implementNotify="false" isForeignKeyFor="00000000-0000-0000-0000-000000000000" />
+          <modelAttribute Id="4eb56d56-9f22-4e10-a677-3f5487aad35e" type="Int32" required="true" maxLength="-1" indexed="false" indexedUnique="false" stringType="None" summary="ClassId" name="ClassId" autoProperty="true" minLength="0" columnName="ClassId" columnType="default" implementNotify="false" isForeignKeyFor="00000000-0000-0000-0000-000000000000" />
+          <modelAttribute Id="11cb4fd9-55ef-4c92-8490-6ffd0fd127b7" type="Int32" required="true" maxLength="-1" indexed="false" indexedUnique="false" stringType="None" summary="StudentId" name="StudentId" autoProperty="true" minLength="0" columnName="StudentId" columnType="default" implementNotify="false" isForeignKeyFor="00000000-0000-0000-0000-000000000000" />
+        </attributes>
+      </modelClass>
+    </modelRootHasClasses>
+    <modelRootHasClasses Id="6a8217aa-59f8-4ee8-9e1d-c166a1b3acdc">
+      <modelClass Id="cd5571d0-cb45-4064-ac24-b7321c10068b" tableName="ParentStudent" databaseSchema="AmericanTeacher" namespace="AtApi.Model.At" dbSetName="ParentStudents" name="ParentStudent" isOutputDirectoryTracking="false" description="ParentStudents">
+        <attributes>
+          <modelAttribute Id="e824c9ac-4296-4b45-ab74-8dde3c371110" type="Int32" isIdentity="true" required="true" maxLength="" indexed="true" indexedUnique="true" stringType="None" identityType="AutoGenerated" name="Id" autoProperty="true" minLength="0" columnName="Id" columnType="default" implementNotify="false" isForeignKeyFor="00000000-0000-0000-0000-000000000000" />
+        </attributes>
+      </modelClass>
+    </modelRootHasClasses>
+  </classes>
+  <diagrams>
+    <modelRootHasModelDiagrams Id="3ff62df0-5d49-4ed8-b3b2-8c8603c1f088">
+      <modelDiagramData name="AtModel" />
+    </modelRootHasModelDiagrams>
+  </diagrams>
+</modelRoot>

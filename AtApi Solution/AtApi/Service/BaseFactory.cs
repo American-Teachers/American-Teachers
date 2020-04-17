@@ -5,38 +5,38 @@ using System.Collections.Generic;
 namespace AtApi.Service
 {
     public abstract class BaseFactory<T, A> : IFactory<T> where T : class
-                                                          where A : IBaseAdapter<T>
+                                                          where A : IAdapter<T>
     {
         public BaseFactory(A adapter)
         {
-            _teacherAdapter = adapter;
+            _adapter = adapter;
         }
 
-        private A _teacherAdapter;
+        private A _adapter;
 
-        public virtual T Create(T teacherModel)
+        public virtual T Create(T model)
         {
-            return _teacherAdapter.Create(teacherModel);
+            return _adapter.Create(model);
         }
 
         public virtual void Delete(int id)
         {
-            _teacherAdapter.Delete(id);
+            _adapter.Delete(id);
         }
 
         public virtual List<T> GetAll()
         {
-            return _teacherAdapter.GetAll();
+            return _adapter.GetAll();
         }
 
         public virtual T GetOne(int id)
         {
-            return _teacherAdapter.GetOne(id);
+            return _adapter.GetOne(id);
         }
 
-        public virtual T Update(T teacherModel)
+        public virtual T Update(T model)
         {
-            return _teacherAdapter.Update(teacherModel);
+            return _adapter.Update(model);
         }
     }
 }

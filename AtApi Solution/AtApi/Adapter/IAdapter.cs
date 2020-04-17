@@ -2,11 +2,11 @@
 
 namespace AtApi.Adapter
 {
-    public interface IBaseAdapter<T> where T : class
+    public interface IAdapter<T> where T : class
     {
         T GetOne(int id);
-        T Create(T teacherModel);
-        T Update(T teacherModel);
+        T Create(T model);
+        T Update(T model);
         void Delete(int id);
         List<T> GetAll();
     }

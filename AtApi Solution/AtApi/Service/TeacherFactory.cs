@@ -3,9 +3,9 @@ using AtApi.Model;
 
 namespace AtApi.Service
 {
-    public class TeacherFactory : BaseFactory<Teacher, IBaseAdapter<Teacher>>
+    public class TeacherFactory : BaseFactory<Teacher, IAdapter<Teacher>>
     {
-        public TeacherFactory(IBaseAdapter<Teacher> adapter) : base(adapter)
+        public TeacherFactory(IAdapter<Teacher> adapter) : base(adapter)
         {
 
         }
