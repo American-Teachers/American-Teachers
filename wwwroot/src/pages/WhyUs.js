@@ -57,16 +57,20 @@ const useStyles = makeStyles((theme) => ({
   },
 
   imgBanner: {
-    backgroundImage: `url("${bannerImg}")`,
     width: '100%',
     height: theme.spacing(52),
-    margin: `0 auto ${theme.spacing(8)}px`
+    margin: `0 auto ${theme.spacing(8)}px`,
+    
+    backgroundImage: `url("${bannerImg}")`,
+    backgroundSize: '1440px 961px',
+    backgroundPosition: 'center 42%'
   },
 
   mainSection: {
     width: '100%',
     margin: `${theme.spacing(8)}px 0 ${theme.spacing(19.5)}px`,
-    padding: `${theme.spacing(2.5)}px ${theme.spacing(11.5)}px`
+    padding: `${theme.spacing(2.5)}px ${theme.spacing(11.5)}px`,
+    [theme.breakpoints.down('sm')]: {padding: `${theme.spacing(2)}px ${theme.spacing(8)}px`}
   },
   mainCopyBold: {
     '& span.boldMe': {
@@ -77,6 +81,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '18px',
     lineHeight: '35px',
     paddingRight: theme.spacing(8),
+    [theme.breakpoints.down('sm')]: {paddingRight: 0},
 
     '& span.orangeMe': {
       fontSize: '32px',
@@ -87,9 +92,20 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   copyImg: {
+    width: '112%',
+    position: 'relative',
+    left: -theme.spacing(7),
+    height: theme.spacing(50),
+
     backgroundImage: `url("${gettingImg}")`,
-    width: '100%',
-    height: theme.spacing(50)
+    backgroundSize: '726px 1089px',
+    backgroundPosition: 'center 31%',
+
+    [theme.breakpoints.down('md')]: {
+      marginTop: theme.spacing(7),
+      width: '100%',
+      position: 'static'
+    },
   }
 }))
 
@@ -140,7 +156,7 @@ export default function WhyUs() {
         <Divider/>
         
         <Grid container className={classes.mainSection} alignItems='center'>
-          <Grid item md={7} sm={12}>
+          <Grid item md={7} xs={12}>
 
             <Typography className={classes.mainCopy}>
               <BoldCopy string={whyUsData.bodyCopy.bold}/>
@@ -149,7 +165,7 @@ export default function WhyUs() {
             </Typography>
           </Grid>
 
-          <Grid item md={5} sm={12}>
+          <Grid item md={5} xs={12}>
             <div className={classes.copyImg}/>
           </Grid>
         </Grid>
