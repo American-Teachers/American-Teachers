@@ -7,9 +7,9 @@ namespace AtApi.Service
     {
 
         T GetOne(int id);
-        T Create(T teacherModel);
+        T Create(T model);
 
-        T Update(T teacherModel);
+        T Update(T model);
         void Delete(int id);
         List<T> GetAll();
     }

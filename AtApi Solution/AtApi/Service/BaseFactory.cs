@@ -9,34 +9,34 @@ namespace AtApi.Service
     {
         public BaseFactory(A adapter)
         {
-            _teacherAdapter = adapter;
+            _adapter = adapter;
         }
 
-        private A _teacherAdapter;
+        private A _adapter;
 
         public virtual T Create(T teacherModel)
         {
-            return _teacherAdapter.Create(teacherModel);
+            return _adapter.Create(teacherModel);
         }
 
         public virtual void Delete(int id)
         {
-            _teacherAdapter.Delete(id);
+            _adapter.Delete(id);
         }
 
         public virtual List<T> GetAll()
         {
-            return _teacherAdapter.GetAll();
+            return _adapter.GetAll();
         }
 
         public virtual T GetOne(int id)
         {
-            return _teacherAdapter.GetOne(id);
+            return _adapter.GetOne(id);
         }
 
         public virtual T Update(T teacherModel)
         {
-            return _teacherAdapter.Update(teacherModel);
+            return _adapter.Update(teacherModel);
         }
     }
 }
