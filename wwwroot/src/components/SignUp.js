@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import { Link } from 'react-router-dom';
 import { Grid, Typography, Container, Button, Checkbox, FormControlLabel, InputAdornment, IconButton, InputLabel, FormControl, OutlinedInput } from '@material-ui/core';
@@ -13,6 +12,8 @@ import emailValidation from '../helpers/email-validation';
 import clsx from 'clsx';
 import Privacy from '../../public/AmericanTeachersPrivacyStatement.pdf';
 import TermsAndConditions from '../../public/AmericanTeachersTermsofUse.pdf'
+
+import Layout from './Layout';
 
 const createGoogleIcon = (classes) => {
   return (
@@ -115,8 +116,9 @@ export default function SignUp() {
   const isButtonEnabled =  !someValuesMissing && formValues.termsAgreed;
 
   return (
+    <Layout footerHidden>
+
     <Container component="main" maxWidth="md" className="wrap">
-      <CssBaseline />
       <div className={classes.paper}>
         <Typography component="h1" variant="h5">
           Sign up
@@ -247,5 +249,7 @@ export default function SignUp() {
         </form>
       </div>
     </Container>
+
+    </Layout>
   );
 }

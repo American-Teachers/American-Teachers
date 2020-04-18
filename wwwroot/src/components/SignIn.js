@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import { Link } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
@@ -11,6 +10,8 @@ import GoogleLogin from 'react-google-login';
 import Icon from '@material-ui/core/Icon';
 import Googlelogo from '../../public/google-icon.svg';
 import emailValidation from '../helpers/email-validation';
+
+import Layout from './Layout';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -88,8 +89,9 @@ export default function SignIn() {
   }
 
   return (
+    <Layout footerHidden>
+
     <Container component="main" maxWidth="sm">
-      <CssBaseline />
       <div className={classes.paper}>
         <Typography component="h1" variant="h5">
           Sign in
@@ -168,5 +170,7 @@ export default function SignIn() {
         </form>
       </div>
     </Container>
+    
+    </Layout>
   );
 }
