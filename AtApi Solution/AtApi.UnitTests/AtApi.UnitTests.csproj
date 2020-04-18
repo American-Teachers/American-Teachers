@@ -25,4 +25,8 @@
     <ProjectReference Include="..\AtApi\AtApi.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Service\" />
+  </ItemGroup>
+
 </Project>
