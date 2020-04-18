@@ -37,7 +37,6 @@ namespace AtApi.Model
       protected Class()
       {
          EstimatedNumberOfStudents = 0;
-         Schedules = new System.Collections.Generic.List<global::AtApi.Model.At.Schedule>();
 
          Init();
       }
@@ -58,9 +57,9 @@ namespace AtApi.Model
       /// <param name="code">Code</param>
       /// <param name="subject">Subject</param>
       /// <param name="estimatednumberofstudents">Estimated Number of Students</param>
-      /// <param name="teacherid">TeacherId</param>
-      /// <param name="teacher"></param>
-      public Class(string name, string description, string code, string subject, int teacherid, global::AtApi.Model.Teacher teacher, int estimatednumberofstudents = 0)
+      /// <param name="teacherid">Foreign key for Teacher.Classes --&gt; Class. </param>
+      /// <param name="_teacher0"></param>
+      public Class(string name, string description, string code, string subject, int teacherid, global::AtApi.Model.Teacher _teacher0, int estimatednumberofstudents = 0)
       {
          if (string.IsNullOrEmpty(name)) throw new ArgumentNullException(nameof(name));
          this.Name = name;
@@ -78,10 +77,9 @@ namespace AtApi.Model
 
          this.TeacherId = teacherid;
 
-         if (teacher == null) throw new ArgumentNullException(nameof(teacher));
-         this.Teacher = teacher;
+         if (_teacher0 == null) throw new ArgumentNullException(nameof(_teacher0));
+         _teacher0.Classes.Add(this);
 
-         this.Schedules = new System.Collections.Generic.List<global::AtApi.Model.At.Schedule>();
 
          Init();
       }
@@ -94,11 +92,11 @@ namespace AtApi.Model
       /// <param name="code">Code</param>
       /// <param name="subject">Subject</param>
       /// <param name="estimatednumberofstudents">Estimated Number of Students</param>
-      /// <param name="teacherid">TeacherId</param>
-      /// <param name="teacher"></param>
-      public static Class Create(string name, string description, string code, string subject, int teacherid, global::AtApi.Model.Teacher teacher, int estimatednumberofstudents = 0)
+      /// <param name="teacherid">Foreign key for Teacher.Classes --&gt; Class. </param>
+      /// <param name="_teacher0"></param>
+      public static Class Create(string name, string description, string code, string subject, int teacherid, global::AtApi.Model.Teacher _teacher0, int estimatednumberofstudents = 0)
       {
-         return new Class(name, description, code, subject, teacherid, teacher, estimatednumberofstudents);
+         return new Class(name, description, code, subject, teacherid, _teacher0, estimatednumberofstudents);
       }
 
       /*************************************************************************
@@ -149,8 +147,14 @@ namespace AtApi.Model
       public int EstimatedNumberOfStudents { get; set; }
 
       /// <summary>
-      /// Required
-      /// TeacherId
+      /// Indexed
+      /// Foreign key for Schedule.Classes --&gt; Class. 
+      /// </summary>
+      public int? ScheduleId { get; set; }
+
+      /// <summary>
+      /// Indexed, Required
+      /// Foreign key for Teacher.Classes --&gt; Class. 
       /// </summary>
       [Required]
       public int TeacherId { get; set; }
@@ -159,19 +163,7 @@ namespace AtApi.Model
        * Navigation properties
        *************************************************************************/
 
-      /// <summary>
-      /// Schedules
-      /// </summary>
-      public virtual ICollection<global::AtApi.Model.At.Schedule> Schedules { get; protected set; }
-
-      /// <summary>
-      /// Required&lt;br/&gt;
-      /// Teacher
-      /// </summary>
-      /// <remarks>
-      /// Teacher
-      /// </remarks>
-      public virtual global::AtApi.Model.Teacher Teacher { get; set; }
+      public virtual global::AtApi.Model.At.Enrollment Enrollments { get; set; }
 
    }
 }

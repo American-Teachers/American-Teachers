@@ -36,7 +36,7 @@ namespace AtApi.Model
       /// </summary>
       protected Teacher(): base()
       {
-         Schools = new System.Collections.Generic.List<global::AtApi.Model.School>();
+         Classes = new System.Collections.Generic.List<global::AtApi.Model.Class>();
 
          Init();
       }
@@ -66,7 +66,7 @@ namespace AtApi.Model
          if (string.IsNullOrEmpty(lastname)) throw new ArgumentNullException(nameof(lastname));
          this.LastName = lastname;
 
-         this.Schools = new System.Collections.Generic.List<global::AtApi.Model.School>();
+         this.Classes = new System.Collections.Generic.List<global::AtApi.Model.Class>();
 
          Init();
       }
@@ -77,7 +77,7 @@ namespace AtApi.Model
       /// <param name="emailaddress">Email Address</param>
       /// <param name="firstname">First Name</param>
       /// <param name="lastname">Last Name</param>
-      public static Teacher Create(string emailaddress, string firstname, string lastname)
+      public static new Teacher Create(string emailaddress, string firstname, string lastname)
       {
          return new Teacher(emailaddress, firstname, lastname);
       }
@@ -86,14 +86,18 @@ namespace AtApi.Model
        * Properties
        *************************************************************************/
 
+      /// <summary>
+      /// Teacher Certifications
+      /// </summary>
+      public string TeacherCertifications { get; set; }
+
       /*************************************************************************
        * Navigation properties
        *************************************************************************/
 
-      /// <summary>
-      /// Schools
-      /// </summary>
-      public virtual ICollection<global::AtApi.Model.School> Schools { get; protected set; }
+      public virtual ICollection<global::AtApi.Model.Class> Classes { get; protected set; }
+
+      public virtual global::AtApi.Model.At.TeacherSchool TeacherSchools { get; set; }
 
    }
 }

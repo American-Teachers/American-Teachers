@@ -17,7 +17,7 @@ namespace AtApi.UnitTests
             _classAdapter = new Mock<IAdapter<Class>>(MockBehavior.Strict);
         }
 
-        public override void VerifyAll()
+        protected override void VerifyAll()
         {
             _classAdapter.VerifyAll();
         }
@@ -27,11 +27,16 @@ namespace AtApi.UnitTests
             return new ClassFactory(_classAdapter.Object);
         }
 
+        private Class GetData()
+        {
+            return Class.Create(Guid.NewGuid().ToString(), Guid.NewGuid().ToString(), Guid.NewGuid().ToString(), Guid.NewGuid().ToString(), Random.Next(), null, Random.Next());
+        }
+
 
         [Fact]
         public void Create_Success()
         {
-            var model = Class.Create(Guid.NewGuid().ToString(), Guid.NewGuid().ToString(), Guid.NewGuid().ToString(), Guid.NewGuid().ToString(), Random.Next(), null, Random.Next());
+            var model = GetData();
 
             _classAdapter.Setup(m => m.Create(It.IsAny<Class>())).Returns(model);
             var factory = GetFactory();
@@ -44,7 +49,7 @@ namespace AtApi.UnitTests
         [Fact]
         public void Update_Success()
         {
-            var model = Class.Create(Guid.NewGuid().ToString(), Guid.NewGuid().ToString(), Guid.NewGuid().ToString(), Guid.NewGuid().ToString(), Random.Next(), null, Random.Next());
+            var model = GetData();
 
             _classAdapter.Setup(m => m.Update(It.IsAny<Class>())).Returns(model);
             var factory = GetFactory();
@@ -71,8 +76,8 @@ namespace AtApi.UnitTests
         public void GetAll_Success()
         {
             var model = new List<Class> {
-                Class.Create(Guid.NewGuid().ToString(), Guid.NewGuid().ToString(), Guid.NewGuid().ToString(), Guid.NewGuid().ToString(), Random.Next(), null, Random.Next()),
-                Class.Create(Guid.NewGuid().ToString(), Guid.NewGuid().ToString(), Guid.NewGuid().ToString(), Guid.NewGuid().ToString(), Random.Next(), null, Random.Next())
+                GetData(),
+                GetData()
             };
 
             _classAdapter.Setup(m => m.GetAll()).Returns(model);
@@ -88,7 +93,7 @@ namespace AtApi.UnitTests
         public void GetOne_Success()
         {
             var id = Random.Next();
-            var model = Class.Create(Guid.NewGuid().ToString(), Guid.NewGuid().ToString(), Guid.NewGuid().ToString(), Guid.NewGuid().ToString(), Random.Next(), null, Random.Next());
+            var model = GetData();
 
             _classAdapter.Setup(m => m.GetOne(It.Is<int>(s => s == id))).Returns(model);
             var factory = GetFactory();

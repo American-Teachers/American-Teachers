@@ -74,7 +74,7 @@ namespace AtApi.Model
       /// <param name="emailaddress">Email Address</param>
       /// <param name="firstname">First Name</param>
       /// <param name="lastname">Last Name</param>
-      public static Parent Create(string emailaddress, string firstname, string lastname)
+      public static new Parent Create(string emailaddress, string firstname, string lastname)
       {
          return new Parent(emailaddress, firstname, lastname);
       }
@@ -89,7 +89,7 @@ namespace AtApi.Model
        * Navigation properties
        *************************************************************************/
 
-      public virtual global::AtApi.Model.At.ParentStudent ParentStudents { get; set; }
+      public virtual global::AtApi.Model.At.ParentStudent Students { get; set; }
 
    }
 }

@@ -50,13 +50,21 @@ namespace AtApi.Model.At
       /// <summary>
       /// Public constructor with required data
       /// </summary>
-      /// <param name="classid">ClassId</param>
-      /// <param name="studentid">StudentId</param>
-      public Enrollment(int classid, int studentid)
+      /// <param name="classid">Foreign key for Class.Enrollments &lt;--&gt; Enrollment.Class_. </param>
+      /// <param name="studentid">Foreign key for Student.Enrollments &lt;--&gt; Enrollment.Student. </param>
+      /// <param name="class_"></param>
+      /// <param name="student"></param>
+      public Enrollment(int classid, int studentid, global::AtApi.Model.Class class_, global::AtApi.Model.Student student)
       {
          this.ClassId = classid;
 
          this.StudentId = studentid;
+
+         if (class_ == null) throw new ArgumentNullException(nameof(class_));
+         this.Class_ = class_;
+
+         if (student == null) throw new ArgumentNullException(nameof(student));
+         this.Student = student;
 
 
          Init();
@@ -65,11 +73,13 @@ namespace AtApi.Model.At
       /// <summary>
       /// Static create function (for use in LINQ queries, etc.)
       /// </summary>
-      /// <param name="classid">ClassId</param>
-      /// <param name="studentid">StudentId</param>
-      public static Enrollment Create(int classid, int studentid)
+      /// <param name="classid">Foreign key for Class.Enrollments &lt;--&gt; Enrollment.Class_. </param>
+      /// <param name="studentid">Foreign key for Student.Enrollments &lt;--&gt; Enrollment.Student. </param>
+      /// <param name="class_"></param>
+      /// <param name="student"></param>
+      public static Enrollment Create(int classid, int studentid, global::AtApi.Model.Class class_, global::AtApi.Model.Student student)
       {
-         return new Enrollment(classid, studentid);
+         return new Enrollment(classid, studentid, class_, student);
       }
 
       /*************************************************************************
@@ -85,18 +95,32 @@ namespace AtApi.Model.At
       public int Id { get; protected set; }
 
       /// <summary>
-      /// Required
-      /// ClassId
+      /// Indexed, Required
+      /// Foreign key for Class.Enrollments &lt;--&gt; Enrollment.Class_. 
       /// </summary>
       [Required]
       public int ClassId { get; set; }
 
       /// <summary>
-      /// Required
-      /// StudentId
+      /// Indexed, Required
+      /// Foreign key for Student.Enrollments &lt;--&gt; Enrollment.Student. 
       /// </summary>
       [Required]
       public int StudentId { get; set; }
+
+      /*************************************************************************
+       * Navigation properties
+       *************************************************************************/
+
+      /// <summary>
+      /// Required
+      /// </summary>
+      public virtual global::AtApi.Model.Class Class_ { get; set; }
+
+      /// <summary>
+      /// Required
+      /// </summary>
+      public virtual global::AtApi.Model.Student Student { get; set; }
 
    }
 }

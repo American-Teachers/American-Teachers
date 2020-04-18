@@ -42,7 +42,6 @@ namespace AtApi.Adapter
             var old = GetOne(model.Id);
             old.Name = model.Name;
             old.Subject = model.Subject;
-            old.TeacherId = model.TeacherId;            
             atDbContext.SaveChanges();
             return old;
         }

@@ -24,17 +24,14 @@ using System.Runtime.CompilerServices;
 
 namespace AtApi.Model.At
 {
-   /// <remarks>
-   /// ParentStudents
-   /// </remarks>
-   public partial class ParentStudent
+   public partial class TeacherSchool
    {
       partial void Init();
 
       /// <summary>
       /// Default constructor. Protected due to required properties, but present because EF needs it.
       /// </summary>
-      protected ParentStudent()
+      protected TeacherSchool()
       {
          Init();
       }
@@ -42,29 +39,29 @@ namespace AtApi.Model.At
       /// <summary>
       /// Replaces default constructor, since it's protected. Caller assumes responsibility for setting all required values before saving.
       /// </summary>
-      public static ParentStudent CreateParentStudentUnsafe()
+      public static TeacherSchool CreateTeacherSchoolUnsafe()
       {
-         return new ParentStudent();
+         return new TeacherSchool();
       }
 
       /// <summary>
       /// Public constructor with required data
       /// </summary>
-      /// <param name="parentid">Foreign key for Parent.Students &lt;--&gt; ParentStudent.Parent. </param>
-      /// <param name="studentid">Foreign key for Student.ParentStudents &lt;--&gt; ParentStudent.Student. </param>
-      /// <param name="parent"></param>
-      /// <param name="student"></param>
-      public ParentStudent(int parentid, int studentid, global::AtApi.Model.Parent parent, global::AtApi.Model.Student student)
+      /// <param name="schoolid">Foreign key for School.SchoolTeachers &lt;--&gt; TeacherSchool.School. </param>
+      /// <param name="teacherid">Foreign key for Teacher.TeacherSchools &lt;--&gt; TeacherSchool.Teacher. </param>
+      /// <param name="school"></param>
+      /// <param name="teacher"></param>
+      public TeacherSchool(int schoolid, int teacherid, global::AtApi.Model.School school, global::AtApi.Model.Teacher teacher)
       {
-         this.ParentId = parentid;
+         this.SchoolId = schoolid;
 
-         this.StudentId = studentid;
+         this.TeacherId = teacherid;
 
-         if (parent == null) throw new ArgumentNullException(nameof(parent));
-         this.Parent = parent;
+         if (school == null) throw new ArgumentNullException(nameof(school));
+         this.School = school;
 
-         if (student == null) throw new ArgumentNullException(nameof(student));
-         this.Student = student;
+         if (teacher == null) throw new ArgumentNullException(nameof(teacher));
+         this.Teacher = teacher;
 
 
          Init();
@@ -73,13 +70,13 @@ namespace AtApi.Model.At
       /// <summary>
       /// Static create function (for use in LINQ queries, etc.)
       /// </summary>
-      /// <param name="parentid">Foreign key for Parent.Students &lt;--&gt; ParentStudent.Parent. </param>
-      /// <param name="studentid">Foreign key for Student.ParentStudents &lt;--&gt; ParentStudent.Student. </param>
-      /// <param name="parent"></param>
-      /// <param name="student"></param>
-      public static ParentStudent Create(int parentid, int studentid, global::AtApi.Model.Parent parent, global::AtApi.Model.Student student)
+      /// <param name="schoolid">Foreign key for School.SchoolTeachers &lt;--&gt; TeacherSchool.School. </param>
+      /// <param name="teacherid">Foreign key for Teacher.TeacherSchools &lt;--&gt; TeacherSchool.Teacher. </param>
+      /// <param name="school"></param>
+      /// <param name="teacher"></param>
+      public static TeacherSchool Create(int schoolid, int teacherid, global::AtApi.Model.School school, global::AtApi.Model.Teacher teacher)
       {
-         return new ParentStudent(parentid, studentid, parent, student);
+         return new TeacherSchool(schoolid, teacherid, school, teacher);
       }
 
       /*************************************************************************
@@ -95,17 +92,17 @@ namespace AtApi.Model.At
 
       /// <summary>
       /// Indexed, Required
-      /// Foreign key for Parent.Students &lt;--&gt; ParentStudent.Parent. 
+      /// Foreign key for School.SchoolTeachers &lt;--&gt; TeacherSchool.School. 
       /// </summary>
       [Required]
-      public int ParentId { get; set; }
+      public int SchoolId { get; set; }
 
       /// <summary>
       /// Indexed, Required
-      /// Foreign key for Student.ParentStudents &lt;--&gt; ParentStudent.Student. 
+      /// Foreign key for Teacher.TeacherSchools &lt;--&gt; TeacherSchool.Teacher. 
       /// </summary>
       [Required]
-      public int StudentId { get; set; }
+      public int TeacherId { get; set; }
 
       /*************************************************************************
        * Navigation properties
@@ -114,12 +111,12 @@ namespace AtApi.Model.At
       /// <summary>
       /// Required
       /// </summary>
-      public virtual global::AtApi.Model.Parent Parent { get; set; }
+      public virtual global::AtApi.Model.School School { get; set; }
 
       /// <summary>
       /// Required
       /// </summary>
-      public virtual global::AtApi.Model.Student Student { get; set; }
+      public virtual global::AtApi.Model.Teacher Teacher { get; set; }
 
    }
 }

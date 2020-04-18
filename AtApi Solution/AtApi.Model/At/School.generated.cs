@@ -92,6 +92,8 @@ namespace AtApi.Model
        * Navigation properties
        *************************************************************************/
 
+      public virtual global::AtApi.Model.At.TeacherSchool SchoolTeachers { get; set; }
+
    }
 }
 

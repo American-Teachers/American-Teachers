@@ -29,8 +29,7 @@ namespace AtApi.Dependency
                 options.UseLoggerFactory(loggerFactory); 
                 options.UseMySql(appSettings.ConnectionStrings.AmericanTeachers);
             });
-
-            new AtDbContext(appSettings.ConnectionStrings.AmericanTeachers).Database.Migrate();
+            
             return services;
         }
     }

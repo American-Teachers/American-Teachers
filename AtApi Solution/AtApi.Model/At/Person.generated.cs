@@ -27,16 +27,24 @@ namespace AtApi.Model
    /// <summary>
    /// Person
    /// </summary>
-   public abstract partial class Person
+   public partial class Person
    {
       partial void Init();
 
       /// <summary>
-      /// Default constructor. Protected due to being abstract.
+      /// Default constructor. Protected due to required properties, but present because EF needs it.
       /// </summary>
       protected Person()
       {
          Init();
+      }
+
+      /// <summary>
+      /// Replaces default constructor, since it's protected. Caller assumes responsibility for setting all required values before saving.
+      /// </summary>
+      public static Person CreatePersonUnsafe()
+      {
+         return new Person();
       }
 
       /// <summary>
@@ -45,7 +53,7 @@ namespace AtApi.Model
       /// <param name="emailaddress">Email Address</param>
       /// <param name="firstname">First Name</param>
       /// <param name="lastname">Last Name</param>
-      protected Person(string emailaddress, string firstname, string lastname)
+      public Person(string emailaddress, string firstname, string lastname)
       {
          if (string.IsNullOrEmpty(emailaddress)) throw new ArgumentNullException(nameof(emailaddress));
          this.EmailAddress = emailaddress;
@@ -58,6 +66,17 @@ namespace AtApi.Model
 
 
          Init();
+      }
+
+      /// <summary>
+      /// Static create function (for use in LINQ queries, etc.)
+      /// </summary>
+      /// <param name="emailaddress">Email Address</param>
+      /// <param name="firstname">First Name</param>
+      /// <param name="lastname">Last Name</param>
+      public static Person Create(string emailaddress, string firstname, string lastname)
+      {
+         return new Person(emailaddress, firstname, lastname);
       }
 
       /*************************************************************************
@@ -76,10 +95,12 @@ namespace AtApi.Model
       public int Id { get; protected set; }
 
       /// <summary>
-      /// Indexed, Required
+      /// Required, Max length = 1000
       /// Email Address
       /// </summary>
       [Required]
+      [MaxLength(1000)]
+      [StringLength(1000)]
       public string EmailAddress { get; set; }
 
       /// <summary>

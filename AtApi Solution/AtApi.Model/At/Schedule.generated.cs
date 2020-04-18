@@ -36,6 +36,8 @@ namespace AtApi.Model.At
       /// </summary>
       protected Schedule()
       {
+         Classes = new System.Collections.Generic.List<global::AtApi.Model.Class>();
+
          Init();
       }
 
@@ -63,6 +65,7 @@ namespace AtApi.Model.At
          if (string.IsNullOrEmpty(time)) throw new ArgumentNullException(nameof(time));
          this.Time = time;
 
+         this.Classes = new System.Collections.Generic.List<global::AtApi.Model.Class>();
 
          Init();
       }
@@ -116,6 +119,8 @@ namespace AtApi.Model.At
       /*************************************************************************
        * Navigation properties
        *************************************************************************/
+
+      public virtual ICollection<global::AtApi.Model.Class> Classes { get; protected set; }
 
    }
 }
