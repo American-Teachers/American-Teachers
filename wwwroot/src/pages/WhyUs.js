@@ -36,7 +36,6 @@ const useStyles = makeStyles((theme) => ({
   },
   quoteContainer: {
     maxWidth: theme.spacing(135.75),
-    // minHeight: theme.spacing(16.75),
     textAlign: 'center',
     padding: `0 ${theme.spacing(5)}px`,
     marginTop: theme.spacing(8),

@@ -52,7 +52,6 @@ const useStyles = makeStyles((theme) => ({
     height: 'fit-content',
     paddingTop: theme.spacing(30),
     paddingLeft: theme.spacing(1),
-    // overflow: 'hidden',
     position: 'relative'
   },
   landingHomeCopyContainer: {

@@ -103,7 +103,6 @@ const useStyles = makeStyles((theme) => ({
       height: '100%',
       width: '100%',
       position: 'relative',
-      // top: -theme.spacing(0.5)
     }
   },
 
@@ -219,7 +218,7 @@ function ElevationScroll({children}) {
   });
 
   return React.cloneElement(children, {
-    elevation: trigger ? 4: 0,
+    elevation: trigger ? 3 : 0,
   })
 }
 
