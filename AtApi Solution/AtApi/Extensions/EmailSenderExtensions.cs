@@ -1,11 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using AtApi.Framework;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
-using AtApi.Framework;
 
-namespace AtApi.Services
+namespace AtApi.Extensions
 {
     public static class EmailSenderExtensions
     {

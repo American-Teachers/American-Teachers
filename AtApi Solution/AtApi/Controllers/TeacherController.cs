@@ -9,18 +9,18 @@ namespace AtApi.Controllers
     [Route("api/[controller]")]
     public class TeacherController : ControllerBase
     {
-        private readonly IFactory<TeacherModel> _factory;
+        private readonly IFactory<Teacher> _factory;
 
-        public TeacherController(IFactory<TeacherModel> factory)
+        public TeacherController(IFactory<Teacher> factory)
         {
             _factory = factory;
         }
-        
+
 
         // GET: api/Teacher
         [HttpGet]
         [Route("")]
-        public IEnumerable<TeacherModel> GetAll()
+        public IEnumerable<Teacher> GetAll()
         {
             return _factory.GetAll();
         }
@@ -28,7 +28,7 @@ namespace AtApi.Controllers
         // GET: api/Teacher/5
         [HttpGet()]
         [Route("{id}")]
-        public TeacherModel Get(int id)
+        public Teacher Get(int id)
         {
             return _factory.GetOne(id);
         }
@@ -36,7 +36,7 @@ namespace AtApi.Controllers
         // POST: api/Teacher
         [HttpPost]
         [Route("")]
-        public TeacherModel Post([FromBody] TeacherModel model)
+        public Teacher Post([FromBody] Teacher model)
         {
             return _factory.Update(model);
         }
@@ -44,7 +44,7 @@ namespace AtApi.Controllers
         // PUT: api/Teacher/5
         [HttpPut]
         [Route("{id}")]
-        public TeacherModel Put(int id, [FromBody] TeacherModel teacher)
+        public Teacher Put(int id, [FromBody] Teacher teacher)
         {
             return _factory.Create(teacher);
         }

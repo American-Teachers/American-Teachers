@@ -11,6 +11,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Scrutor" Version="3.2.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.3">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -24,7 +25,6 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.3.1" />
     <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="3.1.3" />
-
 
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.3" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.3" />
@@ -45,10 +45,11 @@
   </ItemGroup>
   
   <ItemGroup>
-    <ProjectReference Include="..\AtApi.Dependency\AtApi.Dependency.csproj" />
-    <ProjectReference Include="..\AtApi.Framework\AtApi.Framework.csproj" />
     <ProjectReference Include="..\AtApi.Model\AtApi.Model.csproj" />
-    <ProjectReference Include="..\AtApi.Service\AtApi.Service.csproj" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Folder Include="Data\At\" />
   </ItemGroup>
   
 

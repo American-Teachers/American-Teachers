@@ -1,29 +1,30 @@
+using AtApi.Data;
 using AtApi.Dependency;
-using Autofac;
-using Autofac.Extensions.DependencyInjection;
+using AtApi.Model.Settings;
+using AtApi.Models;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
-using AtApi.Data;
-using Microsoft.EntityFrameworkCore;
-using AtApi.Models;
-using Microsoft.AspNetCore.Identity;
+using System;
 using System.Reflection;
 
 namespace AtApi
 {
     public class Startup
     {
-        private IWebHostEnvironment _webHostingEnvironment;
+
+        public IConfiguration Configuration { get; }
+        private IServiceProvider _serviceProvider;
+        public static readonly ILoggerFactory MyLoggerFactory = LoggerFactory.Create(builder => { builder.AddConsole(); });
         public Startup(IWebHostEnvironment env, IConfiguration configuration)
         {
-            _webHostingEnvironment = env;
             Configuration = configuration;
             // In ASP.NET Core 3.0 `env` will be an IWebHostingEnvironment, not IHostingEnvironment.
             var appAssembly = Assembly.Load(new AssemblyName(env.ApplicationName));
@@ -34,27 +35,26 @@ namespace AtApi
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
             this.Configuration = builder.Build();
-        }       
-        public IConfiguration Configuration { get; }
+        }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDependencyInjection(Configuration);
+            services.Configure<AppSettings>(Configuration);
+            services.AddHttpContextAccessor();
             services.AddOptions();
             services.AddLogging();
+#pragma warning disable ASP0000 // Do not call 'IServiceCollection.BuildServiceProvider' in 'ConfigureServices'
+            _serviceProvider = services.BuildServiceProvider();
+#pragma warning restore ASP0000 // Do not call 'IServiceCollection.BuildServiceProvider' in 'ConfigureServices'
+            var appSettings = _serviceProvider.GetService<IOptions<AppSettings>>().Value;
 
-            services.AddDbContext<ApplicationDbContext>(options =>
-              options.UseMySql(Configuration.GetConnectionString("AmericanTeachers")));
-
-            services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>()
-                .AddDefaultTokenProviders();
-
+            services.ConfigureDataContext(appSettings, MyLoggerFactory);
             services.AddAuthentication().AddGoogle(googleOptions =>
             {
-                googleOptions.ClientId = Configuration["Authentication:Google:ClientId"];
-                googleOptions.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
+                googleOptions.ClientId = appSettings.Authentication.Google.ClientId;
+                googleOptions.ClientSecret = appSettings.Authentication.Google.ClientSecret;
             });
 
 
@@ -73,16 +73,16 @@ namespace AtApi
         // with Autofac. This runs after ConfigureServices so the things
         // here will override registrations made in ConfigureServices.
         // Don't build the container; that gets done for you by the factory.
-       /* public void ConfigureContainer(ContainerBuilder builder)
-        {
-            // Register your own things directly with Autofac, like:
-            builder.RegisterModule(new MyApplicationModule());
-        }
-        */
+        /* public void ConfigureContainer(ContainerBuilder builder)
+         {
+             // Register your own things directly with Autofac, like:
+             builder.RegisterModule(new MyApplicationModule());
+         }
+         */
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-           // AutofacContainer = app.ApplicationServices.GetAutofacRoot();
+            // AutofacContainer = app.ApplicationServices.GetAutofacRoot();
 
             if (env.IsDevelopment())
             {
@@ -109,7 +109,7 @@ namespace AtApi
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "American Teachers API V1");
             });
         }
     }

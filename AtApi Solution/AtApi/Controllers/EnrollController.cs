@@ -1,5 +1,8 @@
 ﻿using AtApi.Model;
+using AtApi.Model.At;
+using AtApi.Service;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace AtApi.Controllers
 {
@@ -7,12 +10,40 @@ namespace AtApi.Controllers
     [ApiController]
     public class EnrollController : ControllerBase
     {
-        // GET: api/Student/5
+        private readonly IFactory<Enrollment> factory;
+
+        public EnrollController(IFactory<Enrollment> factory)
+        {
+            this.factory = factory;
+        }
+        [HttpGet]
+        [Route("")]
+        public IEnumerable<Enrollment> GetAll()
+        {
+            return factory.GetAll();
+        }
+
+        // GET: api/Enrollment/5
+        [HttpGet]
+        [Route("{id}")]
+        public Enrollment GetClass(int id)
+        {
+            return factory.GetOne(id);
+        }
+
+
+        [HttpPost]
+        [Route("")]
+        public Enrollment Post(Enrollment model)
+        {
+            return factory.Update(model);
+        }
+
         [HttpPut]
         [Route("")]
-        public string Post(EnrollModel enrollModel)
+        public Enrollment Put(Enrollment model)
         {
-            return "value";
+            return factory.Create(model);
         }
 
     }

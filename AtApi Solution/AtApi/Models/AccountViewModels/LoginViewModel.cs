@@ -11,6 +11,6 @@ namespace AtApi.Models.AccountViewModels
         [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; }
-        
+
     }
 }
