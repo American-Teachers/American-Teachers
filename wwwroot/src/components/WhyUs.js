@@ -7,7 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import Grid from '@material-ui/core/Grid';
 
-import Layout from '../components/Layout';
+import Layout from './Layout';
 import { makeStyles } from '@material-ui/core/styles';
 
 import bannerImg from '../../public/whyus-banner.jpg';

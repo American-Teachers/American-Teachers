@@ -16,19 +16,11 @@ import hamburger from '../../public/header-icon-hamburger.svg'
 import { makeStyles } from '@material-ui/core/styles';
 
 const headerData = {
-  navbarVisiblePages: ['/', '/why-us', '/short', '/long'],
+  navbarVisiblePages: ['/', '/why-us'],
   buttons: [
     {
       text: "Why Us",
       link: '/why-us'
-    },
-    {
-      text: 'short',
-      link: '/short'
-    },
-    {
-      text: 'looooooooong',
-      link: '/long'
     }
   ]
 }

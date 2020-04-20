@@ -11,7 +11,7 @@ import Icon from '@material-ui/core/Icon';
 import Googlelogo from '../../public/google-icon.svg';
 import emailValidation from '../helpers/email-validation';
 
-import Layout from '../components/Layout';
+import Layout from './Layout';
 
 const useStyles = makeStyles((theme) => ({
   paper: {

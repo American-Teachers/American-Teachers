@@ -13,7 +13,7 @@ import clsx from 'clsx';
 import Privacy from '../../public/AmericanTeachersPrivacyStatement.pdf';
 import TermsAndConditions from '../../public/AmericanTeachersTermsofUse.pdf'
 
-import Layout from '../components/Layout';
+import Layout from './Layout';
 
 const createGoogleIcon = (classes) => {
   return (

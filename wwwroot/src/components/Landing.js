@@ -7,7 +7,7 @@ import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 
-import Layout from '../components/Layout';
+import Layout from './Layout';
 import { makeStyles } from '@material-ui/core/styles';
 
 import toolsIcon from '../../public/landing-icon-tools.svg';
