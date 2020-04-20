@@ -77,10 +77,12 @@ function App() {
     <ThemeProvider theme={theme}>
     <BrowserRouter>
       <Routes>
-      <Route path="/"  element={<Landing />} />
+        <Route path="/"  element={<Landing />} />
         <Route path="/signup"  element={<SignUp />} />
         <Route path="/signin"  element={<SignIn />} />
         <Route path="/why-us" element={<WhyUs />} />
+        <Route path="/short"  element={<WhyUs />} />
+        <Route path="/long"  element={<WhyUs />} />
     </Routes>
     </BrowserRouter>
   </ThemeProvider>

@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
     // minHeight: theme.spacing(16.75),
     textAlign: 'center',
     padding: `0 ${theme.spacing(5)}px`,
-    marginTop: theme.spacing(9),
+    marginTop: theme.spacing(8),
     marginBottom: theme.spacing(6.5),
 
     '& h2': {

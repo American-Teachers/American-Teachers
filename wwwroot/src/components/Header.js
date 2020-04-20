@@ -7,6 +7,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Link from '@material-ui/core/Link';
 import Button from '@material-ui/core/Button';
+import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 
 import IconButton from '@material-ui/core/IconButton';
 import userIcon from '../../public/header-icon-user.svg';
@@ -15,37 +16,49 @@ import hamburger from '../../public/header-icon-hamburger.svg'
 import { makeStyles } from '@material-ui/core/styles';
 
 const headerData = {
-  navbarVisiblePages: ['/', '/why-us'],
+  navbarVisiblePages: ['/', '/why-us', '/short', '/long'],
   buttons: [
     {
       text: "Why Us",
       link: '/why-us'
+    },
+    {
+      text: 'short',
+      link: '/short'
+    },
+    {
+      text: 'looooooooong',
+      link: '/long'
     }
   ]
 }
 
 const useStyles = makeStyles((theme) => ({
+  headerOffset: {height: theme.spacing(12)},
   appbar: {
     backgroundColor: 'white',
     color: 'black',
-    paddingTop: theme.spacing(2)
+    paddingTop: theme.spacing(2),
+    height: theme.spacing(12)
   },
   toolbar:{
-    padding: `0 ${theme.spacing(4)}px`,
+    padding: `0 ${theme.spacing(4)}px ${theme.spacing(1)}px`,
     justifyContent: 'space-between'
   },
   title: {
+    paddingTop: theme.spacing(0.25),
     '& p': {
       fontFamily: 'Montserrat',
       fontWeight: '600',
       fontSize: '18px'
     }
   },
-  buttonCollection: {paddingRight: theme.spacing(4)},
+  buttonCollection: {
+    padding: `${theme.spacing(1)}px ${theme.spacing(4.5)}px 0 0`
+  },
   navButton: {
     textTransform: 'none',
     marginRight: theme.spacing(4),
-    paddingBottom: '7px',
     '& span.MuiButton-label': {
       fontSize: '16px',
       fontWeight: '600'
@@ -58,7 +71,7 @@ const useStyles = makeStyles((theme) => ({
         color: theme.palette.primary.main,
       },
       '& .activeBottom': {
-        width: theme.spacing(7),
+        width: '75%',
         borderRadius: '15%',
         height: '3px',
         position: 'absolute',
@@ -90,7 +103,7 @@ const useStyles = makeStyles((theme) => ({
       height: '100%',
       width: '100%',
       position: 'relative',
-      top: -theme.spacing(0.25)
+      // top: -theme.spacing(0.5)
     }
   },
 
@@ -198,30 +211,47 @@ function UserIcon() {
   )
 }
 
+function ElevationScroll({children}) {
+  const trigger = useScrollTrigger({
+    disableHysteresis: true,
+    threshold: 0,
+    target: window,
+  });
+
+  return React.cloneElement(children, {
+    elevation: trigger ? 4: 0,
+  })
+}
+
 export default function Header({ signedIn, locationPathname }) {
   const classes = useStyles();
 
   return (
-    <AppBar position='static' elevation={0} className={classes.appbar}>
-      <Toolbar className={classes.toolbar}>
+    <>
+      <ElevationScroll >
+        <AppBar position='fixed' elevation={0} className={classes.appbar}>
+          <Toolbar className={classes.toolbar}>
 
-        <Box display='flex'>
-        
-          { signedIn ? <Hamburger /> : <></> }
+            <Box display='flex'>
+            
+              { signedIn ? <Hamburger /> : <></> }
 
-          <Logo />
+              <Logo />
 
-        </Box>
+            </Box>
 
-        <Box className={classes.buttonCollection} >
+            <Box className={classes.buttonCollection} >
 
-          { headerData.navbarVisiblePages.includes(locationPathname) ? <NavbarButtons/> : <></> }
+              { headerData.navbarVisiblePages.includes(locationPathname) ? <NavbarButtons/> : <></> }
 
-          { signedIn ? <UserIcon /> : <SignInButonGroup/> }
+              { signedIn ? <UserIcon /> : <SignInButonGroup/> }
 
-        </Box>
+            </Box>
 
-      </Toolbar>
-    </AppBar>
+          </Toolbar>
+        </AppBar>
+      </ElevationScroll>
+      <div className={classes.headerOffset}/>
+    </>
   )
 }

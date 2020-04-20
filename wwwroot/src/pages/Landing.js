@@ -48,9 +48,9 @@ const shapeChildBreakpoint = 870;
 const useStyles = makeStyles((theme) => ({
   root: {},
   landingHomeRoot: {
-    minHeight: '86vh',
+    minHeight: '84vh',
     height: 'fit-content',
-    paddingTop: theme.spacing(33),
+    paddingTop: theme.spacing(30),
     paddingLeft: theme.spacing(1),
     // overflow: 'hidden',
     position: 'relative'
@@ -100,9 +100,9 @@ const useStyles = makeStyles((theme) => ({
     width: '262px',
     height: '411.28px',
     position: 'absolute',
-    top: -theme.spacing(2),
+    top: -theme.spacing(4),
     left: theme.spacing(54),
-    clipPath: 'polygon(50% 22%, 3% 76%, 97% 76%)',
+    clipPath: 'polygon(50% 20%, 0% 75%, 100% 75%)',
     
     [theme.breakpoints.down(shapeChildBreakpoint)]: {
       marginTop: theme.spacing(5)
@@ -112,7 +112,7 @@ const useStyles = makeStyles((theme) => ({
     width: '233px',
     height: '350px',
     position: 'absolute',
-    top: -theme.spacing(5.5),
+    top: -theme.spacing(7),
     left: theme.spacing(86.5),
     clipPath: 'circle(116px at 50% 66%)',
     filter: 'brightness(140%) contrast(68%) saturate(128%)',
@@ -125,7 +125,7 @@ const useStyles = makeStyles((theme) => ({
     width: '345px',
     height: '233.09px',
     position: 'absolute',
-    top: theme.spacing(42.5),
+    top: theme.spacing(40.5),
     left: theme.spacing(65.5),
     clipPath: 'polygon(11% 0%, 11% 100%, 76% 100%, 76% 0%)',
     filter: 'brightness(135%) contrast(90%) saturate(90%) opacity(87%)',
