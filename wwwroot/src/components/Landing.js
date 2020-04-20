@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
+import { Button, Typography, Container, Box, Grid, makeStyles }from '@material-ui/core';
 
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
@@ -246,8 +247,6 @@ function LandingHome() {
   )
 }
 
-
-
 export function FeatureCollection() {
   const classes = useStyles();
 
@@ -275,7 +274,7 @@ export function FeatureCollection() {
               md={4}
             >
               <Box className={classes.featureCollectionImgContainer}>
-                <img src={i.img}/>
+                <img src={i.img} alt='Icon'/>
               </Box>
 
               <Typography component='h3'>

@@ -1,24 +1,25 @@
-﻿using System.Collections.Generic;
-using AtApi.Model;
+﻿using AtApi.Model;
 using AtApi.Service;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace AtApi.Controllers
 {
+
     [Route("api/[controller]")]
     [ApiController]
     public class ClassController : ControllerBase
     {
 
-        private readonly IFactory<ClassModel> _factory;
-        public ClassController(IFactory<ClassModel> factory)
+        private readonly IFactory<Class> _factory;
+        public ClassController(IFactory<Class> factory)
         {
             _factory = factory;
         }
         // GET: api/Class
         [HttpGet]
         [Route("")]
-        public IEnumerable<ClassModel> GetAll()
+        public IEnumerable<Class> GetAll()
         {
             return _factory.GetAll();
         }
@@ -26,7 +27,7 @@ namespace AtApi.Controllers
         // GET: api/Class/5
         [HttpGet()]
         [Route("{id}")]
-        public ClassModel Get(int id)
+        public Class GetClass(int id)
         {
             return _factory.GetOne(id);
         }
@@ -34,7 +35,7 @@ namespace AtApi.Controllers
         // POST: api/Class
         [HttpPost]
         [Route("")]
-        public ClassModel Post([FromBody] ClassModel model)
+        public Class PostClass([FromBody] Class model)
         {
             return _factory.Update(model);
         }
@@ -42,7 +43,7 @@ namespace AtApi.Controllers
         // PUT: api/Class/5
         [HttpPut]
         [Route("{id}")]
-        public ClassModel Put(int id, [FromBody] ClassModel model)
+        public Class PutClassModel(int id, [FromBody] Class model)
         {
             return _factory.Create(model);
         }
