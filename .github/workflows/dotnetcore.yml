@@ -32,19 +32,20 @@ jobs:
       run: dotnet build "AtApi Solution\AtApi\AtApi.csproj" --configuration Release --no-restore
     - name: Test
       run: dotnet test "AtApi Solution\AtApi.UnitTests\AtApi.UnitTests.csproj" --no-restore --verbosity normal
+
       
-  stage: test
-  script:
-    - run: dotnet test "AtApi Solution\AtApi.UnitTests\AtApi.UnitTests.csproj" --no-restore --verbosity minimal --collect:"XPlat Code Coverage"
-    - ls -ld */TestResults/*
-    - ls -ld ${CI_PROJECT_DIR}/*/TestResults/*/*
-    # each reporttype must be a separate line, doesn't work together ; separated
-    - ./tools/reportgenerator "-reports:${CI_PROJECT_DIR}/*/TestResults/*/coverage.cobertura.xml" "-targetdir:Reports_Coverage" -reportTypes:TextSummary;
-    - ./tools/reportgenerator "-reports:${CI_PROJECT_DIR}/*/TestResults/*/coverage.cobertura.xml" "-targetdir:Reports_Coverage" -reportTypes:Html;
-    - ls Reports_Coverage
-    - cat ./Reports_Coverage/Summary.txt
-    - echo 'End Summary'
-  coverage: /Summary\n[\s\S]*/
-  artifacts:
-    paths:
-      - Reports_Coverage/
+#  stage: test
+#  script:
+#    - dotnet test "AtApi Solution\AtApi.UnitTests\AtApi.UnitTests.csproj" --no-restore --verbosity minimal --collect:"XPlat Code Coverage"
+#    - ls -ld */TestResults/*
+#    - ls -ld ${CI_PROJECT_DIR}/*/TestResults/*/*
+#    # each reporttype must be a separate line, doesn't work together ; separated
+#    - ./tools/reportgenerator "-reports:${CI_PROJECT_DIR}/*/TestResults/*/coverage.cobertura.xml" "-targetdir:Reports_Coverage" -reportTypes:TextSummary;
+#    - ./tools/reportgenerator "-reports:${CI_PROJECT_DIR}/*/TestResults/*/coverage.cobertura.xml" "-targetdir:Reports_Coverage" -reportTypes:Html;
+#    - ls Reports_Coverage
+#    - cat ./Reports_Coverage/Summary.txt
+#    - echo 'End Summary'
+#  coverage: /Summary\n[\s\S]*/
+#  artifacts:
+#    paths:
+#      - Reports_Coverage/
