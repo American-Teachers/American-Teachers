@@ -15,7 +15,6 @@ namespace AtApi.Adapter
             this.context = context;
         }
 
-
         public async Task<IDbContextTransaction> BeginTransactionAsync(CancellationToken cancellationToken)
         {
             return await context.Database.BeginTransactionAsync(cancellationToken);

@@ -15,9 +15,9 @@ namespace AtApi.Dependency
         public static IServiceCollection AddDependencyInjection(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddTransient(c => configuration);
-            services.ScanTransient<Startup>();
-            //services.ScanTransient<IAdapter<Student>>();
-            //services.ScanTransient<IFactory<Enrollment>>();
+            services.ScanTransient<AppSettings>();  //Model           
+            //services.ScanTransient<IAdapter<Student>>(); //Adapter
+            services.ScanTransient<IFactory<Enrollment>>(); //Service
             services.ScanTransient<Class>();
             //services.ScanTransient<IEmailSender>();
             //Overrides          

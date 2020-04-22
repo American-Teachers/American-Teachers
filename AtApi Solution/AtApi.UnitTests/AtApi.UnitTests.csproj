@@ -22,7 +22,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AtApi.Model\AtApi.Model.csproj" />
-    <ProjectReference Include="..\AtApi\AtApi.csproj" />
+    <ProjectReference Include="..\AtApi.Service\AtApi.Service.csproj" />
   </ItemGroup>
 
 </Project>

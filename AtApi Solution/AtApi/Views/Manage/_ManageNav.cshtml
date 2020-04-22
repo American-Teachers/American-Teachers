@@ -1,4 +1,5 @@
 ﻿@using AtApi.Views.Manage
+@using AtApi.Service.Identity
 @inject SignInManager<ApplicationUser> SignInManager
 @{
     var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();

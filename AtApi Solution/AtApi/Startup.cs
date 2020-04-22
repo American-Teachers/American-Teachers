@@ -1,11 +1,8 @@
-using AtApi.Data;
+
 using AtApi.Dependency;
 using AtApi.Model.Settings;
-using AtApi.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -56,7 +53,6 @@ namespace AtApi
                 googleOptions.ClientId = appSettings.Authentication.Google.ClientId;
                 googleOptions.ClientSecret = appSettings.Authentication.Google.ClientSecret;
             });
-
 
             services.AddControllers().ConfigureApiBehaviorOptions(a => a.SuppressMapClientErrors = true);
             services.AddControllersWithViews();

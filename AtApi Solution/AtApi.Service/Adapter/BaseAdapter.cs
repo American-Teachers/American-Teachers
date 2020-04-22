@@ -1,9 +1,7 @@
-﻿using AtApi.Model;
-using AtApi.Model.At;
+﻿using AtApi.Model.At;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace AtApi.Adapter
@@ -16,12 +14,13 @@ namespace AtApi.Adapter
         {
             this.atDbContext = atDbContext;
         }
+
         public virtual T Create(T model)
         {
             var e = atDbContext.Add<T>(model);
             return e.Entity;
         }
- 
+
         public virtual async Task DeleteAsync(int id)
         {
             var model = await GetOneAsync(id).ConfigureAwait(false);
@@ -37,6 +36,5 @@ namespace AtApi.Adapter
         {
             throw new NotImplementedException();
         }
- 
     }
 }
