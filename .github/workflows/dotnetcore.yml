@@ -35,7 +35,7 @@ jobs:
       
   stage: test
   script:
-      run: dotnet test "AtApi Solution\AtApi.UnitTests\AtApi.UnitTests.csproj" --no-restore --verbosity minimal --collect:"XPlat Code Coverage"
+    - run: dotnet test "AtApi Solution\AtApi.UnitTests\AtApi.UnitTests.csproj" --no-restore --verbosity minimal --collect:"XPlat Code Coverage"
     - ls -ld */TestResults/*
     - ls -ld ${CI_PROJECT_DIR}/*/TestResults/*/*
     # each reporttype must be a separate line, doesn't work together ; separated
