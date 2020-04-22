@@ -21,14 +21,17 @@ namespace AtApi.Dependency
             services.ScanTransient<Class>();
             //services.ScanTransient<IEmailSender>();
             //Overrides          
-            var appSettings = configuration.Get<AppSettings>();
+            //var appSettings = configuration.Get<AppSettings>();
+
+
+
             services.Decorate<IAdapter<Class>, LoggerAdapterDecorator<Class>>();
             services.Decorate<IAdapter<Enrollment>, LoggerAdapterDecorator<Enrollment>>();
             services.Decorate<IAdapter<Parent>, LoggerAdapterDecorator<Parent>>();
             services.Decorate<IAdapter<School>, LoggerAdapterDecorator<School>>();
             services.Decorate<IAdapter<Student>, LoggerAdapterDecorator<Student>>();
             services.Decorate<IAdapter<Teacher>, LoggerAdapterDecorator<Teacher>>();
-            
+
 
             services.Decorate<IFactory<Class>, LoggerFactoryDecorator<Class>>();
             services.Decorate<IFactory<Enrollment>, LoggerFactoryDecorator<Enrollment>>();
@@ -36,7 +39,7 @@ namespace AtApi.Dependency
             services.Decorate<IFactory<School>, LoggerFactoryDecorator<School>>();
             services.Decorate<IFactory<Student>, LoggerFactoryDecorator<Student>>();
             services.Decorate<IFactory<Teacher>, LoggerFactoryDecorator<Teacher>>();
-            
+
 
             return services;
         }

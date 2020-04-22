@@ -21,5 +21,6 @@ namespace AtApi.Dependency
         {
             return services.Scan(scan => scan.FromAssemblyOf<T>().AddClasses(classes => classes.AssignableTo(genericType)).AsImplementedInterfaces());
         }
+
     }
 }

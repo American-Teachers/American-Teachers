@@ -22,7 +22,7 @@ namespace AtApi
 
         public IConfiguration Configuration { get; }
         private IServiceProvider _serviceProvider;
-        public static readonly ILoggerFactory MyLoggerFactory = LoggerFactory.Create(builder => { builder.AddConsole(); });
+        //public static readonly ILoggerFactory MyLoggerFactory = LoggerFactory.Create(builder => { builder.AddConsole(); });
         public Startup(IWebHostEnvironment env, IConfiguration configuration)
         {
             Configuration = configuration;
@@ -32,7 +32,7 @@ namespace AtApi
                 .SetBasePath(env.ContentRootPath)
                 .AddUserSecrets(appAssembly, false)
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: false, reloadOnChange: true)
                 .AddEnvironmentVariables();
             this.Configuration = builder.Build();
         }
@@ -49,8 +49,8 @@ namespace AtApi
             _serviceProvider = services.BuildServiceProvider();
 #pragma warning restore ASP0000 // Do not call 'IServiceCollection.BuildServiceProvider' in 'ConfigureServices'
             var appSettings = _serviceProvider.GetService<IOptions<AppSettings>>().Value;
-
-            services.ConfigureDataContext(appSettings, MyLoggerFactory);
+            var loggerFactory = _serviceProvider.GetService<ILoggerFactory>();
+            services.ConfigureDataContext(appSettings, loggerFactory);
             services.AddAuthentication().AddGoogle(googleOptions =>
             {
                 googleOptions.ClientId = appSettings.Authentication.Google.ClientId;

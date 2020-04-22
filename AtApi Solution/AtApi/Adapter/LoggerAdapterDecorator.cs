@@ -8,9 +8,9 @@ namespace AtApi.Adapter
     public class LoggerAdapterDecorator<T> : IAdapter<T> where T : class
     {
         private readonly IAdapter<T> adapter;
-        private readonly ILogger<T> logger;
+        private readonly ILogger<IAdapter<T>> logger;
 
-        public LoggerAdapterDecorator(IAdapter<T> adapter, ILogger<T> logger)
+        public LoggerAdapterDecorator(IAdapter<T> adapter, ILogger<IAdapter<T>> logger)
         {
             this.adapter = adapter;
             this.logger = logger;
@@ -19,30 +19,30 @@ namespace AtApi.Adapter
         {
             if (logger.IsEnabled(LogLevel.Debug))
             {
-                logger.Log(LogLevel.Trace, () => $"Create(${nameof(model)}");
+                logger.Log(LogLevel.Trace, () => $"Adapter<{typeof(T)}>.Create(${nameof(model)}");
             }
             else
             {
-                logger.Log(LogLevel.Trace, () => $"Create({model.Serlialize()}");
+                logger.Log(LogLevel.Trace, () => $"Adapter<{typeof(T)}>.Create({model.Serlialize()}");
             }
             return adapter.Create(model);
         }
 
         public async Task DeleteAsync(int id)
         {
-            logger.Log(LogLevel.Debug, () => $"Delete({id}");
+            logger.Log(LogLevel.Debug, () => $"Adapter<{typeof(T)}>.Delete({id}");
             await adapter.DeleteAsync(id).ConfigureAwait(false);
         }
 
         public async Task<List<T>> GetAllAsync()
         {
-            logger.Log(LogLevel.Debug, () => $"GetAll()");
+            logger.Log(LogLevel.Debug, () => $"Adapter<{typeof(T)}>.GetAll()");
             return await adapter.GetAllAsync().ConfigureAwait(false);
         }
 
         public async Task<T> GetOneAsync(int id)
         {
-            logger.Log(LogLevel.Debug, () => $"GetOne(id)");
+            logger.Log(LogLevel.Debug, () => $"Adapter<{typeof(T)}>.GetOne(id)");
             return await adapter.GetOneAsync(id);
         }
 
