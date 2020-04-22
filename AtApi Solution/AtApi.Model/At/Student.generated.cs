@@ -22,12 +22,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.CompilerServices;
 
-namespace AtApi.Model
+namespace AtApi.Model.At
 {
    /// <summary>
    /// Student
    /// </summary>
-   public partial class Student: global::AtApi.Model.Person
+   public partial class Student: global::AtApi.Model.At.Person
    {
       partial void Init();
 

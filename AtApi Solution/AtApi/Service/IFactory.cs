@@ -1,16 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace AtApi.Service
 {
     public interface IFactory<T> where T : class
     {
 
-        T GetOne(int id);
-        T Create(T model);
+        Task<T> GetOneAsync(int id);
+        Task<T> CreateAsync(T model, bool saveChanges = true);
 
-        T Update(T model);
-        void Delete(int id);
-        List<T> GetAll();
+        Task<T> UpdateAsync(T model, bool saveChanges = true);
+        Task DeleteAsync(int id, bool saveChanges = true);
+        Task<List<T>> GetAllAsync();
     }
 }

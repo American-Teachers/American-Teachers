@@ -23,8 +23,9 @@ jobs:
       with:
         dotnet-version: 3.1.101
     - name: Install dependencies
-      run: dotnet restore "AtApi Solution\AtApi\AtApi.csproj"
+      run: dotnet restore "AtApi Solution\AtApi Solution.sln"
     - name: Build
       run: dotnet build "AtApi Solution\AtApi\AtApi.csproj" --configuration Release --no-restore
     - name: Test
-      run: dotnet test "AtApi Solution\AtApi\AtApi.csproj" --no-restore --verbosity normal
+      run: dotnet test "AtApi Solution\AtApi.UnitTests\AtApi.UnitTests.csproj" --no-restore --verbosity normal --collect:"XPlat Code Coverage"
+      

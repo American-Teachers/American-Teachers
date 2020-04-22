@@ -51,7 +51,7 @@ namespace AtApi.Model.At
       /// <param name="teacherid">Foreign key for Teacher.TeacherSchools &lt;--&gt; TeacherSchool.Teacher. </param>
       /// <param name="school"></param>
       /// <param name="teacher"></param>
-      public TeacherSchool(int schoolid, int teacherid, global::AtApi.Model.School school, global::AtApi.Model.Teacher teacher)
+      public TeacherSchool(int schoolid, int teacherid, global::AtApi.Model.At.School school, global::AtApi.Model.At.Teacher teacher)
       {
          this.SchoolId = schoolid;
 
@@ -74,7 +74,7 @@ namespace AtApi.Model.At
       /// <param name="teacherid">Foreign key for Teacher.TeacherSchools &lt;--&gt; TeacherSchool.Teacher. </param>
       /// <param name="school"></param>
       /// <param name="teacher"></param>
-      public static TeacherSchool Create(int schoolid, int teacherid, global::AtApi.Model.School school, global::AtApi.Model.Teacher teacher)
+      public static TeacherSchool Create(int schoolid, int teacherid, global::AtApi.Model.At.School school, global::AtApi.Model.At.Teacher teacher)
       {
          return new TeacherSchool(schoolid, teacherid, school, teacher);
       }
@@ -111,12 +111,12 @@ namespace AtApi.Model.At
       /// <summary>
       /// Required
       /// </summary>
-      public virtual global::AtApi.Model.School School { get; set; }
+      public virtual global::AtApi.Model.At.School School { get; set; }
 
       /// <summary>
       /// Required
       /// </summary>
-      public virtual global::AtApi.Model.Teacher Teacher { get; set; }
+      public virtual global::AtApi.Model.At.Teacher Teacher { get; set; }
 
    }
 }

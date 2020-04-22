@@ -1,42 +1,69 @@
 ﻿using AtApi.Adapter;
+using AtApi.Framework;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace AtApi.Service
 {
-    public abstract class BaseFactory<T, A> : IFactory<T> where T : class
-                                                          where A : IAdapter<T>
+    public abstract class BaseFactory<T, TDbContext> : IFactory<T> where T : class
+                                                          where TDbContext : DbContext
     {
-        public BaseFactory(A adapter)
+        protected readonly IAdapter<T> adapter;
+        protected readonly IContextAdapter<TDbContext> contextAdapter;
+        protected BaseFactory(IAdapter<T> adapter, IContextAdapter<TDbContext> contextAdapter)
         {
-            _adapter = adapter;
+            this.adapter = adapter;
+            this.contextAdapter = contextAdapter;
         }
 
-        private A _adapter;
 
-        public virtual T Create(T model)
+        public virtual async Task<T> CreateAsync(T model, bool saveChanges = true)
         {
-            return _adapter.Create(model);
+            var e = adapter.Create(model);
+            if (saveChanges)
+            {
+                await contextAdapter.SaveChangesAsync().ConfigureAwait(false);
+            }
+            return e;
         }
 
-        public virtual void Delete(int id)
+        public virtual async Task DeleteAsync(int id, bool saveChanges = true)
         {
-            _adapter.Delete(id);
+            await adapter.DeleteAsync(id);
+            if (saveChanges)
+            {
+                await contextAdapter.SaveChangesAsync().ConfigureAwait(false);
+            }
         }
 
-        public virtual List<T> GetAll()
+        public virtual async Task<List<T>> GetAllAsync()
         {
-            return _adapter.GetAll();
+            return await adapter.GetAllAsync().ConfigureAwait(false);
         }
 
-        public virtual T GetOne(int id)
+        public virtual async Task<T> GetOneAsync(int id)
         {
-            return _adapter.GetOne(id);
+            return await adapter.GetOneAsync(id).ConfigureAwait(false);
         }
 
-        public virtual T Update(T model)
+        public virtual async Task<T> UpdateAsync(T model, bool saveChanges = true)
         {
-            return _adapter.Update(model);
+            if (saveChanges)
+            {
+                await contextAdapter.SaveChangesAsync().ConfigureAwait(false);
+            }
+            return model;
         }
+
+
+        //{
+        //    return adapter.Update(model);
+        //    if (saveChanges)
+        //    {
+        //        await contextAdapter.SaveChangesAsync().ConfigureAwait(false);
+        //    }
+        //}
     }
 }

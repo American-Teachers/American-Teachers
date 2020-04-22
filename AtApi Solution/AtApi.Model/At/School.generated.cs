@@ -22,7 +22,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.CompilerServices;
 
-namespace AtApi.Model
+namespace AtApi.Model.At
 {
    /// <summary>
    /// School

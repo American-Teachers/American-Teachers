@@ -1,49 +1,24 @@
 ﻿using AtApi.Model;
 using AtApi.Model.At;
-using Microsoft.Extensions.Logging;
-using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using System.Threading.Tasks;
+
 namespace AtApi.Adapter
 {
-    public class ClassAdapter : IAdapter<Class>
+    public class ClassAdapter : AtBaseAdapter<Class>
     {
-        private readonly AtDbContext atDbContext;
 
-        public ClassAdapter(AtDbContext atDbContext)
+        public ClassAdapter(AtDbContext atDbContext) : base(atDbContext)
         {
-            this.atDbContext = atDbContext;
+
         }
-        public Class Create(Class model)
+        
+        public override async Task<Class> GetOneAsync(int id)
         {
-            var e = atDbContext.Classes.Add(model);
-            atDbContext.SaveChanges();
-            return e.Entity;
+            return await atDbContext.Classes.Where(_ => _.Id == id).SingleOrDefaultAsync();
         }
 
-        public void Delete(int id)
-        {
-            var model = atDbContext.Classes.Where(_ => _.Id == id).SingleOrDefault();
-            atDbContext.Classes.Remove(model);
-            atDbContext.SaveChanges();
-        }
-
-        public List<Class> GetAll()
-        {
-            return atDbContext.Classes.ToList();
-        }
-
-        public Class GetOne(int id)
-        {
-            return atDbContext.Classes.Where(_=>_.Id == id).SingleOrDefault();
-        }
-
-        public Class Update(Class model)
-        {
-            var old = GetOne(model.Id);
-            old.Name = model.Name;
-            old.Subject = model.Subject;
-            atDbContext.SaveChanges();
-            return old;
-        }
+       
     }
 }

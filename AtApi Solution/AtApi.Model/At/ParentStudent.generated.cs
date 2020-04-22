@@ -54,7 +54,7 @@ namespace AtApi.Model.At
       /// <param name="studentid">Foreign key for Student.ParentStudents &lt;--&gt; ParentStudent.Student. </param>
       /// <param name="parent"></param>
       /// <param name="student"></param>
-      public ParentStudent(int parentid, int studentid, global::AtApi.Model.Parent parent, global::AtApi.Model.Student student)
+      public ParentStudent(int parentid, int studentid, global::AtApi.Model.At.Parent parent, global::AtApi.Model.At.Student student)
       {
          this.ParentId = parentid;
 
@@ -77,7 +77,7 @@ namespace AtApi.Model.At
       /// <param name="studentid">Foreign key for Student.ParentStudents &lt;--&gt; ParentStudent.Student. </param>
       /// <param name="parent"></param>
       /// <param name="student"></param>
-      public static ParentStudent Create(int parentid, int studentid, global::AtApi.Model.Parent parent, global::AtApi.Model.Student student)
+      public static ParentStudent Create(int parentid, int studentid, global::AtApi.Model.At.Parent parent, global::AtApi.Model.At.Student student)
       {
          return new ParentStudent(parentid, studentid, parent, student);
       }
@@ -114,12 +114,12 @@ namespace AtApi.Model.At
       /// <summary>
       /// Required
       /// </summary>
-      public virtual global::AtApi.Model.Parent Parent { get; set; }
+      public virtual global::AtApi.Model.At.Parent Parent { get; set; }
 
       /// <summary>
       /// Required
       /// </summary>
-      public virtual global::AtApi.Model.Student Student { get; set; }
+      public virtual global::AtApi.Model.At.Student Student { get; set; }
 
    }
 }

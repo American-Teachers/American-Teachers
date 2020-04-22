@@ -7,66 +7,58 @@ using System.Threading.Tasks;
 
 namespace AtApi.Controllers
 {
-
     [Route("api/[controller]")]
     [ApiController]
-    public class SchoolController : ControllerBase
+    public class EnrollmentController : ControllerBase
     {
+        private readonly IFactory<Enrollment> factory;
 
-        private readonly IFactory<School> factory;
-        public SchoolController(IFactory<School> factory)
+        public EnrollmentController(IFactory<Enrollment> factory)
         {
             this.factory = factory;
         }
 
         [HttpGet]
         [Route("")]
-        public async Task<ActionResult<IEnumerable<School>>> GetAllAsync()
+        public async Task<ActionResult<IEnumerable<Enrollment>>> GetAllAsync()
         {
             return await factory.GetAllAsync().ConfigureAwait(false);
         }
 
 
-        [HttpGet()]
+        [HttpGet]
         [Route("{id}")]
-        public async Task<ActionResult<School>> GetClassAsync(int id)
+        public async Task<ActionResult<Enrollment>> GetAsync(int id)
         {
-            var item = await factory.GetOneAsync(id);
+            var item =await factory.GetOneAsync(id).ConfigureAwait(false);
             if (item == null)
             {
                 return NotFound();
             }
             return item;
+
         }
 
 
         [HttpPost]
-        [Route("")]
-        public async Task<ActionResult<School>> PostClass([FromBody] School model)
+        [Route("{id}")]
+        public async Task<ActionResult<Enrollment>> PostAsync(Enrollment model)
         {
-            return await factory.CreateAsync(model);
+            return await factory.CreateAsync(model).ConfigureAwait(false);
         }
-
 
         [HttpPut]
         [Route("{id}")]
-        public async Task<ActionResult<School>> PutClassModelAsync(int id, [FromBody] School model)
+        public async Task<ActionResult<Enrollment>> PutAsync(int id, Enrollment model)
         {
-            var item = await factory.GetOneAsync(id);
-            if (item == null)
-            {
-                return NotFound();
-            }
-
             return await factory.UpdateAsync(model).ConfigureAwait(false);
         }
 
-
         [HttpDelete]
         [Route("{id}")]
-        public ActionResult Delete(int id)
+        public async Task<ActionResult> DeleteAsync(int id)
         {
-            factory.DeleteAsync(id);
+            await factory.DeleteAsync(id).ConfigureAwait(false);
             return Ok();
         }
     }

@@ -29,9 +29,9 @@ namespace AtApi.Model.At
       #region DbSets
 
       /// <summary>
-      /// Repository for global::AtApi.Model.Class - Class
+      /// Repository for global::AtApi.Model.At.Class - Class
       /// </summary>
-      public virtual Microsoft.EntityFrameworkCore.DbSet<global::AtApi.Model.Class> Classes { get; set; }
+      public virtual Microsoft.EntityFrameworkCore.DbSet<global::AtApi.Model.At.Class> Classes { get; set; }
 
       /// <summary>
       /// Repository for global::AtApi.Model.At.Enrollment - Enrollment
@@ -39,15 +39,15 @@ namespace AtApi.Model.At
       public virtual Microsoft.EntityFrameworkCore.DbSet<global::AtApi.Model.At.Enrollment> Enrollment { get; set; }
 
       /// <summary>
-      /// Repository for global::AtApi.Model.Parent - Parent
+      /// Repository for global::AtApi.Model.At.Parent - Parent
       /// </summary>
-      public virtual Microsoft.EntityFrameworkCore.DbSet<global::AtApi.Model.Parent> Parents { get; set; }
+      public virtual Microsoft.EntityFrameworkCore.DbSet<global::AtApi.Model.At.Parent> Parents { get; set; }
       public virtual Microsoft.EntityFrameworkCore.DbSet<global::AtApi.Model.At.ParentStudent> ParentStudents { get; set; }
 
       /// <summary>
-      /// Repository for global::AtApi.Model.Person - Person
+      /// Repository for global::AtApi.Model.At.Person - Person
       /// </summary>
-      public virtual Microsoft.EntityFrameworkCore.DbSet<global::AtApi.Model.Person> People { get; set; }
+      public virtual Microsoft.EntityFrameworkCore.DbSet<global::AtApi.Model.At.Person> People { get; set; }
 
       /// <summary>
       /// Repository for global::AtApi.Model.At.Schedule - Schedule
@@ -55,19 +55,19 @@ namespace AtApi.Model.At
       public virtual Microsoft.EntityFrameworkCore.DbSet<global::AtApi.Model.At.Schedule> Schedules { get; set; }
 
       /// <summary>
-      /// Repository for global::AtApi.Model.School - School
+      /// Repository for global::AtApi.Model.At.School - School
       /// </summary>
-      public virtual Microsoft.EntityFrameworkCore.DbSet<global::AtApi.Model.School> Schools { get; set; }
+      public virtual Microsoft.EntityFrameworkCore.DbSet<global::AtApi.Model.At.School> Schools { get; set; }
 
       /// <summary>
-      /// Repository for global::AtApi.Model.Student - Student
+      /// Repository for global::AtApi.Model.At.Student - Student
       /// </summary>
-      public virtual Microsoft.EntityFrameworkCore.DbSet<global::AtApi.Model.Student> Students { get; set; }
+      public virtual Microsoft.EntityFrameworkCore.DbSet<global::AtApi.Model.At.Student> Students { get; set; }
 
       /// <summary>
-      /// Repository for global::AtApi.Model.Teacher - Teacher
+      /// Repository for global::AtApi.Model.At.Teacher - Teacher
       /// </summary>
-      public virtual Microsoft.EntityFrameworkCore.DbSet<global::AtApi.Model.Teacher> Teachers { get; set; }
+      public virtual Microsoft.EntityFrameworkCore.DbSet<global::AtApi.Model.At.Teacher> Teachers { get; set; }
       public virtual Microsoft.EntityFrameworkCore.DbSet<global::AtApi.Model.At.TeacherSchool> TeacherSchools { get; set; }
       #endregion DbSets
 
@@ -99,33 +99,33 @@ namespace AtApi.Model.At
          OnModelCreatingImpl(modelBuilder);
 
 
-         modelBuilder.Entity<global::AtApi.Model.Class>()
+         modelBuilder.Entity<global::AtApi.Model.At.Class>()
                      .ToTable("Classes")
                      .HasKey(t => t.Id);
-         modelBuilder.Entity<global::AtApi.Model.Class>()
+         modelBuilder.Entity<global::AtApi.Model.At.Class>()
                      .Property(t => t.Id)
                      .IsRequired()
                      .ValueGeneratedOnAdd();
-         modelBuilder.Entity<global::AtApi.Model.Class>()
+         modelBuilder.Entity<global::AtApi.Model.At.Class>()
                      .Property(t => t.Name)
                      .IsRequired();
-         modelBuilder.Entity<global::AtApi.Model.Class>()
+         modelBuilder.Entity<global::AtApi.Model.At.Class>()
                      .Property(t => t.Description)
                      .IsRequired();
-         modelBuilder.Entity<global::AtApi.Model.Class>()
+         modelBuilder.Entity<global::AtApi.Model.At.Class>()
                      .Property(t => t.Code)
                      .IsRequired();
-         modelBuilder.Entity<global::AtApi.Model.Class>()
+         modelBuilder.Entity<global::AtApi.Model.At.Class>()
                      .Property(t => t.Subject)
                      .IsRequired();
-         modelBuilder.Entity<global::AtApi.Model.Class>()
+         modelBuilder.Entity<global::AtApi.Model.At.Class>()
                      .Property(t => t.EstimatedNumberOfStudents)
                      .IsRequired();
-         modelBuilder.Entity<global::AtApi.Model.Class>().HasIndex(t => t.ScheduleId);
-         modelBuilder.Entity<global::AtApi.Model.Class>()
+         modelBuilder.Entity<global::AtApi.Model.At.Class>().HasIndex(t => t.ScheduleId);
+         modelBuilder.Entity<global::AtApi.Model.At.Class>()
                      .Property(t => t.TeacherId)
                      .IsRequired();
-         modelBuilder.Entity<global::AtApi.Model.Class>().HasIndex(t => t.TeacherId);
+         modelBuilder.Entity<global::AtApi.Model.At.Class>().HasIndex(t => t.TeacherId);
 
          modelBuilder.Entity<global::AtApi.Model.At.Enrollment>()
                      .ToTable("Enrollments")
@@ -178,24 +178,24 @@ namespace AtApi.Model.At
                      .HasForeignKey<global::AtApi.Model.At.ParentStudent>("StudentId")
                      .OnDelete(DeleteBehavior.Cascade);
 
-         modelBuilder.Entity<global::AtApi.Model.Person>()
+         modelBuilder.Entity<global::AtApi.Model.At.Person>()
                      .ToTable("People")
                      .HasKey(t => t.Id);
-         modelBuilder.Entity<global::AtApi.Model.Person>()
+         modelBuilder.Entity<global::AtApi.Model.At.Person>()
                      .Property(t => t.Id)
                      .IsRequired()
                      .ValueGeneratedOnAdd();
-         modelBuilder.Entity<global::AtApi.Model.Person>()
+         modelBuilder.Entity<global::AtApi.Model.At.Person>()
                      .Property(t => t.EmailAddress)
                      .HasMaxLength(1000)
                      .IsRequired();
-         modelBuilder.Entity<global::AtApi.Model.Person>()
+         modelBuilder.Entity<global::AtApi.Model.At.Person>()
                      .Property(t => t.FirstName)
                      .IsRequired();
-         modelBuilder.Entity<global::AtApi.Model.Person>()
+         modelBuilder.Entity<global::AtApi.Model.At.Person>()
                      .Property(t => t.LastName)
                      .IsRequired();
-         modelBuilder.Entity<global::AtApi.Model.Person>()
+         modelBuilder.Entity<global::AtApi.Model.At.Person>()
                      .Property(t => t.PreferredName)
                      .HasMaxLength(1000);
 
@@ -221,19 +221,19 @@ namespace AtApi.Model.At
                      .WithOne()
                      .HasForeignKey("Class_Classes_Id");
 
-         modelBuilder.Entity<global::AtApi.Model.School>()
+         modelBuilder.Entity<global::AtApi.Model.At.School>()
                      .ToTable("Schools")
                      .HasKey(t => t.Id);
-         modelBuilder.Entity<global::AtApi.Model.School>()
+         modelBuilder.Entity<global::AtApi.Model.At.School>()
                      .Property(t => t.Id)
                      .IsRequired()
                      .ValueGeneratedOnAdd();
-         modelBuilder.Entity<global::AtApi.Model.School>()
+         modelBuilder.Entity<global::AtApi.Model.At.School>()
                      .Property(t => t.Name)
                      .IsRequired();
 
 
-         modelBuilder.Entity<global::AtApi.Model.Teacher>()
+         modelBuilder.Entity<global::AtApi.Model.At.Teacher>()
                      .HasMany(x => x.Classes)
                      .WithOne()
                      .HasForeignKey("Class_Classes_Id")

@@ -22,7 +22,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.CompilerServices;
 
-namespace AtApi.Model
+namespace AtApi.Model.At
 {
    /// <summary>
    /// Person
@@ -134,6 +134,8 @@ namespace AtApi.Model
       [MaxLength(1000)]
       [StringLength(1000)]
       public string PreferredName { get; set; }
+
+      public string AspUserId { get; set; }
 
    }
 }

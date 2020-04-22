@@ -22,7 +22,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.CompilerServices;
 
-namespace AtApi.Model
+namespace AtApi.Model.At
 {
    /// <summary>
    /// Class
@@ -59,7 +59,7 @@ namespace AtApi.Model
       /// <param name="estimatednumberofstudents">Estimated Number of Students</param>
       /// <param name="teacherid">Foreign key for Teacher.Classes --&gt; Class. </param>
       /// <param name="_teacher0"></param>
-      public Class(string name, string description, string code, string subject, int teacherid, global::AtApi.Model.Teacher _teacher0, int estimatednumberofstudents = 0)
+      public Class(string name, string description, string code, string subject, int teacherid, global::AtApi.Model.At.Teacher _teacher0, int estimatednumberofstudents = 0)
       {
          if (string.IsNullOrEmpty(name)) throw new ArgumentNullException(nameof(name));
          this.Name = name;
@@ -94,7 +94,7 @@ namespace AtApi.Model
       /// <param name="estimatednumberofstudents">Estimated Number of Students</param>
       /// <param name="teacherid">Foreign key for Teacher.Classes --&gt; Class. </param>
       /// <param name="_teacher0"></param>
-      public static Class Create(string name, string description, string code, string subject, int teacherid, global::AtApi.Model.Teacher _teacher0, int estimatednumberofstudents = 0)
+      public static Class Create(string name, string description, string code, string subject, int teacherid, global::AtApi.Model.At.Teacher _teacher0, int estimatednumberofstudents = 0)
       {
          return new Class(name, description, code, subject, teacherid, _teacher0, estimatednumberofstudents);
       }

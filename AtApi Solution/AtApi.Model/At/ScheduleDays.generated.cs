@@ -15,7 +15,7 @@
 
 using System;
 
-namespace AtApi.Model
+namespace AtApi.Model.At
 {
    /// <summary>
    /// Schedule Days
