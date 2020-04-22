@@ -1,10 +1,9 @@
-﻿using AtApi.Adapter;
-using AtApi.Framework;
-using AtApi.Model;
+﻿using AtApi.Framework;
 using AtApi.Model.At;
+using AtApi.Service.Adapter;
 using System.Threading.Tasks;
 
-namespace AtApi.Service
+namespace AtApi.Service.Factory
 {
     public class StudentFactory : BaseFactory<Student, AtDbContext>
     {

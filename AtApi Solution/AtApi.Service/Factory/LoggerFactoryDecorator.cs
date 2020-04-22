@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AtApi.Service
+namespace AtApi.Service.Factory
 {
     public class LoggerFactoryDecorator<T> : IFactory<T> where T : class
     {

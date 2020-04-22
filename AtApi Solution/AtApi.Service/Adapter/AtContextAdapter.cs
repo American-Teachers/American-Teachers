@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Storage;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace AtApi.Adapter
+namespace AtApi.Service.Adapter
 {
     public class AtContextAdapter<T> : IContextAdapter<T> where T : DbContext
     {

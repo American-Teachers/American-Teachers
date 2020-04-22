@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace AtApi.Adapter
+namespace AtApi.Service.Adapter
 {
     public abstract class AtBaseAdapter<T> : IAdapter<T> where T : class
     {

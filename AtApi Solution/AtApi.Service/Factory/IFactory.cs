@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace AtApi.Service
+namespace AtApi.Service.Factory
 {
     public interface IFactory<T> where T : class
     {

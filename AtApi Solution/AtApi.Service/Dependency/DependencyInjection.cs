@@ -1,9 +1,7 @@
-﻿using AtApi.Adapter;
-using AtApi.Framework;
-using AtApi.Model;
-using AtApi.Model.At;
+﻿using AtApi.Model.At;
 using AtApi.Model.Settings;
-using AtApi.Service;
+using AtApi.Service.Adapter;
+using AtApi.Service.Factory;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -19,6 +17,8 @@ namespace AtApi.Dependency
             //services.ScanTransient<IAdapter<Student>>(); //Adapter
             services.ScanTransient<IFactory<Enrollment>>(); //Service
             services.ScanTransient<Class>();
+            
+            
             //services.ScanTransient<IEmailSender>();
             //Overrides          
             //var appSettings = configuration.Get<AppSettings>();

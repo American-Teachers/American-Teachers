@@ -1,11 +1,10 @@
-﻿using AtApi.Adapter;
-using AtApi.Framework;
+﻿using AtApi.Framework;
+using AtApi.Service.Adapter;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace AtApi.Service
+namespace AtApi.Service.Factory
 {
     public abstract class BaseFactory<T, TDbContext> : IFactory<T> where T : class
                                                           where TDbContext : DbContext

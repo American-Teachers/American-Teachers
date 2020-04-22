@@ -1,27 +1,23 @@
-﻿using AtApi.Adapter;
-using AtApi.Framework;
-using AtApi.Model;
+﻿using AtApi.Framework;
 using AtApi.Model.At;
-using AtApi.Service;
+using AtApi.Service.Adapter;
+using AtApi.Service.Factory;
 using Moq;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xunit;
 
-
 namespace AtApi.UnitTests.Service
 {
-    public class TeacherFactoryTests : TestsBase
+    public class SchoolFactoryTests : TestsBase
     {
 
-        private Mock<IAdapter<Teacher>> adapter;
+        private readonly Mock<IAdapter<School>> adapter;
         private readonly Mock<IContextAdapter<AtDbContext>> contextAdapter;
-
-
-        public TeacherFactoryTests()
+        public SchoolFactoryTests()
         {
-            adapter = new Mock<IAdapter<Teacher>>(MockBehavior.Strict);
+            adapter = new Mock<IAdapter<School>>(MockBehavior.Strict);
             contextAdapter = new Mock<IContextAdapter<AtDbContext>>(MockBehavior.Strict);
         }
 
@@ -31,21 +27,23 @@ namespace AtApi.UnitTests.Service
             contextAdapter.VerifyAll();
         }
 
-        private TeacherFactory GetFactory()
+        private SchoolFactory GetFactory()
         {
-            return new TeacherFactory(adapter.Object, contextAdapter.Object);
+            return new SchoolFactory(adapter.Object, contextAdapter.Object);
         }
 
-        private Teacher GetData()
+        private School GetData()
         {
-            return Teacher.Create($"{Guid.NewGuid():n}@noboday.com", Guid.NewGuid().ToString(), Guid.NewGuid().ToString());
+            return School.Create($"{Guid.NewGuid():n}");
         }
+
+
         [Fact]
         public async Task Create_SuccessAsync()
         {
             var model = GetData();
 
-            adapter.Setup(m => m.Create(It.IsAny<Teacher>())).Returns(model);
+            adapter.Setup(m => m.Create(It.IsAny<School>())).Returns(model);
             contextAdapter.Setup(m => m.SaveChangesAsync()).ReturnsAsync(1);
             var factory = GetFactory();
             var actual = await factory.CreateAsync(model);
@@ -58,15 +56,15 @@ namespace AtApi.UnitTests.Service
         public async Task Update_SuccessAsync()
         {
             var model = GetData();
-            var old = model.Serlialize().DeSerialize<Teacher>();
-            old.FirstName = Guid.NewGuid().ToString();
+            var old = model.Serlialize().DeSerialize<School>();
+            old.Name = Guid.NewGuid().ToString();
             adapter.Setup(m => m.GetOneAsync(It.Is<int>(s => s == old.Id))).ReturnsAsync(old);
             contextAdapter.Setup(m => m.SaveChangesAsync()).ReturnsAsync(1);
             var factory = GetFactory();
             var actual = await factory.UpdateAsync(model);
 
             Assert.NotNull(actual);
-            Assert.Equal(model.FirstName, actual.FirstName);
+            Assert.Equal(model.Name, actual.Name);
             VerifyAll();
         }
 
@@ -87,7 +85,7 @@ namespace AtApi.UnitTests.Service
         [Fact]
         public async Task GetAll_SuccessAsync()
         {
-            var model = new List<Teacher> {
+            var model = new List<School> {
                 GetData(),
                 GetData()
             };
