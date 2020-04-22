@@ -11,6 +11,10 @@ on:
       - master
       - develop
       - release/*
+before_script:
+  - 'echo | dotnet --version' # must be v 2.2.300 or later for reporter tool to work
+  - dotnet tool install dotnet-reportgenerator-globaltool --tool-path tools
+
 jobs:
   build:
 
@@ -27,5 +31,20 @@ jobs:
     - name: Build
       run: dotnet build "AtApi Solution\AtApi\AtApi.csproj" --configuration Release --no-restore
     - name: Test
-      run: dotnet test "AtApi Solution\AtApi.UnitTests\AtApi.UnitTests.csproj" --no-restore --verbosity normal --collect:"XPlat Code Coverage"
+      run: dotnet test "AtApi Solution\AtApi.UnitTests\AtApi.UnitTests.csproj" --no-restore --verbosity normal
       
+  stage: test
+  script:
+      run: dotnet test "AtApi Solution\AtApi.UnitTests\AtApi.UnitTests.csproj" --no-restore --verbosity minimal --collect:"XPlat Code Coverage"
+    - ls -ld */TestResults/*
+    - ls -ld ${CI_PROJECT_DIR}/*/TestResults/*/*
+    # each reporttype must be a separate line, doesn't work together ; separated
+    - ./tools/reportgenerator "-reports:${CI_PROJECT_DIR}/*/TestResults/*/coverage.cobertura.xml" "-targetdir:Reports_Coverage" -reportTypes:TextSummary;
+    - ./tools/reportgenerator "-reports:${CI_PROJECT_DIR}/*/TestResults/*/coverage.cobertura.xml" "-targetdir:Reports_Coverage" -reportTypes:Html;
+    - ls Reports_Coverage
+    - cat ./Reports_Coverage/Summary.txt
+    - echo 'End Summary'
+  coverage: /Summary\n[\s\S]*/
+  artifacts:
+    paths:
+      - Reports_Coverage/
