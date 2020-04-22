@@ -31,9 +31,7 @@ jobs:
     - name: Build
       run: dotnet build "AtApi Solution\AtApi\AtApi.csproj" --configuration Release --no-restore
     - name: Test
-      run: dotnet test "AtApi Solution\AtApi.UnitTests\AtApi.UnitTests.csproj" --no-restore --verbosity normal
-
-      
+      run: dotnet test "AtApi Solution\AtApi.UnitTests\AtApi.UnitTests.csproj" --no-restore --verbosity normal --collect:"XPlat Code Coverage"
 #  stage: test
 #  script:
 #    - dotnet test "AtApi Solution\AtApi.UnitTests\AtApi.UnitTests.csproj" --no-restore --verbosity minimal --collect:"XPlat Code Coverage"
