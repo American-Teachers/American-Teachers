@@ -134,7 +134,7 @@ export function Logo() {
 function NavbarButtons() {
   const classes = useStyles();
   return (
-    <>
+    <React.Fragment>
       {headerData.buttons.map(buttonData => (
         <Button
           className={classes.navButton}
@@ -146,7 +146,7 @@ function NavbarButtons() {
           <div className='activeBottom' ></div>
         </Button>
       ))}
-    </>
+    </React.Fragment>
   )
 }
 
@@ -154,7 +154,7 @@ function SignInButonGroup() {
   const classes = useStyles();
 
   return (
-    <>
+    <React.Fragment>
       <Button
         classes={{
           root: classes.buttonSign,
@@ -180,7 +180,7 @@ function SignInButonGroup() {
       >
         Sign Up
       </Button>
-    </>
+    </React.Fragment>
   )
 }
 
@@ -218,14 +218,14 @@ export default function Header({ signedIn, locationPathname }) {
   const classes = useStyles();
 
   return (
-    <>
+    <React.Fragment>
       <ElevationScroll >
         <AppBar position='fixed' elevation={0} className={classes.appbar}>
           <Toolbar className={classes.toolbar}>
 
             <Box display='flex'>
             
-              { signedIn ? <Hamburger /> : <></> }
+              { signedIn ? <Hamburger /> : <React.Fragment /> }
 
               <Logo />
 
@@ -233,7 +233,7 @@ export default function Header({ signedIn, locationPathname }) {
 
             <Box className={classes.buttonCollection} >
 
-              { headerData.navbarVisiblePages.includes(locationPathname) ? <NavbarButtons/> : <></> }
+              { headerData.navbarVisiblePages.includes(locationPathname) ? <NavbarButtons/> : <React.Fragment /> }
 
               { signedIn ? <UserIcon /> : <SignInButonGroup/> }
 
@@ -243,6 +243,6 @@ export default function Header({ signedIn, locationPathname }) {
         </AppBar>
       </ElevationScroll>
       <div className={classes.headerOffset}/>
-    </>
+    </React.Fragment>
   )
 }

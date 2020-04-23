@@ -117,7 +117,7 @@ const useStyles = makeStyles((theme) => ({
 function ListWithTitle({title, children}) {
   const classes = useStyles();
   return (
-    <>
+    <React.Fragment>
       <Typography className={classes.listTitle}>
         {title}
       </Typography>
@@ -125,7 +125,7 @@ function ListWithTitle({title, children}) {
       <List className={classes.linkList}>
       {children}
       </List>
-    </>
+    </React.Fragment>
   )
 }
 
