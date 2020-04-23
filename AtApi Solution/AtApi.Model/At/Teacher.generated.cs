@@ -22,12 +22,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.CompilerServices;
 
-namespace AtApi.Model
+namespace AtApi.Model.At
 {
    /// <summary>
    /// Teacher
    /// </summary>
-   public partial class Teacher: global::AtApi.Model.Person
+   public partial class Teacher: global::AtApi.Model.At.Person
    {
       partial void Init();
 
@@ -36,7 +36,7 @@ namespace AtApi.Model
       /// </summary>
       protected Teacher(): base()
       {
-         Classes = new System.Collections.Generic.List<global::AtApi.Model.Class>();
+         Classes = new System.Collections.Generic.List<global::AtApi.Model.At.Class>();
 
          Init();
       }
@@ -66,7 +66,7 @@ namespace AtApi.Model
          if (string.IsNullOrEmpty(lastname)) throw new ArgumentNullException(nameof(lastname));
          this.LastName = lastname;
 
-         this.Classes = new System.Collections.Generic.List<global::AtApi.Model.Class>();
+         this.Classes = new System.Collections.Generic.List<global::AtApi.Model.At.Class>();
 
          Init();
       }
@@ -95,7 +95,7 @@ namespace AtApi.Model
        * Navigation properties
        *************************************************************************/
 
-      public virtual ICollection<global::AtApi.Model.Class> Classes { get; protected set; }
+      public virtual ICollection<global::AtApi.Model.At.Class> Classes { get; protected set; }
 
       public virtual global::AtApi.Model.At.TeacherSchool TeacherSchools { get; set; }
 

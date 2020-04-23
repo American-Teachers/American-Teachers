@@ -1,7 +1,9 @@
 ﻿using AtApi.Model;
+using AtApi.Model.At;
 using AtApi.Service;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace AtApi.Controllers
 {
@@ -9,50 +11,62 @@ namespace AtApi.Controllers
     [ApiController]
     public class StudentController : ControllerBase
     {
-        private readonly IFactory<Student> _factory;
+        private readonly IFactory<Student> factory;
         public StudentController(IFactory<Student> factory)
         {
-            _factory = factory;
+            this.factory = factory;
         }
-        // GET: api/Student
+
+
         [HttpGet]
         [Route("")]
-        public IEnumerable<Student> GetAll()
+        public async Task<ActionResult<IEnumerable<Student>>> GetAllAsync()
         {
-            return _factory.GetAll();
+            return await factory.GetAllAsync().ConfigureAwait(false);
         }
 
 
-        // GET: api/Student/5
-        [HttpGet]
+        [HttpGet()]
         [Route("{id}")]
-        public Student Get(int id)
+        public async Task<ActionResult<Student>> GetClassAsync(int id)
         {
-            return _factory.GetOne(id);
+            var item = await factory.GetOneAsync(id);
+            if (item == null)
+            {
+                return NotFound();
+            }
+            return item;
         }
 
-        // POST: api/Student
+
         [HttpPost]
         [Route("")]
-        public Student Post([FromBody] Student model)
+        public async Task<ActionResult<Student>> PostClass([FromBody] Student model)
         {
-            return _factory.Update(model);
+            return await factory.CreateAsync(model);
         }
 
-        // PUT: api/Student/5
+
         [HttpPut]
         [Route("{id}")]
-        public Student Put(int id, [FromBody] Student model)
+        public async Task<ActionResult<Student>> PutClassModelAsync(int id, [FromBody] Student model)
         {
-            return _factory.Create(model);
+            var item = await factory.GetOneAsync(id);
+            if (item == null)
+            {
+                return NotFound();
+            }
+
+            return await factory.UpdateAsync(model).ConfigureAwait(false);
         }
 
-        // DELETE: api/Student/5
-        [HttpDelete()]
+
+        [HttpDelete]
         [Route("{id}")]
-        public void Delete(int id)
+        public ActionResult Delete(int id)
         {
-            _factory.Delete(id);
+            factory.DeleteAsync(id);
+            return Ok();
         }
     }
 }

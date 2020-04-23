@@ -1,8 +1,7 @@
-﻿using AtApi.Models;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace AtApi.Data
+namespace AtApi.Service.Identity
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {

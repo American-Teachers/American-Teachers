@@ -1,7 +1,7 @@
 ﻿using AtApi.Extensions;
 using AtApi.Framework;
-using AtApi.Models;
 using AtApi.Models.ManageViewModels;
+using AtApi.Service.Identity;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;

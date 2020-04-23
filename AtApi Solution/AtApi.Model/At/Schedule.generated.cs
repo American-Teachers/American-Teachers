@@ -36,7 +36,7 @@ namespace AtApi.Model.At
       /// </summary>
       protected Schedule()
       {
-         Classes = new System.Collections.Generic.List<global::AtApi.Model.Class>();
+         Classes = new System.Collections.Generic.List<global::AtApi.Model.At.Class>();
 
          Init();
       }
@@ -55,7 +55,7 @@ namespace AtApi.Model.At
       /// <param name="name">Name</param>
       /// <param name="day">Day</param>
       /// <param name="time">Time</param>
-      public Schedule(string name, global::AtApi.Model.ScheduleDays day, string time)
+      public Schedule(string name, global::AtApi.Model.At.ScheduleDays day, string time)
       {
          if (string.IsNullOrEmpty(name)) throw new ArgumentNullException(nameof(name));
          this.Name = name;
@@ -65,7 +65,7 @@ namespace AtApi.Model.At
          if (string.IsNullOrEmpty(time)) throw new ArgumentNullException(nameof(time));
          this.Time = time;
 
-         this.Classes = new System.Collections.Generic.List<global::AtApi.Model.Class>();
+         this.Classes = new System.Collections.Generic.List<global::AtApi.Model.At.Class>();
 
          Init();
       }
@@ -76,7 +76,7 @@ namespace AtApi.Model.At
       /// <param name="name">Name</param>
       /// <param name="day">Day</param>
       /// <param name="time">Time</param>
-      public static Schedule Create(string name, global::AtApi.Model.ScheduleDays day, string time)
+      public static Schedule Create(string name, global::AtApi.Model.At.ScheduleDays day, string time)
       {
          return new Schedule(name, day, time);
       }
@@ -105,7 +105,7 @@ namespace AtApi.Model.At
       /// Day
       /// </summary>
       [Required]
-      public global::AtApi.Model.ScheduleDays Day { get; set; }
+      public global::AtApi.Model.At.ScheduleDays Day { get; set; }
 
       /// <summary>
       /// Required, Max length = 100
@@ -120,7 +120,7 @@ namespace AtApi.Model.At
        * Navigation properties
        *************************************************************************/
 
-      public virtual ICollection<global::AtApi.Model.Class> Classes { get; protected set; }
+      public virtual ICollection<global::AtApi.Model.At.Class> Classes { get; protected set; }
 
    }
 }

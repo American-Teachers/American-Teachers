@@ -54,7 +54,7 @@ namespace AtApi.Model.At
       /// <param name="studentid">Foreign key for Student.Enrollments &lt;--&gt; Enrollment.Student. </param>
       /// <param name="class_"></param>
       /// <param name="student"></param>
-      public Enrollment(int classid, int studentid, global::AtApi.Model.Class class_, global::AtApi.Model.Student student)
+      public Enrollment(int classid, int studentid, global::AtApi.Model.At.Class class_, global::AtApi.Model.At.Student student)
       {
          this.ClassId = classid;
 
@@ -77,7 +77,7 @@ namespace AtApi.Model.At
       /// <param name="studentid">Foreign key for Student.Enrollments &lt;--&gt; Enrollment.Student. </param>
       /// <param name="class_"></param>
       /// <param name="student"></param>
-      public static Enrollment Create(int classid, int studentid, global::AtApi.Model.Class class_, global::AtApi.Model.Student student)
+      public static Enrollment Create(int classid, int studentid, global::AtApi.Model.At.Class class_, global::AtApi.Model.At.Student student)
       {
          return new Enrollment(classid, studentid, class_, student);
       }
@@ -115,12 +115,12 @@ namespace AtApi.Model.At
       /// <summary>
       /// Required
       /// </summary>
-      public virtual global::AtApi.Model.Class Class_ { get; set; }
+      public virtual global::AtApi.Model.At.Class Class_ { get; set; }
 
       /// <summary>
       /// Required
       /// </summary>
-      public virtual global::AtApi.Model.Student Student { get; set; }
+      public virtual global::AtApi.Model.At.Student Student { get; set; }
 
    }
 }

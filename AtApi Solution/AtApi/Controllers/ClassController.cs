@@ -1,7 +1,9 @@
 ﻿using AtApi.Model;
+using AtApi.Model.At;
 using AtApi.Service;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace AtApi.Controllers
 {
@@ -11,49 +13,74 @@ namespace AtApi.Controllers
     public class ClassController : ControllerBase
     {
 
-        private readonly IFactory<Class> _factory;
+        private readonly IFactory<Class> factory;
+        private readonly IFactory<Enrollment> enrollmentFactory;
         public ClassController(IFactory<Class> factory)
         {
-            _factory = factory;
+            this.factory = factory;
         }
-        // GET: api/Class
+        
         [HttpGet]
         [Route("")]
-        public IEnumerable<Class> GetAll()
+        public async Task<ActionResult<IEnumerable<Class>>> GetAllAsync()
         {
-            return _factory.GetAll();
+            return await factory.GetAllAsync().ConfigureAwait(false);
         }
 
-        // GET: api/Class/5
+         
         [HttpGet()]
         [Route("{id}")]
-        public Class GetClass(int id)
+        public async Task<ActionResult<Class>> GetClassAsync(int id)
         {
-            return _factory.GetOne(id);
+            var item = await factory.GetOneAsync(id);
+            if (item == null)
+            {
+                return NotFound();
+            }
+            return item;
         }
 
-        // POST: api/Class
+        
         [HttpPost]
         [Route("")]
-        public Class PostClass([FromBody] Class model)
+        public async Task<ActionResult<Class>> PostClass([FromBody] Class model)
         {
-            return _factory.Update(model);
+            return await factory.CreateAsync(model);
         }
 
-        // PUT: api/Class/5
+       
         [HttpPut]
         [Route("{id}")]
-        public Class PutClassModel(int id, [FromBody] Class model)
+        public async Task<ActionResult<Class>> PutClassModelAsync(int id, [FromBody] Class model)
         {
-            return _factory.Create(model);
+            var item = await factory.GetOneAsync(id);
+            if (item == null)
+            {
+                return NotFound();
+            }
+
+            return await factory.UpdateAsync(model).ConfigureAwait(false);
         }
 
-        // DELETE: api/ApiWithActions/5
+        
         [HttpDelete]
         [Route("{id}")]
-        public void Delete(int id)
+        public ActionResult Delete(int id)
         {
-            _factory.Delete(id);
+            factory.DeleteAsync(id);
+            return Ok();
+        }
+
+        [HttpGet()]
+        [Route("{id}/Enrollment")]
+        public async Task<ActionResult<Class>> GetClassEnrollmentAsync(int id)
+        {
+            var item = await factory.GetOneAsync(id);
+            if (item == null)
+            {
+                return NotFound();
+            }
+            return item;
         }
     }
 }

@@ -1,7 +1,7 @@
-﻿using AtApi.Data;
+﻿
 using AtApi.Model.At;
 using AtApi.Model.Settings;
-using AtApi.Models;
+using AtApi.Service.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;

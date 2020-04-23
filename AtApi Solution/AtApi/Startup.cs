@@ -1,11 +1,8 @@
-using AtApi.Data;
+
 using AtApi.Dependency;
 using AtApi.Model.Settings;
-using AtApi.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -22,7 +19,7 @@ namespace AtApi
 
         public IConfiguration Configuration { get; }
         private IServiceProvider _serviceProvider;
-        public static readonly ILoggerFactory MyLoggerFactory = LoggerFactory.Create(builder => { builder.AddConsole(); });
+        //public static readonly ILoggerFactory MyLoggerFactory = LoggerFactory.Create(builder => { builder.AddConsole(); });
         public Startup(IWebHostEnvironment env, IConfiguration configuration)
         {
             Configuration = configuration;
@@ -32,7 +29,7 @@ namespace AtApi
                 .SetBasePath(env.ContentRootPath)
                 .AddUserSecrets(appAssembly, false)
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: false, reloadOnChange: true)
                 .AddEnvironmentVariables();
             this.Configuration = builder.Build();
         }
@@ -49,14 +46,13 @@ namespace AtApi
             _serviceProvider = services.BuildServiceProvider();
 #pragma warning restore ASP0000 // Do not call 'IServiceCollection.BuildServiceProvider' in 'ConfigureServices'
             var appSettings = _serviceProvider.GetService<IOptions<AppSettings>>().Value;
-
-            services.ConfigureDataContext(appSettings, MyLoggerFactory);
+            var loggerFactory = _serviceProvider.GetService<ILoggerFactory>();
+            services.ConfigureDataContext(appSettings, loggerFactory);
             services.AddAuthentication().AddGoogle(googleOptions =>
             {
                 googleOptions.ClientId = appSettings.Authentication.Google.ClientId;
                 googleOptions.ClientSecret = appSettings.Authentication.Google.ClientSecret;
             });
-
 
             services.AddControllers().ConfigureApiBehaviorOptions(a => a.SuppressMapClientErrors = true);
             services.AddControllersWithViews();
