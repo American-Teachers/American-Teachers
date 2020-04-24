@@ -87,6 +87,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: '#33476A',
     color: 'white',
     padding: `${theme.spacing(12)}px ${theme.spacing(11.5)}px 0 0`,
+    overflowX: 'hidden'
   },
   logoContainer: {textAlign: 'center', paddingLeft: theme.spacing(2)},
   listsContainer: {paddingLeft: theme.spacing(8)},
@@ -116,7 +117,7 @@ const useStyles = makeStyles((theme) => ({
 function ListWithTitle({title, children}) {
   const classes = useStyles();
   return (
-    <>
+    <React.Fragment>
       <Typography className={classes.listTitle}>
         {title}
       </Typography>
@@ -124,7 +125,7 @@ function ListWithTitle({title, children}) {
       <List className={classes.linkList}>
       {children}
       </List>
-    </>
+    </React.Fragment>
   )
 }
 
@@ -191,10 +192,7 @@ export default function Footer() {
             )
           }
         </Grid>
-
-
       </Grid>
-
     </Container>
   )
 }

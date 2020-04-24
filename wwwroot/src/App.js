@@ -6,10 +6,10 @@ import {
 } from "react-router-dom";
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 
-import SignIn from './pages/SignIn';
-import SignUp from './pages/SignUp';
-import Landing from './pages/Landing';
-import WhyUs from './pages/WhyUs';
+import SignIn from './components/SignIn';
+import SignUp from './components/SignUp';
+import Landing from './components/Landing';
+import WhyUs from './components/WhyUs';
 
 const theme = createMuiTheme({
   typography: {
@@ -77,7 +77,7 @@ function App() {
     <ThemeProvider theme={theme}>
     <BrowserRouter>
       <Routes>
-      <Route path="/"  element={<Landing />} />
+        <Route path="/"  element={<Landing />} />
         <Route path="/signup"  element={<SignUp />} />
         <Route path="/signin"  element={<SignIn />} />
         <Route path="/why-us" element={<WhyUs />} />
