@@ -149,7 +149,8 @@ namespace AtApi.Model.At
          modelBuilder.Entity<global::AtApi.Model.At.Enrollment>()
                      .HasOne(x => x.Student)
                      .WithOne(x => x.Enrollments)
-                     .HasForeignKey<global::AtApi.Model.At.Enrollment>("StudentId");
+                     .HasForeignKey<global::AtApi.Model.At.Enrollment>("StudentId")
+                     .OnDelete(DeleteBehavior.Restrict);
 
 
          modelBuilder.Entity<global::AtApi.Model.At.ParentStudent>()
@@ -170,13 +171,11 @@ namespace AtApi.Model.At
          modelBuilder.Entity<global::AtApi.Model.At.ParentStudent>()
                      .HasOne(x => x.Parent)
                      .WithOne(x => x.Students)
-                     .HasForeignKey<global::AtApi.Model.At.ParentStudent>("ParentId")
-                     .OnDelete(DeleteBehavior.Cascade);
+                     .HasForeignKey<global::AtApi.Model.At.ParentStudent>("ParentId");
          modelBuilder.Entity<global::AtApi.Model.At.ParentStudent>()
                      .HasOne(x => x.Student)
                      .WithOne(x => x.ParentStudents)
-                     .HasForeignKey<global::AtApi.Model.At.ParentStudent>("StudentId")
-                     .OnDelete(DeleteBehavior.Cascade);
+                     .HasForeignKey<global::AtApi.Model.At.ParentStudent>("StudentId");
 
          modelBuilder.Entity<global::AtApi.Model.At.Person>()
                      .ToTable("People")

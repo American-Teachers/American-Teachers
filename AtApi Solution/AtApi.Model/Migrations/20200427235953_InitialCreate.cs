@@ -1,9 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace AtApi.Model.Migrations
 {
-    public partial class InitCreate : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,13 +11,14 @@ namespace AtApi.Model.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     EmailAddress = table.Column<string>(maxLength: 1000, nullable: false),
                     FirstName = table.Column<string>(nullable: false),
                     LastName = table.Column<string>(nullable: false),
                     Title = table.Column<string>(nullable: true),
                     Suffix = table.Column<string>(nullable: true),
                     PreferredName = table.Column<string>(maxLength: 1000, nullable: true),
+                    AspUserId = table.Column<string>(nullable: true),
                     Discriminator = table.Column<string>(nullable: false),
                     ParentProp1 = table.Column<string>(nullable: true),
                     StudentIdentifier = table.Column<string>(nullable: true),
@@ -34,7 +34,7 @@ namespace AtApi.Model.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(nullable: false),
                     Day = table.Column<int>(nullable: false),
                     Time = table.Column<string>(maxLength: 100, nullable: false)
@@ -49,7 +49,7 @@ namespace AtApi.Model.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
@@ -62,7 +62,7 @@ namespace AtApi.Model.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     ParentId = table.Column<int>(nullable: false),
                     StudentId = table.Column<int>(nullable: false)
                 },
@@ -74,13 +74,13 @@ namespace AtApi.Model.Migrations
                         column: x => x.ParentId,
                         principalTable: "People",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
                         name: "FK_ParentStudents_People_StudentId",
                         column: x => x.StudentId,
                         principalTable: "People",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
@@ -88,7 +88,7 @@ namespace AtApi.Model.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(nullable: false),
                     Description = table.Column<string>(nullable: false),
                     Code = table.Column<string>(nullable: false),
@@ -120,7 +120,7 @@ namespace AtApi.Model.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     SchoolId = table.Column<int>(nullable: false),
                     TeacherId = table.Column<int>(nullable: false)
                 },
@@ -146,7 +146,7 @@ namespace AtApi.Model.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     ClassId = table.Column<int>(nullable: false),
                     StudentId = table.Column<int>(nullable: false)
                 },
@@ -164,7 +164,7 @@ namespace AtApi.Model.Migrations
                         column: x => x.StudentId,
                         principalTable: "People",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(

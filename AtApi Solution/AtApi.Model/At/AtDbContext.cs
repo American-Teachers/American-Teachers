@@ -22,7 +22,7 @@ namespace AtApi.Model.At
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseMySql(ConnectionString);
+                optionsBuilder.UseSqlServer(ConnectionString);
             }
         }
         partial void OnModelCreatedImpl(ModelBuilder modelBuilder)
