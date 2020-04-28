@@ -1,4 +1,4 @@
-﻿using AtApi.Adapter;
+﻿using AtApi.Service.Adapter;
 using AtApi.Framework;
 using AtApi.Model;
 using AtApi.Model.At;

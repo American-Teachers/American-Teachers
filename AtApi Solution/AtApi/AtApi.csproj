@@ -46,10 +46,6 @@
     <ProjectReference Include="..\AtApi.Service\AtApi.Service.csproj" />
   </ItemGroup>
   
-  <ItemGroup>
-    <Folder Include="Data\" />
-  </ItemGroup>
-  
   
 
 

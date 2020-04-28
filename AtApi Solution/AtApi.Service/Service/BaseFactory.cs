@@ -1,4 +1,4 @@
-﻿using AtApi.Adapter;
+﻿using AtApi.Service.Adapter;
 using AtApi.Framework;
 using Microsoft.EntityFrameworkCore;
 using System;
