@@ -3,7 +3,7 @@ using AtApi.Middlewares;
 using AtApi.Model.Settings;
 using AtApi.Swagger;
 using AutoMapper;
-using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -25,6 +25,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using AtApi.Service.Authorization;
 
 namespace AtApi
 {
@@ -145,7 +146,12 @@ namespace AtApi
                     IssuerSigningKey = new SymmetricSecurityKey(key)
                 };
             });
-
+            services.AddAuthorizationCore(options => {
+            options.DefaultPolicy = new AuthorizationPolicyBuilder()
+                .RequireClaim(Claims.GoogleToken)
+                .RequireAuthenticatedUser()
+                .Build();
+            });
             services.AddSwaggerExamplesFromAssemblyOf<Program>();
 
 

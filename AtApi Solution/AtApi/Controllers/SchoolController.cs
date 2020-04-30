@@ -1,5 +1,6 @@
 ﻿using AtApi.Model.At;
 using AtApi.Service.Factory;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -9,6 +10,7 @@ namespace AtApi.Controllers
 
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class SchoolController : ControllerBase
     {
 

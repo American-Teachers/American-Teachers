@@ -2,6 +2,7 @@
 using AtApi.Framework;
 using AtApi.Model;
 using AtApi.Models.UserViewModels;
+using AtApi.Service.Authorization;
 using AtApi.Service.Factory;
 using AtApi.Service.Identity;
 using AutoMapper;
@@ -13,7 +14,7 @@ using System;
 using System.Threading.Tasks;
 namespace AtApi.Controllers
 {
- 
+
     [Produces("application/json")]
     [Route("api/v{version:apiVersion}/[controller]")]
     [Route("api/[controller]")]
@@ -28,13 +29,15 @@ namespace AtApi.Controllers
         private readonly ILogger _logger;
         private readonly IMapper _mapper;
         private readonly IPersonManager _personManager;
+        private readonly IAuthService _authService;
 
         public UserController(UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             IEmailSender emailSender,
             ILogger<AccountController> logger,
             IMapper mapper,
-            IPersonManager personManager)
+            IPersonManager personManager,
+            IAuthService authService)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -42,6 +45,7 @@ namespace AtApi.Controllers
             _logger = logger;
             _mapper = mapper;
             _personManager = personManager;
+            _authService = authService;
         }
 
 
@@ -72,7 +76,7 @@ namespace AtApi.Controllers
                     await _emailSender.SendEmailConfirmationAsync(model.Email, callbackUrl);
 
                     await _signInManager.SignInAsync(user, isPersistent: false);
-                    _logger.LogInformation("User created a new account with password.");                   
+                    _logger.LogInformation("User created a new account with password.");
                     response.UserName = model.Email;
                     return Ok(response);
                 }
@@ -136,17 +140,22 @@ namespace AtApi.Controllers
 
         [HttpPost]
         [Route("RegisterUser")]
-        [AllowAnonymous]
+        // [AllowAnonymous]
         public async Task<ActionResult<RegisterUserResponse>> RegisterUser(RegisterUserRequest model)
         {
             var response = new RegisterUserResponse();
             if (ModelState.IsValid)
             {
-                var user = await _userManager.FindByNameAsync(model.UserName);
+                var user = await _authService.ValidateAsync(User);
                 if (user == null)
                 {
                     return NotFound(model.UserName);
                 }
+                if (model.UserName != user.UserName)
+                {
+                    return BadRequest("Token.UserName != Model.UserName");
+                }
+
                 var personRequest = _mapper.Map<PersonRequest>(model);
                 personRequest.AspUserId = user.Id;
                 personRequest.FirstName = user.FirstName;

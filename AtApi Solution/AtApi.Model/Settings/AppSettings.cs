@@ -6,5 +6,6 @@
         public AuthenticationSettings Authentication { get; set; }
         public string[] AllowedOrigins { get; set; }
         public string JwtSecretKey { get; set; }
+        public string JwtEmailEncryption { get; set; }
     }
 }

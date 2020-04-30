@@ -1,11 +1,13 @@
 ﻿using AtApi.Models.TokenViewModels;
-using AtApi.Service.Factory;
+using AtApi.Service.Authorization;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
- 
+
 using Swashbuckle.AspNetCore.Annotations;
 using System;
 using System.Net;
+using System.Threading.Tasks;
+
 namespace AtApi.Controllers
 {
     [Route("api/[controller]")]
@@ -27,12 +29,12 @@ namespace AtApi.Controllers
         /// </summary>       
         /// <returns>Generated token</returns>        
         [AllowAnonymous]
-        [HttpGet("generate")]
+        [HttpPost("generate")]
         [SwaggerResponse((int)HttpStatusCode.OK, Description = "Generated token")]
         [SwaggerResponse((int)HttpStatusCode.InternalServerError, Description = "Unexpected error")]
-        public ActionResult<GenerateTokenResponse> GenerateToken()
+        public async Task<ActionResult<GenerateTokenResponse>> GenerateTokenAsync(GenerateTokenRequest request)
         {
-            var token = _jwtTokenManager.GenerateToken();
+            var token = await _jwtTokenManager.GenerateTokenAsync(request.GoogleToken);
             return Ok(new GenerateTokenResponse { Bearer = token });
         }
 

@@ -3,12 +3,14 @@ using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AtApi.Service.Factory;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AtApi.Controllers
 {
 
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class ClassController : ControllerBase
     {
 

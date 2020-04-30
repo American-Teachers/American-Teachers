@@ -4,7 +4,7 @@
         <name>AtApi</name>
     </assembly>
     <members>
-        <member name="M:AtApi.Controllers.TokenController.GenerateToken">
+        <member name="M:AtApi.Controllers.TokenController.GenerateTokenAsync(AtApi.Models.TokenViewModels.GenerateTokenRequest)">
             <summary>
             Generate sample token
             </summary>       
