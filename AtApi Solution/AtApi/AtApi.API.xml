@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AtApi</name>
+    </assembly>
+    <members>
+        <member name="M:AtApi.Controllers.TokenController.GenerateToken">
+            <summary>
+            Generate sample token
+            </summary>       
+            <returns>Generated token</returns>        
+        </member>
+        <member name="M:AtApi.Controllers.TokenController.ValidateToken(System.String)">
+            <summary>
+            Validate sample token
+            </summary>
+            <param name="token">Token for validation</param>
+            <returns>Token validation status</returns>        
+        </member>
+    </members>
+</doc>

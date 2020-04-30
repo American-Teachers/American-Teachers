@@ -3,7 +3,7 @@ using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace AtApi.Adapter
+namespace AtApi.Service.Adapter
 {
     public class LoggerAdapterDecorator<T> : IAdapter<T> where T : class
     {

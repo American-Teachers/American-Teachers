@@ -4,7 +4,7 @@ using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace AtApi.Adapter
+namespace AtApi.Service.Adapter
 {
     public class TeacherAdapter : AtBaseAdapter<Teacher>
     {

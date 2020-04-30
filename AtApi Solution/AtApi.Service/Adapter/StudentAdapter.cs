@@ -1,10 +1,7 @@
-﻿using AtApi.Model;
-using AtApi.Model.At;
-using Microsoft.Extensions.Logging;
-using System.Collections.Generic;
+﻿using AtApi.Model.At;
 using System.Linq;
 
-namespace AtApi.Adapter
+namespace AtApi.Service.Adapter
 {
     public class StudentAdapter : AtBaseAdapter<Student>
     {

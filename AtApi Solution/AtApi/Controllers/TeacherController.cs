@@ -1,6 +1,5 @@
-﻿using AtApi.Model;
-using AtApi.Model.At;
-using AtApi.Service;
+﻿using AtApi.Model.At;
+using AtApi.Service.Factory;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;

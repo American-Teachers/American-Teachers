@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace AtApi.Adapter
+namespace AtApi.Service.Adapter
 {
     public interface IAdapter<T> where T : class
     {

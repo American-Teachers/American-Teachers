@@ -15,7 +15,7 @@ namespace AtApi.Dependency
         {
             services.AddDbContext<ApplicationDbContext>(options =>
             {
-                options.UseMySql(appSettings.ConnectionStrings.AmericanTeachers);
+                options.UseSqlServer(appSettings.ConnectionStrings.AmericanTeachers);
                 options.UseLoggerFactory(loggerFactory);  
             });
 
@@ -27,7 +27,7 @@ namespace AtApi.Dependency
             services.AddDbContext<AtDbContext>(options =>
             {
                 options.UseLoggerFactory(loggerFactory); 
-                options.UseMySql(appSettings.ConnectionStrings.AmericanTeachers);
+                options.UseSqlServer(appSettings.ConnectionStrings.AmericanTeachers);
             });
             
             return services;

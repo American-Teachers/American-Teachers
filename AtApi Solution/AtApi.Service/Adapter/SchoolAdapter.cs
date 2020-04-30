@@ -1,9 +1,7 @@
-﻿using AtApi.Model;
-using AtApi.Model.At;
-using System.Collections.Generic;
+﻿using AtApi.Model.At;
 using System.Linq;
 
-namespace AtApi.Adapter
+namespace AtApi.Service.Adapter
 {
     public class SchoolAdapter : AtBaseAdapter<School>
     {

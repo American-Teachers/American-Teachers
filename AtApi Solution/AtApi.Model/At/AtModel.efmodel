@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<modelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="2.0.0.6" Id="cba47279-0950-4257-bb2c-e4d5e72a52a4" entityContainerName="AtDbContext" namespace="AtApi.Model.At" automaticMigrationsEnabled="false" contextOutputDirectory="At" databaseSchema="" entityFrameworkVersion="EFCore" connectionStringName="AmericanTeachers" defaultCollectionClass="List" showCascadeDeletes="true" databaseType="None" warnOnMissingDocumentation="false" summary="Model Summary" exposeForeignKeys="true" gridColor="White" xmlns="http://schemas.microsoft.com/dsltools/EFModel">
+<modelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="2.0.1.0" Id="cba47279-0950-4257-bb2c-e4d5e72a52a4" entityContainerName="AtDbContext" namespace="AtApi.Model.At" automaticMigrationsEnabled="false" contextOutputDirectory="At" databaseSchema="" entityFrameworkVersion="EFCore" connectionStringName="AmericanTeachers" defaultCollectionClass="List" showCascadeDeletes="true" databaseType="None" warnOnMissingDocumentation="false" summary="Model Summary" exposeForeignKeys="true" gridColor="White" xmlns="http://schemas.microsoft.com/dsltools/EFModel">
   <enums>
     <modelRootHasEnums Id="21e64777-3edd-429d-b15f-7793498cbfeb">
       <modelEnum Id="44056904-4f31-4b74-9bac-108d15849cf4" namespace="AtApi.Model.At" name="ScheduleDays" outputDirectory="At" description="Schedule Days" summary="Schedule Days">
@@ -106,7 +106,7 @@
           <modelAttribute Id="2e396da5-0bec-42ce-982b-f5c2de17bc2a" maxLength="-1" indexed="false" indexedUnique="false" stringType="None" name="ParentProp1" autoProperty="true" minLength="0" columnName="ParentProp1" columnType="default" implementNotify="false" isForeignKeyFor="00000000-0000-0000-0000-000000000000" />
         </attributes>
         <bidirectionalTargets>
-          <bidirectionalAssociation Id="7152206b-98e7-4b94-a920-4125dd74602f" targetMultiplicity="ZeroOne" targetPropertyName="Students" sourceDeleteAction="Cascade" collectionClass="List" sourceRole="Principal" targetRole="Dependent" foreignKeyLocation="None" targetImplementNotify="false" fKPropertyName="ParentId" sourcePropertyName="Parent" sourceImplementNotify="false">
+          <bidirectionalAssociation Id="7152206b-98e7-4b94-a920-4125dd74602f" targetMultiplicity="ZeroOne" targetPropertyName="Students" collectionClass="List" sourceRole="Principal" targetRole="Dependent" foreignKeyLocation="None" targetImplementNotify="false" fKPropertyName="ParentId" sourcePropertyName="Parent" sourceImplementNotify="false">
             <modelClassMoniker Id="cd5571d0-cb45-4064-ac24-b7321c10068b" />
           </bidirectionalAssociation>
         </bidirectionalTargets>
@@ -152,10 +152,10 @@
           <modelAttribute Id="96bc743c-48c1-4745-b90c-fcaaf3ad3c41" maxLength="-1" indexed="false" indexedUnique="false" stringType="None" name="StudentIdentifier" autoProperty="true" minLength="0" columnName="StudentIdentifier" columnType="default" implementNotify="false" isForeignKeyFor="00000000-0000-0000-0000-000000000000" />
         </attributes>
         <bidirectionalTargets>
-          <bidirectionalAssociation Id="0d556b48-4363-4062-9202-ad9fbe1019b3" targetMultiplicity="ZeroOne" targetPropertyName="ParentStudents" sourceDeleteAction="Cascade" collectionClass="List" sourceRole="Principal" targetRole="Dependent" foreignKeyLocation="None" targetImplementNotify="false" fKPropertyName="StudentId" sourcePropertyName="Student" sourceImplementNotify="false">
+          <bidirectionalAssociation Id="0d556b48-4363-4062-9202-ad9fbe1019b3" targetMultiplicity="ZeroOne" targetPropertyName="ParentStudents" collectionClass="List" sourceRole="Principal" targetRole="Dependent" foreignKeyLocation="None" targetImplementNotify="false" fKPropertyName="StudentId" sourcePropertyName="Student" sourceImplementNotify="false">
             <modelClassMoniker Id="cd5571d0-cb45-4064-ac24-b7321c10068b" />
           </bidirectionalAssociation>
-          <bidirectionalAssociation Id="b03d6556-4ba1-4677-8b80-5e27d3b82d67" targetMultiplicity="ZeroOne" targetPropertyName="Enrollments" collectionClass="List" sourceRole="Principal" targetRole="Dependent" foreignKeyLocation="None" targetImplementNotify="false" fKPropertyName="StudentId" sourcePropertyName="Student" sourceImplementNotify="false">
+          <bidirectionalAssociation Id="b03d6556-4ba1-4677-8b80-5e27d3b82d67" targetMultiplicity="ZeroOne" targetPropertyName="Enrollments" sourceDeleteAction="None" collectionClass="List" sourceRole="Principal" targetRole="Dependent" foreignKeyLocation="None" targetImplementNotify="false" fKPropertyName="StudentId" sourcePropertyName="Student" sourceImplementNotify="false">
             <modelClassMoniker Id="e3549942-d31d-49eb-bb5b-aa0c714bd52d" />
           </bidirectionalAssociation>
         </bidirectionalTargets>

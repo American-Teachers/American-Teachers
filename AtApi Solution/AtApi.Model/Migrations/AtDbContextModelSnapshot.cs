@@ -3,6 +3,7 @@ using System;
 using AtApi.Model.At;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AtApi.Model.Migrations
@@ -15,13 +16,61 @@ namespace AtApi.Model.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.3")
-                .HasAnnotation("Relational:MaxIdentifierLength", 64);
+                .HasAnnotation("Relational:MaxIdentifierLength", 128)
+                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("AtApi.Model.At.Class", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Class_Classes_Id")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("EstimatedNumberOfStudents")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("ScheduleId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Subject")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TeacherId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Class_Classes_Id");
+
+                    b.HasIndex("ScheduleId");
+
+                    b.HasIndex("TeacherId");
+
+                    b.ToTable("Classes");
+                });
 
             modelBuilder.Entity("AtApi.Model.At.Enrollment", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("ClassId")
                         .HasColumnType("int");
@@ -44,7 +93,8 @@ namespace AtApi.Model.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("ParentId")
                         .HasColumnType("int");
@@ -63,22 +113,67 @@ namespace AtApi.Model.Migrations
                     b.ToTable("ParentStudents");
                 });
 
+            modelBuilder.Entity("AtApi.Model.At.Person", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AspUserId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EmailAddress")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(1000)")
+                        .HasMaxLength(1000);
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PreferredName")
+                        .HasColumnType("nvarchar(1000)")
+                        .HasMaxLength(1000);
+
+                    b.Property<string>("Suffix")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("People");
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("Person");
+                });
+
             modelBuilder.Entity("AtApi.Model.At.Schedule", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("Day")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Time")
                         .IsRequired()
-                        .HasColumnType("varchar(100) CHARACTER SET utf8mb4")
+                        .HasColumnType("nvarchar(100)")
                         .HasMaxLength(100);
 
                     b.HasKey("Id");
@@ -86,11 +181,28 @@ namespace AtApi.Model.Migrations
                     b.ToTable("Schedules");
                 });
 
+            modelBuilder.Entity("AtApi.Model.At.School", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Schools");
+                });
+
             modelBuilder.Entity("AtApi.Model.At.TeacherSchool", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("SchoolId")
                         .HasColumnType("int");
@@ -109,160 +221,75 @@ namespace AtApi.Model.Migrations
                     b.ToTable("TeacherSchools");
                 });
 
-            modelBuilder.Entity("AtApi.Model.Class", b =>
+            modelBuilder.Entity("AtApi.Model.At.Parent", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<int>("Class_Classes_Id")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Code")
-                        .IsRequired()
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int>("EstimatedNumberOfStudents")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("ScheduleId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Subject")
-                        .IsRequired()
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int>("TeacherId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("Class_Classes_Id");
-
-                    b.HasIndex("ScheduleId");
-
-                    b.HasIndex("TeacherId");
-
-                    b.ToTable("Classes");
-                });
-
-            modelBuilder.Entity("AtApi.Model.Person", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<string>("Discriminator")
-                        .IsRequired()
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("EmailAddress")
-                        .IsRequired()
-                        .HasColumnType("varchar(1000) CHARACTER SET utf8mb4")
-                        .HasMaxLength(1000);
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("PreferredName")
-                        .HasColumnType("varchar(1000) CHARACTER SET utf8mb4")
-                        .HasMaxLength(1000);
-
-                    b.Property<string>("Suffix")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("Title")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("People");
-
-                    b.HasDiscriminator<string>("Discriminator").HasValue("Person");
-                });
-
-            modelBuilder.Entity("AtApi.Model.School", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Schools");
-                });
-
-            modelBuilder.Entity("AtApi.Model.Parent", b =>
-                {
-                    b.HasBaseType("AtApi.Model.Person");
+                    b.HasBaseType("AtApi.Model.At.Person");
 
                     b.Property<string>("ParentProp1")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasDiscriminator().HasValue("Parent");
                 });
 
-            modelBuilder.Entity("AtApi.Model.Student", b =>
+            modelBuilder.Entity("AtApi.Model.At.Student", b =>
                 {
-                    b.HasBaseType("AtApi.Model.Person");
+                    b.HasBaseType("AtApi.Model.At.Person");
 
                     b.Property<string>("StudentIdentifier")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasDiscriminator().HasValue("Student");
                 });
 
-            modelBuilder.Entity("AtApi.Model.Teacher", b =>
+            modelBuilder.Entity("AtApi.Model.At.Teacher", b =>
                 {
-                    b.HasBaseType("AtApi.Model.Person");
+                    b.HasBaseType("AtApi.Model.At.Person");
 
                     b.Property<string>("TeacherCertifications")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasDiscriminator().HasValue("Teacher");
                 });
 
+            modelBuilder.Entity("AtApi.Model.At.Class", b =>
+                {
+                    b.HasOne("AtApi.Model.At.Schedule", null)
+                        .WithMany("Classes")
+                        .HasForeignKey("Class_Classes_Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("AtApi.Model.At.Teacher", null)
+                        .WithMany("Classes")
+                        .HasForeignKey("Class_Classes_Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("AtApi.Model.At.Enrollment", b =>
                 {
-                    b.HasOne("AtApi.Model.Class", "Class_")
+                    b.HasOne("AtApi.Model.At.Class", "Class_")
                         .WithOne("Enrollments")
                         .HasForeignKey("AtApi.Model.At.Enrollment", "ClassId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("AtApi.Model.Student", "Student")
+                    b.HasOne("AtApi.Model.At.Student", "Student")
                         .WithOne("Enrollments")
                         .HasForeignKey("AtApi.Model.At.Enrollment", "StudentId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
             modelBuilder.Entity("AtApi.Model.At.ParentStudent", b =>
                 {
-                    b.HasOne("AtApi.Model.Parent", "Parent")
+                    b.HasOne("AtApi.Model.At.Parent", "Parent")
                         .WithOne("Students")
                         .HasForeignKey("AtApi.Model.At.ParentStudent", "ParentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("AtApi.Model.Student", "Student")
+                    b.HasOne("AtApi.Model.At.Student", "Student")
                         .WithOne("ParentStudents")
                         .HasForeignKey("AtApi.Model.At.ParentStudent", "StudentId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -271,30 +298,15 @@ namespace AtApi.Model.Migrations
 
             modelBuilder.Entity("AtApi.Model.At.TeacherSchool", b =>
                 {
-                    b.HasOne("AtApi.Model.School", "School")
+                    b.HasOne("AtApi.Model.At.School", "School")
                         .WithOne("SchoolTeachers")
                         .HasForeignKey("AtApi.Model.At.TeacherSchool", "SchoolId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("AtApi.Model.Teacher", "Teacher")
+                    b.HasOne("AtApi.Model.At.Teacher", "Teacher")
                         .WithOne("TeacherSchools")
                         .HasForeignKey("AtApi.Model.At.TeacherSchool", "TeacherId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("AtApi.Model.Class", b =>
-                {
-                    b.HasOne("AtApi.Model.At.Schedule", null)
-                        .WithMany("Classes")
-                        .HasForeignKey("Class_Classes_Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("AtApi.Model.Teacher", null)
-                        .WithMany("Classes")
-                        .HasForeignKey("Class_Classes_Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

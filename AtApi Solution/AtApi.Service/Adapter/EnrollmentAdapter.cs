@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 
-namespace AtApi.Adapter
+namespace AtApi.Service.Adapter
 {
     public class EnrollmentAdapter : AtBaseAdapter<Enrollment>
     {
