@@ -1,12 +1,8 @@
-﻿using AtApi.Extensions;
-using AtApi.Framework;
-using AtApi.Models.AccountViewModels;
-using AtApi.Service;
-using AtApi.Service.Identity;
-using AtApi.Model.At;
+﻿using AtApi.Model.At;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using AtApi.Service.Factory;
 
 namespace AtApi.Controllers
 {

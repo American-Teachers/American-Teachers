@@ -14,7 +14,7 @@ namespace AtApi
             Host.CreateDefaultBuilder(args)
             .ConfigureWebHostDefaults(webBuilder =>
             {
-                webBuilder.ConfigureKestrel(options => { });
+              
                 webBuilder.UseStartup<Startup>();
             });
     }

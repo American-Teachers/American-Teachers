@@ -1,8 +1,6 @@
 ﻿using AtApi.Framework;
 using Microsoft.Extensions.Logging;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace AtApi.Service.Factory
@@ -20,7 +18,7 @@ namespace AtApi.Service.Factory
         {
             if (logger.IsEnabled(LogLevel.Debug))
             {
-                logger.Log(LogLevel.Trace, () => $"Factory<{typeof(T)}>.{nameof(T)}.Create(${nameof(model)},{saveChanges}");
+                logger.Log(LogLevel.Debug, () => $"Factory<{typeof(T)}>.{nameof(T)}.Create(${nameof(model)},{saveChanges}");
             }
             else
             {

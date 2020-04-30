@@ -1,6 +1,7 @@
 ﻿using AtApi.Extensions;
 using AtApi.Framework;
 using AtApi.Models.AccountViewModels;
+using AtApi.Models.UserViewModels;
 using AtApi.Service.Identity;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
@@ -212,12 +213,19 @@ namespace AtApi.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Register(RegisterViewModel model, string returnUrl = null)
+        public async Task<IActionResult> Register(Models.AccountViewModels.RegisterViewModel model, string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser
+                {
+                    UserName = model.Email,
+                    Email = model.Email,
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    AgreeToTermsAndCondition = model.AgreeToTermsAndCondition
+                };
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -290,14 +298,14 @@ namespace AtApi.Controllers
                 ViewData["ReturnUrl"] = returnUrl;
                 ViewData["LoginProvider"] = info.LoginProvider;
                 var email = info.Principal.FindFirstValue(ClaimTypes.Email);
-                return View("ExternalLogin", new ExternalLoginViewModel { Email = email });
+                return View("ExternalLogin", new Models.AccountViewModels.ExternalLoginViewModel { Email = email });
             }
         }
 
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> ExternalLoginConfirmation(ExternalLoginViewModel model, string returnUrl = null)
+        public async Task<IActionResult> ExternalLoginConfirmation(Models.AccountViewModels.ExternalLoginViewModel model, string returnUrl = null)
         {
             if (ModelState.IsValid && model.AgreeToTermsAndCondition)
             {
@@ -307,10 +315,14 @@ namespace AtApi.Controllers
                 {
                     throw new ApplicationException("Error loading external login information during confirmation.");
                 }
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-                user.FirstName = model.FirstName;
-                user.LastName = model.LastName;
-                user.AgreeToTermsAndCondition = model.AgreeToTermsAndCondition;
+                var user = new ApplicationUser
+                {
+                    UserName = model.Email,
+                    Email = model.Email,
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    AgreeToTermsAndCondition = model.AgreeToTermsAndCondition
+                };
                 var result = await _userManager.CreateAsync(user);
                 if (result.Succeeded)
                 {

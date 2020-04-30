@@ -27,7 +27,7 @@
       },
       "applicationUrl": "https://localhost:44330"
     },
-    "AtApi": {
+    "Console": {
       "commandName": "Project",
       "launchUrl": "api/teacher",
       "environmentVariables": {
