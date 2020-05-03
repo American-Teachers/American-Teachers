@@ -67,6 +67,12 @@
     <ProjectReference Include="..\AtApi.Service\AtApi.Service.csproj" />
   </ItemGroup>
   
+  <ItemGroup>
+    <None Update="app.yaml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  
   
 
 

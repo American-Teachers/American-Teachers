@@ -14,8 +14,7 @@ namespace AtApi.Controllers
     public class ClassController : ControllerBase
     {
 
-        private readonly IFactory<Class> factory;
-        private readonly IFactory<Enrollment> enrollmentFactory;
+        private readonly IFactory<Class> factory;       
         public ClassController(IFactory<Class> factory)
         {
             this.factory = factory;
