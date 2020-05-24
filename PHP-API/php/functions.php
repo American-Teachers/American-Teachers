@@ -87,10 +87,10 @@
 		}
 	}
 	
-	function registerUser($nickname, $pass_hash, $first_name, $last_name, $address, $phone, $email, $active, $token, $user_type) {
+	function registerUser($pass_hash, $first_name, $last_name, $phone, $email, $active, $token, $user_type) {
 		global $mysqli;	
-		$stmt = $mysqli->prepare("INSERT INTO users (nickname, password, first_name, last_name, address, phone, email, active, token, user_type) VALUES(?,?,?,?,?,?,?,?,?,?)");
-		$stmt->bind_param('sssssssisi', $nickname, $pass_hash, $first_name, $last_name, $address, $phone, $email, $active, $token, $user_type);		
+		$stmt = $mysqli->prepare("INSERT INTO users (password, first_name, last_name, phone, email, active, token, user_type) VALUES(?,?,?,?,?,?,?,?)");
+		$stmt->bind_param('sssssisi',$pass_hash, $first_name, $last_name, $phone, $email, $active, $token, $user_type);		
 		if ($stmt->execute()){
 			return $mysqli->insert_id;
 		} else {
@@ -104,11 +104,11 @@
 		$mail->isSMTP();
 		$mail->SMTPAuth = true;
 		$mail->SMTPSecure = 'tls';
-		$mail->Host = ''; // Email server
-		$mail->Port = ''; // Port		
-		$mail->Username = ''; // Your email account
-		$mail->Password = ''; // Your email password		
-		$mail->setFrom('<your name>', 'Digital Hospital');
+		$mail->Host = 'smtp.gmail.com';
+		$mail->Port = '587';		
+		$mail->Username = 'federicofigueredo87@gmail.com';
+		$mail->Password = 'Ff33241675';		
+		$mail->setFrom('federicofigueredo87@gmail.com', 'Digital Hospital');
 		$mail->addAddress($email, $first_name);		
 		$mail->Subject = $subject;
 		$mail->Body = $body;
@@ -177,20 +177,16 @@
 				$validatePassword = password_verify($pass, $password);				
 				if ($validatePassword) {					
 					lastSession($id);
-					$response =	{
-						'user_id': $id,
-						'user_type': $user_type
-					}
-					return $response;
+					return "Success: User authenticated";
 					exit;
 				} else {					
-					$errors = "Incorrect Password";
+					$errors = "Error: Incorrect Password";
 				}
 			} else {
-				$errors = 'User hasn`t been activated';
+				$errors = 'Error: User hasn`t been activated';
 			}
 		} else {
-			$errors = "User or email address doesn`t exist";
+			$errors = "Error: User or email address doesn`t exist";
 		}
 		return $errors;
 	}

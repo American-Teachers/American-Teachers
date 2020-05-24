@@ -11,22 +11,18 @@
 	$errors = array();
 
 	if(!empty($data)) {
-
 		$username = $mysqli->real_escape_string($data->email);
 		$password = $mysqli->real_escape_string($data->password);	
-
 		if(isNullLogin($username, $password)) {
 			$errors[] = "You must complete all the fields";
-		}	
-		
+		}		
 		$result = login($username, $password);
 		echo json_encode($result);
 		exit;
-
 	} else {
-		$errors[] = "Your POST query is empty. Please send user´s data";
+		$errors[] = "Error: POST query is empty. Please send user´s data";
 	} 
 
-	echo json_encode($errors[]);
+	echo json_encode($errors);
 
 ?>

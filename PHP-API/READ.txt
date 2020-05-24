@@ -1,7 +1,7 @@
 - LOGIN -
 API will validate if the password matches with that user account.
 
-url: api/login.php
+url: "http://www.cyberdyne-systems.tech/american-teachers/api/login.php"
 type: POST
 headers: { "Accept": "application/json; odata=verbose" },
 body: {
@@ -12,24 +12,22 @@ body: {
 - SIGN UP -
 API will send an email to the user to verify the account before they´re allowed to login.
 
-url: api/sign_up.php
+url: "http://www.cyberdyne-systems.tech/american-teachers/api/sign-up.php"
 type: POST
 headers: { "Accept": "application/json; odata=verbose" },
 body: {
 	"first_name": <form input value>,
-	"$last_name": <form input value>,
-	"address": <form input value>,
+	"last_name": <form input value>,
 	"phone": <form input value>,
 	"password": <form input value>,
 	"confirm_password": <form input value>,
-	"email": <form input value>,
-	"captcha": <form input value>
+	"email": <form input value>
       }
 
 - RESET PASSWORD -
 API will send an email to the user to verify they own the email account account before allowing them to modify it.
 
-url: api/reset_password.php
+url: "http://www.cyberdyne-systems.tech/american-teachers/api/reset-password.php"
 type: POST
 headers: { "Accept": "application/json; odata=verbose" },
 body: {
@@ -41,7 +39,7 @@ API will check if user had indeed access to that account´s email and clicked th
 Fetch the "user_id" and "token" params included in the URL that led user to your site and include them in your
 REST query as follows.
 
-url: api/reset_password.php
+url: "http://www.cyberdyne-systems.tech/american-teachers/api/verify-request.php"
 type: POST
 headers: { "Accept": "application/json; odata=verbose" },
 body: {
@@ -53,7 +51,7 @@ body: {
 If the response of the previous query is "Data verified", then you can enable the form and let the user change
 its password. If the response is "Data could not be verified" don´t allow the user to change the password.
 
-url: api/modify_password.php
+url: "http://cyberdyne-systems.tech/american-teachers/api/modify-password.php"
 type: POST
 headers: { "Accept": "application/json; odata=verbose" },
 body: {
@@ -62,3 +60,5 @@ body: {
     	    "password": <form input value>,
     	    "confirm_password": <form input value>
       }
+
+http://www.cyberdyne-systems.tech/american-teachers/api/modify_password.php?user_id=21&token=dcad6b819444e72ec092b8bbf6d5366d
