@@ -5,9 +5,9 @@ url: "http://www.cyberdyne-systems.tech/american-teachers/api/login.php"
 type: POST
 headers: { "Accept": "application/json; odata=verbose" },
 body: {
-	 "email": <form input value>,
-	 "password": <form input value>
-      }
+	"email": <form input value>,
+	"password": <form input value>
+}
 
 - SIGN UP -
 API will send an email to the user to verify the account before they´re allowed to login.
@@ -22,7 +22,7 @@ body: {
 	"password": <form input value>,
 	"confirm_password": <form input value>,
 	"email": <form input value>
-      }
+}
 
 - RESET PASSWORD -
 API will send an email to the user to verify they own the email account account before allowing them to modify it.
@@ -31,8 +31,8 @@ url: "http://www.cyberdyne-systems.tech/american-teachers/api/reset-password.php
 type: POST
 headers: { "Accept": "application/json; odata=verbose" },
 body: {
-	 "email": <form input value>
-      }
+	"email": <form input value>
+}
 
 - VERIFY USER REQUEST -
 API will check if user had indeed access to that account´s email and clicked the link sent int the previous step.
@@ -43,9 +43,9 @@ url: "http://www.cyberdyne-systems.tech/american-teachers/api/verify-request.php
 type: POST
 headers: { "Accept": "application/json; odata=verbose" },
 body: {
-    	 "user_id": <form input value>,
-    	 "token": <form input value>	
-      }
+	"user_id": <form input value>,
+	"token": <form input value>	
+}
 
 - MODIFY PASSWORD -
 If the response of the previous query is "Data verified", then you can enable the form and let the user change
@@ -55,10 +55,8 @@ url: "http://cyberdyne-systems.tech/american-teachers/api/modify-password.php"
 type: POST
 headers: { "Accept": "application/json; odata=verbose" },
 body: {
-    	    "user_id": <URL param value>,
-    	    "token": <URL param value>,	    
-    	    "password": <form input value>,
-    	    "confirm_password": <form input value>
-      }
-
-http://www.cyberdyne-systems.tech/american-teachers/api/modify_password.php?user_id=21&token=dcad6b819444e72ec092b8bbf6d5366d
+	"user_id": <URL param value>,
+	"token": <URL param value>,	    
+	"password": <form input value>,
+	"confirm_password": <form input value>
+}
